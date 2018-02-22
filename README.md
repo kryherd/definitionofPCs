@@ -11,3 +11,7 @@ To address this issue, a [few](http://psycnet.apa.org/doiLanding?doi=10.1037%2Fa
 However, the papers linked above don't usually explain their choice of low-level skills (decoding vs. word reading, expressive vs. receptive vocabulary, etc.) or how they chose the confidence intervals used to select UGC, EAC, and UPC participants. At [Haskins](http://haskinslabs.org/), across grants we have collected a lot of behavioral data on a lot of subjects. So we decided to take advantage of this rich dataset to explore this regression method and what it might tell us about comprehension.
 
 In the two years, we have explored a lot of different things about reading comprehension and this method. As such, this repository will have some different sections. These are listed below.
+
+* [Group Selection](./GroupSelection.md). We played around with a few different ways to select groups -- see more details here.
+
+This project is a collaboration with [Clint Johns](http://www.haskins.yale.edu/staff/johnsc.html), [Nicole Landi](https://psych.uconn.edu/faculty/nicole-landi/), [Julie Van Dyke](http://www.haskins.yale.edu/staff/vandyke.html), [Andy Jahn](https://www.andysbrainblog.com/), and Kazunaga Matsuki.
