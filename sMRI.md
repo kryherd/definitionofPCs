@@ -11,6 +11,4 @@ This analysis had a few steps.
 
 Running this analysis really got me used to running for loops over lists of data frames in R. I had to run these models for multiple group selection methods over lots of regions of interest (ROIs). I also learned more about how to read in multiple sheets of an Excel document and how to send R output to a text document.
 
-To learn more about this analysis, you can check out the [Cortical ROI analysis](./ROI_analysis_cortical.R) R script. You can also look at a [poster](./) I presented at the Society for the Neurobiology of Language conference in Fall 2017.
-
- definitionofPCs/SNL_2017_Ryherd.pdf 
+To learn more about this analysis, you can check out the [Cortical ROI analysis](./ROI_analysis_cortical.R) R script. You can also look at a [poster](definitionofPCs/SNL_2017_Ryherd.pdf) I presented at the Society for the Neurobiology of Language conference in Fall 2017.
