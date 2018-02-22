@@ -26,8 +26,8 @@ ci2z <- function(ci)
 }
 
 # Change your CIs
-ci.to.use <- c(.20, .80)
-ci.title <- "CIs: 20%, 80%"
+ci.to.use <- c(.15, .65)
+ci.title <- "CIs: 15%, 65%"
 
 # Run model, get groups
 
