@@ -83,3 +83,42 @@ m2 <- lm(wj3.rcomp.tf ~ age.c + decoding.comp + wasi.matr.tf + ppvt.cs, data = l
 
 We also ran some models that included oral comprehension. The rationale here was to go beyond the Simple View of Reading (reading comprehension = decoding + oral comprehension). If individuals showed a discrepancy between their actual reading comprehension ability and a predicted value that included both decoding and oral comprehension, this discrepancy must be due to something that is not accounted for by the Simple View. Including oral comprehension did sometimes lead to well-balanced groups (depending on the CIs). However, for theoretical reasons we decided to use vocabulary and not oral comprehension in future analyses. This model could still be further explored to understand what contributes to comprehension beyond decoding and oral comprehension, though!
 
+## Data Imputation
+
+Across 4 projects, we have 902 total subjects. These are subjects with some reading-related behavioral data; some of them also have structural MRI data. Our goal here is first to use our classifier to create groups based solely on behavioral data and then figure out how many individuals in each group we have MRI data for. Since this is already a process where we drop subjects, we don't want to be dropping people for missing a single behavioral score. Our dataset is somewhat large (depending on your definition) and has many measures; thus, it's good for imputation. 
+
+We start with the same `ALL_IMPUTE_COMP.csv` file. We can use the following line to see how much of each measure is missing data.
+
+`data %>% summarize_all(funs(sum(is.na(.)) / length(.)))`
+
+This gives us the following.
+
+|    Measure    | Percent Missing |
+|:-------------:|:---------------:|
+|   SubjectID   |       0.00      |
+|    Project    |       0.00      |
+|   age.tested  |       0.00      |
+|  towre.w.ipm  |       0.07      |
+|  towre.nw.ipm |       0.07      |
+|  wj3.wid.raw  |       0.07      |
+|  wj3.watt.raw |       0.08      |
+|    ppvt.raw   |       0.14      |
+| wasi.matr.raw |       0.10      |
+| wj3.rcomp.raw |       0.19      |
+|   ktea2.raw   |       0.54      |
+|  gm.rcomp.raw |       0.57      |
+|  nd.rcomp.raw |       0.81      |
+
+We are using the findings from [Eckert et al. (2018)](https://www.frontiersin.org/articles/10.3389/fpsyg.2018.00644/full) to inform our imputation methods. They found the most success with the [`missForest` package](https://cran.r-project.org/web/packages/missForest/index.html) (as compared to mean replacement and predictive mean matching using the [`mice` package](https://cran.r-project.org/web/packages/mice/index.html)). 
+
+In this paper they do **explicit multiple imputation**, where 10 imputed datasets are generated and then pooled to for point and variance estimates. However, personal communication with the creator of `missForest`, [Daniel Stekhoven](https://www.sib.swiss/stekhoven-daniel), suggests that this method is not necessary. In his words:
+
+> [...] randomForest provides an implicit multiple imputation by averaging over many decision/regression trees [...] When we use the different imputation methods, missForest was so much better (while at the same time underestimating the standard deviation of the CIs) that my intermediate hypothesis is; we do not need multiple imputation if we have the right data (when the data is right, I have not yet figured out).
+
+So, it seemed like we could just use `missForest` without having to worry about multiple imputation. To check this, we compared explicit multiple imputation (using `mice`) to `missForest`.
+
+*Note: since `nd.rcomp.raw	` has 80% missingness, we don't impute it. There's just too little data. `ktea2.raw` and `gm.rcomp.raw` are on the edge, so we will drop them too (at least for this package comparison).*
+
+
+
+
