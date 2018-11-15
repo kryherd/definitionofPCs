@@ -1,48 +1,60 @@
 # Group Selection
 
-One of the things we were most interested in when exploring this method is how changing around parameters of the regression changes the composition of the three main groups (EAC, UGC, UPC). We did three main things: change confidence interval, change reading comprehension measure, and change predictors.
+One of the things we were most interested in when exploring this method is how changing around parameters of the regression changes the composition of the three main groups (EAC, UGC, UPC).
 
-In this repository, you'll find a core R script called [GroupSelection](./GroupSelection.R). Since each of the main explorations rely on the same type of script, I'm only uploading this main one. There are a few things we always do. 
+In this repository, you'll find a the results of an R markdown file called [classifier](./Classifier.md). The code in this file contains loops to run multiple different models and test multiple CIs all at once.
 
-**1) Create a decoding composite.**
+The main layout of the document is as follows:
 
-We use four measures (word reading, nonword decoding, word fluency, and nonword fluency) to create a more stable deocding composite. You can see more about how this composite was created in the [create_composite](./create_composite.R) R script.
+**1) Data Imputation** 
 
-**2) Check predictors for normality.**
+Across 4 projects, we have 902 total subjects. These are subjects with some reading-related behavioral data; some of them also have structural MRI data. Our goal here is first to use our classifier to create groups based solely on behavioral data and then figure out how many individuals in each group we have MRI data for. Since this is already a process where we drop subjects, we don't want to be dropping people for missing a single behavioral score. Our dataset is somewhat large (depending on your definition) and has many measures; thus, it's good for imputation. 
 
-We make pretty good use of the `caret` package, specifically `preProcess`. After testing our predictors for normality using `dagoTest`, we often centered, scaled, and transformed them.
+We are using the findings from [Eckert et al. (2018)](https://www.frontiersin.org/articles/10.3389/fpsyg.2018.00644/full) to inform our imputation methods. They found the most success with the [`missForest` package](https://cran.r-project.org/web/packages/missForest/index.html) (as compared to mean replacement and predictive mean matching using the [`mice` package](https://cran.r-project.org/web/packages/mice/index.html)). 
 
-For more information and documentation on this function, check out [this](https://topepo.github.io/caret/pre-processing.html) page.
+In this paper they do **explicit multiple imputation**, where 10 imputed datasets are generated and then pooled to for point and variance estimates. However, personal communication with the creator of `missForest`, [Daniel Stekhoven](https://www.sib.swiss/stekhoven-daniel), suggests that this method is not necessary. In his words:
 
-**3) Compare group differences.**
+> [...] randomForest provides an implicit multiple imputation by averaging over many decision/regression trees [...] When we use the different imputation methods, missForest was so much better (while at the same time underestimating the standard deviation of the CIs) that my intermediate hypothesis is; we do not need multiple imputation if we have the right data (when the data is right, I have not yet figured out).
 
-Once we ran the classifier regression model and assigned each subject to a group, we always checked the groups for differences on the measures included in the original regression (e.g., reading comprehension, age, nonverbal IQ, etc.). Ideally, the groups would be equal on all of the predictors and different on reading comprehension. This was not always the case.
+So, it seemed like we could just use `missForest` without having to worry about multiple imputation. To check this, we compared explicit multiple imputation (using `mice`) to `missForest`. To see the results of this investigation, check out the LINK HERE document.
 
-**4) Check group sizes.**
+**2) Create a decoding composite.**
 
-We wanted mostly similar group sizes, so we checked the group sizes for each model.
+We use four measures (word reading, nonword decoding, word fluency, and nonword fluency) to create a more stable deocding composite. 
 
-**5) Removed subjects with a standardized predicted reading comprehension of -1 or less.**
+**3) Run model**
+
+We use a typical linear model to predict reading compreension ability. Before running the mode, we make pretty good use of the `caret` package, specifically `preProcess`, to check the normality of our predictors. Skewed predictors were centered, scaled, and transformed.
+
+For more information and documentation on `preProcess`, check out [this](https://topepo.github.io/caret/pre-processing.html) page.
+
+**4) Creating Groups**
+
+In this section, we apply different confidence intervals to the residuals from the main model. The core idea is that the relationship between predicted and actual reading comprehension scores tells us which group they should be in. The groups are as follows.
+
+* UPC: unexpected poor comprehender (pred. RC > actual RC)
+* NSC: non-selected
+* EAC: expected average comprehender (pred. RC = actual RC)
+* UGC: unexpected good comprehender (pred. RC < actual RC)
+* EPC: expected poor comprehender (pred. and actual RC are below some cutoff)
 
 Our study is primarily focused on people who have a discrepancy between their reading comprehension ability and their word reading ability. Individuals with a standardized predicted reading score of -1 have low scores on the predictors (likely word reading) as well as reading comprehension. This is definitely an interesting group (see literature on dyslexia and reading disorder!), but not relevant for our current investigation. 
 
-**6) Ran both linear models and robust linear models**
+**5) Merge Groups with MRI IDs**
 
-Because we wanted to make sure our data didn't violate any assumptions of regression, we used `lm` with transformed variables and `rlm` with raw values.
+We ran the classifier on our full dataset, since it works best with large data. However, we don't have MRI data for all subjects. Since we want to do a structural MRI analysis, we need to restrict our groups to those with structural MRI data. That happens in this step.
 
-Now, onto the things we explored!
+**6) Check group differences and group sizes**
+Once we ran the classifier regression model and assigned each subject to a group, we always checked the groups for differences on the measures included in the original regression (e.g., reading comprehension, age, nonverbal IQ, etc.). Ideally, the groups would be equal on all of the predictors and different on reading comprehension. This was not always the case.
+
+We wanted mostly similar group sizes, so we checked the group sizes for each model.
+
 
 ## Confidence Intervals
 
-In this method, we usually use confidence intervals (CIs) to place individuals into groups. To be a UGC, their measured reading comprehension ability has to be above some CI around their predicted reading comprehension. Similarly, UPCs have a measured reading comprehension score below some CI around the predicted reading comprehension. Finally, EACs have a measured score within some CI around the predicted score.  The original papers that have been published using this method use different CIs. to select their groups. For UPCs and UGCs, the CIs vary from 65 to 80%. For EACs, they vary from 15 to 25%. However, these papers rarely provide a rationale for using these different CIs. 
+In this method, we usually use confidence intervals (CIs) to place individuals into groups. To be a UGC, their measured reading comprehension ability has to be above some CI around their predicted reading comprehension. Similarly, UPCs have a measured reading comprehension score below some CI around the predicted reading comprehension. Finally, EACs have a measured score within some CI around the predicted score.  The original papers that have been published using this method use different CIs. to select their groups. For UPCs and UGCs, the CIs vary from 65 to 80%. For EACs, they vary from 15 to 25%. However, these papers rarely provide a rationale for using these different CIs.
 
-One key part of my code was used to easily switch between CIs.
-
-```
-ci.to.use <- c(.15, .65)
-ci.title <- "CIs: 15%, 65%"
-```
-The first number was the within-CI for the EACs, and the second was the outside-CI for the UPCs and UGCs.
+The first number is the within-CI for the EACs, and the second is the outside-CI for the UPCs and UGCs.
 
 <img src="./Images/animate.gif"> 
 
@@ -57,15 +69,6 @@ Our lab collects a lot of individal difference measures. With this dataset, we h
 
 Our reading comprehension measures included the Kaufman Test of Educational Achievement (KTEA) Reading Comprehension subtest, the Woodcock-Johnson III (WJ3) Passage Comprehension subtest, the Nelson-Denny (ND) Comprehension subtest, and the Gates-MacGinitie (GM) Comprehension subtest. 
 
-The change to the core code was just switching out the outcome variable.
-
-```
-m1 <- lm(wj3.rcomp.tf ~ age.c + decoding.comp + wasi.matr.tf + wasi.vocab.cs, data = lmwv.cc)
-m2 <- lm(ktea.tf ~ age.c + decoding.comp + wasi.matr.tf + wasi.vocab.cs, data = lmwv.cc)
-m3 <- lm(gm.tf ~ age.c + decoding.comp + wasi.matr.tf + wasi.vocab.cs, data = lmwv.cc)
-m4 <- lm(nd.tf ~ age.c + decoding.comp + wasi.matr.tf + wasi.vocab.cs, data = lmwv.cc)
-```
-
 We pretty quickly settled on WJ3 and KTEA -- WJ3 because it had the most complete data and KTEA because it produced the most balanced groups. We also made a reading comprehension composite using WJ3 and KTEA. Interestingly, the groups we found using the different reading comprehension measures were often different, even though all of the measures were ostensibly tapping the same construct (reading comprehension). This is related to research by [Keenan and Meenan (2014)](http://journals.sagepub.com/doi/full/10.1177/0022219412439326) which found that using different reading comprehension tests to define poor comprehenders led to very different groups, with an average overlap of **only 43%**.
 
 ## Predictors
@@ -74,51 +77,4 @@ Across studies, the specific measures used to predict reading comprehension abil
 
 To explore these predictors, we ran a bunch of models. We had some with expressive vocabulary, some with receptive, and some with a composite of the two. We generally found that including vocabulary was necessary to keep the groups equal on things like decoding and nonverbal IQ.
 
-Again, the code here was a pretty simple change.
-
-```
-m1 <- lm(wj3.rcomp.tf ~ age.c + decoding.comp + wasi.matr.tf + wasi.vocab.cs, data = lmwv.cc)
-m2 <- lm(wj3.rcomp.tf ~ age.c + decoding.comp + wasi.matr.tf + ppvt.cs, data = lmwv.cc)
-```
-
 We also ran some models that included oral comprehension. The rationale here was to go beyond the Simple View of Reading (reading comprehension = decoding + oral comprehension). If individuals showed a discrepancy between their actual reading comprehension ability and a predicted value that included both decoding and oral comprehension, this discrepancy must be due to something that is not accounted for by the Simple View. Including oral comprehension did sometimes lead to well-balanced groups (depending on the CIs). However, for theoretical reasons we decided to use vocabulary and not oral comprehension in future analyses. This model could still be further explored to understand what contributes to comprehension beyond decoding and oral comprehension, though!
-
-## Data Imputation
-
-Across 4 projects, we have 902 total subjects. These are subjects with some reading-related behavioral data; some of them also have structural MRI data. Our goal here is first to use our classifier to create groups based solely on behavioral data and then figure out how many individuals in each group we have MRI data for. Since this is already a process where we drop subjects, we don't want to be dropping people for missing a single behavioral score. Our dataset is somewhat large (depending on your definition) and has many measures; thus, it's good for imputation. 
-
-We start with the same `ALL_IMPUTE_COMP.csv` file. We can use the following line to see how much of each measure is missing data.
-
-`data %>% summarize_all(funs(sum(is.na(.)) / length(.)))`
-
-This gives us the following.
-
-|    Measure    | Percent Missing |
-|:-------------:|:---------------:|
-|   SubjectID   |       0.00      |
-|    Project    |       0.00      |
-|   age.tested  |       0.00      |
-|  towre.w.ipm  |       0.07      |
-|  towre.nw.ipm |       0.07      |
-|  wj3.wid.raw  |       0.07      |
-|  wj3.watt.raw |       0.08      |
-|    ppvt.raw   |       0.14      |
-| wasi.matr.raw |       0.10      |
-| wj3.rcomp.raw |       0.19      |
-|   ktea2.raw   |       0.54      |
-|  gm.rcomp.raw |       0.57      |
-|  nd.rcomp.raw |       0.81      |
-
-We are using the findings from [Eckert et al. (2018)](https://www.frontiersin.org/articles/10.3389/fpsyg.2018.00644/full) to inform our imputation methods. They found the most success with the [`missForest` package](https://cran.r-project.org/web/packages/missForest/index.html) (as compared to mean replacement and predictive mean matching using the [`mice` package](https://cran.r-project.org/web/packages/mice/index.html)). 
-
-In this paper they do **explicit multiple imputation**, where 10 imputed datasets are generated and then pooled to for point and variance estimates. However, personal communication with the creator of `missForest`, [Daniel Stekhoven](https://www.sib.swiss/stekhoven-daniel), suggests that this method is not necessary. In his words:
-
-> [...] randomForest provides an implicit multiple imputation by averaging over many decision/regression trees [...] When we use the different imputation methods, missForest was so much better (while at the same time underestimating the standard deviation of the CIs) that my intermediate hypothesis is; we do not need multiple imputation if we have the right data (when the data is right, I have not yet figured out).
-
-So, it seemed like we could just use `missForest` without having to worry about multiple imputation. To check this, we compared explicit multiple imputation (using `mice`) to `missForest`.
-
-*Note: since `nd.rcomp.raw	` has 80% missingness, we don't impute it. There's just too little data. `ktea2.raw` and `gm.rcomp.raw` are on the edge, so we will drop them too (at least for this package comparison).*
-
-
-
-

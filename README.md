@@ -1,6 +1,6 @@
 # Definition of Poor Comprehenders
 
-This is a repository for a project I've been working on for about two years now (as of Spring 2018). The goal was to test a new way of defining a special population: **poor comprehenders**. 
+This is a repository for a project I've been working on for about two years now (as of Fall 2018). The goal was to test a new way of defining a special population: **poor comprehenders**. 
 
 **Poor comprehenders** are individuals who can read words out loud but don't really seem to understand what they are reading. Ways to define this population vary, but a lot of the time researchers just pick a few cutoffs based on standardized assessments (e.g, word reading above 100, reading comprehension below 90). At the end of the day, however, these cutoffs are somewhat arbitrary.
 
