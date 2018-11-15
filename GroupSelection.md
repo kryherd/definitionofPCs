@@ -2,7 +2,7 @@
 
 One of the things we were most interested in when exploring this method is how changing around parameters of the regression changes the composition of the three main groups (EAC, UGC, UPC).
 
-In this repository, you'll find a the results of an R markdown file called [classifier](./Classifier.md). The code in this file contains loops to run multiple different models and test multiple CIs all at once.
+In this repository, you'll find a the results of an R markdown file called [Classifier](./Classifier.md). The code in this file contains loops to run multiple different models and test multiple CIs all at once.
 
 The main layout of the document is as follows:
 
@@ -16,7 +16,7 @@ In this paper they do **explicit multiple imputation**, where 10 imputed dataset
 
 > [...] randomForest provides an implicit multiple imputation by averaging over many decision/regression trees [...] When we use the different imputation methods, missForest was so much better (while at the same time underestimating the standard deviation of the CIs) that my intermediate hypothesis is; we do not need multiple imputation if we have the right data (when the data is right, I have not yet figured out).
 
-So, it seemed like we could just use `missForest` without having to worry about multiple imputation. To check this, we compared explicit multiple imputation (using `mice`) to `missForest`. To see the results of this investigation, check out the LINK HERE document.
+So, it seemed like we could just use `missForest` without having to worry about multiple imputation. To check this, we compared explicit multiple imputation (using `mice`) to `missForest`. To see the results of this investigation, check out the [imputation_check](./imputation_check.md) document.
 
 **2) Create a decoding composite.**
 

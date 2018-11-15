@@ -9,10 +9,7 @@ output:
     keep_md: true
 ---
 
-```{r, echo = FALSE}
-library(knitr)
-opts_chunk$set(tidy.opts=list(width.cutoff=10),tidy=TRUE)
-```
+
 
 In this document, I compare the use of the `missForest` and `mice` packages to impute some data for the definition of poor comprehenders project.
 
@@ -26,7 +23,8 @@ In this paper they do **explicit multiple imputation**, where 10 imputed dataset
 
 So, it seems like we can just use `missForest` without having to worry about multiple imputation. To check this, we compare explicit multiple imputation (using `mice`) to `missForest`.
 
-```{r, warning = FALSE, message = FALSE}
+
+```r
 # read in libraries, data
 library(missForest)
 library(mice)
@@ -40,9 +38,26 @@ setwd("~/definitionofPCs")
 data <- read.csv("FullData_Sept27_2018.csv")
 ```
 
-```{r}
+
+```r
 # look at missingness
 data %>% summarize_all(funs(sum(is.na(.)) / length(.)))
+```
+
+```
+##   SubjectID Project   age.mri     age.beh    gender sspan.raw  ppvt.raw
+## 1         0       0 0.6606383 0.005319149 0.1638298 0.2553191 0.1585106
+##   wasi.vocab.raw wasi.matr.raw   wasi.iq wj3.watt.raw wj3.wid.raw
+## 1      0.2297872    0.09574468 0.2297872   0.08617021  0.08617021
+##   wj3.oralcomp.raw celf.rs.raw celf.fs.raw towre.w.ipm towre.nw.ipm
+## 1        0.2489362   0.5276596   0.5255319  0.07234043   0.07234043
+##   wj3.rf.ipm handedness StructuralMRI.ID ktea2.raw gm.rcomp.raw
+## 1  0.4212766  0.7202128        0.6638298 0.5531915    0.5882979
+##   nd.rcomp.raw wj3.rcomp.raw
+## 1    0.8148936     0.1968085
+```
+
+```r
 # subset to just predictors and WJ3
 ## not using KTEA or GM or ND for now
 dat_imp <- data %>%
@@ -63,10 +78,26 @@ dat_imp <- data %>%
 
 First, we will use mice and missForest to impute the missing values we have and see how similar the values they create are.
 
-```{r, message = FALSE, warning = FALSE}
+
+```r
 ## impute all missing values for all variables
 # missForest -- max iterations of 20
 missForest <- missForest(dat_imp[,-c(1,2)], maxiter = 20)
+```
+
+```
+##   missForest iteration 1 in progress...done!
+##   missForest iteration 2 in progress...done!
+##   missForest iteration 3 in progress...done!
+##   missForest iteration 4 in progress...done!
+##   missForest iteration 5 in progress...done!
+##   missForest iteration 6 in progress...done!
+##   missForest iteration 7 in progress...done!
+##   missForest iteration 8 in progress...done!
+##   missForest iteration 9 in progress...done!
+```
+
+```r
 # mice -- 10 imputations, predictive mean matching method, don't print all output, 20 max iterations
 ind.clust <- 1
 temp <- mice(dat_imp[,-1],m=1,maxit=0)
@@ -96,11 +127,14 @@ ggplot(compare_missings, aes(MF_wj3.rcomp.raw, M_wj3.rcomp.raw)) +
   annotate("text", x = 30, y = 42, label = paste0("r = ", round(cor_test$estimate, 3)))
 ```
 
+![](imputation_check_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
 The predictions from `missForest` and `mice` for `wj3.rcomp.raw` are significantly correlated, but not to an extreme extent. This suggests that the two methods are in fact producing different results. Let's try using data where we know the actual `wj3.rcomp.raw` to see how close the methods get.
 
 #### Half of dataset removed
 
-```{r, message = FALSE, warning = FALSE}
+
+```r
 # make complete-cases dataset
 cc_dat <- dat_imp[complete.cases(dat_imp),]
 # randomly select half of the rows
@@ -110,10 +144,28 @@ cc_dat$wj3.rcomp.raw[cc_dat$SubjectID %in% randsample$SubjectID] <- NA
 
 # sanity check -- is half of rcomp missing?
 cc_dat %>% summarize_all(funs(sum(is.na(.)) / length(.)))
+```
 
+```
+##   SubjectID Project age.beh ppvt.raw wasi.matr.raw wj3.watt.raw
+## 1         0       0       0        0             0            0
+##   wj3.wid.raw towre.w.ipm towre.nw.ipm wj3.rcomp.raw
+## 1           0           0            0     0.5007112
+```
+
+```r
 ## impute wj3.rcomp.raw
 # xtrue provides actual dataset, 20 max iterations
 missForest_imputeTest <- missForest(cc_dat[,-c(1,2)], xtrue = dat_imp[,-c(1,2)], maxiter = 20)
+```
+
+```
+##   missForest iteration 1 in progress...done!
+##   missForest iteration 2 in progress...done!
+##   missForest iteration 3 in progress...done!
+```
+
+```r
 # mice -- 10 imputations, predictive mean matching method, don't print all output, 20 max iterations
 mice_imputeTest <- mice(cc_dat[,-c(1)],  m = 20, maxit = 20, predictorMatrix = predictor.matrix, method = "2l.2stage.norm", printFlag = FALSE) 
 # create mice dataset
@@ -129,10 +181,27 @@ compare_test$missForest_error <- compare_test$missForest_wj3.rcomp.raw - compare
 compare_test$mice_error <- compare_test$mice_wj3.rcomp.raw - compare_test$wj3.rcomp.raw
 
 min(compare_test$mice_error)
+```
 
+```
+## [1] -21.389
+```
+
+```r
 # sum the total error for each method
 paste("missForest total error:", round(sum(abs(compare_test$missForest_error)), 4))
+```
+
+```
+## [1] "missForest total error: 748.1465"
+```
+
+```r
 paste("mice total error:", round(sum(abs(compare_test$mice_error)), 4))
+```
+
+```
+## [1] "mice total error: 1018.8113"
 ```
 
 These data suggest that for our dataset, `missForest` is the best option, even without explicit multiple imputation.

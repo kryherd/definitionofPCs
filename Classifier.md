@@ -25,7 +25,7 @@ library(rlist)
 library(xlsx)
 library(dplyr)
 library(missForest)
-setwd("~/Dropbox/Definition_of_PCs/RegressionDefinitionMethod/Analyses_Nov2018")
+setwd("~/definitionofPCs")
 data <- read.csv("FullData_Sept27_2018.csv")
 ```
 
@@ -60,6 +60,7 @@ missForest <- missForest(data_to_impute[,-c(1,2)], maxiter = 20)
 ##   missForest iteration 4 in progress...done!
 ##   missForest iteration 5 in progress...done!
 ##   missForest iteration 6 in progress...done!
+##   missForest iteration 7 in progress...done!
 ```
 
 ```r
@@ -109,15 +110,15 @@ for (i in 2:length(comp)){
 ## 
 ## -----------------
 ##  towre.w.ipm 
-## Omnibus p-val:  1.554312e-15 
+## Omnibus p-val:  1.332268e-15 
 ## 
-## Skewness p-val:  0.001391216 
+## Skewness p-val:  0.001073266 
 ## 
 ## -----------------
 ##  towre.nw.ipm 
-## Omnibus p-val:  2.534306e-12 
+## Omnibus p-val:  1.678324e-12 
 ## 
-## Skewness p-val:  2.399734e-08
+## Skewness p-val:  1.571518e-08
 ```
 
 They're all significantly non-normal, so we will center, scale, and transform them.
@@ -136,10 +137,10 @@ for (name in vars_tf){
 ```
 
 ```
-## wj3.wid.raw :  4.089205 
-## wj3.watt.raw :  4.618955 
-## towre.w.ipm :  1.336691 
-## towre.nw.ipm :  1.386909
+## wj3.wid.raw :  4.117933 
+## wj3.watt.raw :  4.615495 
+## towre.w.ipm :  1.342197 
+## towre.nw.ipm :  1.39149
 ```
 
 ```r
@@ -165,27 +166,27 @@ for (i in 1:length(tf_data)){
 ## 
 ## -----------------
 ##  wj3.wid.raw 
-## Omnibus p-val:  2.680078e-13 
+## Omnibus p-val:  6.206147e-14 
 ## 
-## Skewness p-val:  0.3002831 
+## Skewness p-val:  0.286392 
 ## 
 ## -----------------
 ##  wj3.watt.raw 
 ## Omnibus p-val:  0 
 ## 
-## Skewness p-val:  2.966703e-05 
+## Skewness p-val:  2.878285e-05 
 ## 
 ## -----------------
 ##  towre.w.ipm 
-## Omnibus p-val:  7.443991e-08 
+## Omnibus p-val:  9.346498e-08 
 ## 
-## Skewness p-val:  0.1307562 
+## Skewness p-val:  0.1363591 
 ## 
 ## -----------------
 ##  towre.nw.ipm 
-## Omnibus p-val:  0.0004123379 
+## Omnibus p-val:  0.0004206878 
 ## 
-## Skewness p-val:  0.7379261
+## Skewness p-val:  0.7496716
 ```
 
 Overall, the skewness has become more normal for all of our measures. Now we will combine the four measures into a single composite decoding score.
@@ -238,15 +239,15 @@ for (measure in normality_test){
 ## 
 ## -----------------
 ##  decode_composite 
-## Omnibus p-val:  0.007553933 
+## Omnibus p-val:  0.006051503 
 ## 
-## Skewness p-val:  0.004143904 
+## Skewness p-val:  0.003637204 
 ## 
 ## -----------------
 ##  wj3.rcomp.raw 
-## Omnibus p-val:  0.0002594362 
+## Omnibus p-val:  0.0003425483 
 ## 
-## Skewness p-val:  5.91253e-05 
+## Skewness p-val:  7.297563e-05 
 ## 
 ## -----------------
 ##  ktea2.raw 
@@ -269,11 +270,11 @@ for (name in to_transform){
 ```
 
 ```
-## wasi.matr.raw  :  2.195247 
-## ppvt.raw  :  4.995566 
-## decode_composite  :  1.138884 
-## wj3.rcomp.raw  :  1.938511 
-## ktea2.raw  :  3.179944
+## wasi.matr.raw  :  2.198714 
+## ppvt.raw  :  4.98163 
+## decode_composite  :  1.141724 
+## wj3.rcomp.raw  :  1.929314 
+## ktea2.raw  :  3.190855
 ```
 
 ```r
@@ -296,33 +297,33 @@ for (measure in normality_test2){
 ## 
 ## -----------------
 ##  wasi.matr.tf 
-## Omnibus p-val:  0.01381228 
+## Omnibus p-val:  0.01182427 
 ## 
-## Skewness p-val:  0.3136766 
+## Skewness p-val:  0.3062343 
 ## 
 ## -----------------
 ##  ppvt.tf 
-## Omnibus p-val:  1.314149e-06 
+## Omnibus p-val:  5.313682e-07 
 ## 
-## Skewness p-val:  0.1373592 
+## Skewness p-val:  0.1330319 
 ## 
 ## -----------------
 ##  decode_composite 
-## Omnibus p-val:  0.2502685 
+## Omnibus p-val:  0.2164284 
 ## 
-## Skewness p-val:  0.9790962 
+## Skewness p-val:  0.9768757 
 ## 
 ## -----------------
 ##  wj3.rcomp.tf 
-## Omnibus p-val:  0.07607548 
+## Omnibus p-val:  0.05604626 
 ## 
-## Skewness p-val:  0.7969338 
+## Skewness p-val:  0.7863771 
 ## 
 ## -----------------
 ##  ktea2.tf 
-## Omnibus p-val:  1.110223e-16 
+## Omnibus p-val:  6.661338e-16 
 ## 
-## Skewness p-val:  0.04250339
+## Skewness p-val:  0.04149442
 ```
 
 The skewness is not longer significant for any of the predictors. That means we are almost ready to run our models! Let's center age.
