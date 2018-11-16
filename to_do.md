@@ -1,39 +1,15 @@
 # Progress & to-do
 
-### Data Imputation
+11/15/2018
 
-- [x] Create master data file
-- [x] Email RAs to make sure all the data is exported
-- [ ] Use info from RAs to fully fill out dataset
-- [ ] Add participant age (at MRI and at beh) to imputation
-- [ ] Add project to imputation
-- [ ] Add `ktea2.raw` and `gm.rcomp.raw` to imputation.
-- [ ] Re-run imputation using `missForest`.
- 
+- classifier updated and posted to GitHub
+- structural MRI data pulled together into a single file
+	- missing ICV data from 138 subjects: emailed Andy to try to find that data. 
+- new summary generated
 
 
-Maybe to-dos...  
+**to do**:
 
-- [ ] Check to see if our data is MCAR vs. MAR (Hawkins test?)  
-- [ ] Re-do imputation method comparison with `micemd` instead of `mice`
-
-### Group Selection
-
-Once data is successfully imputed...
-
-- [ ] Re-run group selection script on newly imputed data
-- [ ] Pick best model(s) for ROI analysis
-
-### ROI Analysis
-
-Once model(s) are picked for group selection...
-
-- [ ] Re-run ROI analysis
-- [ ] Interpret significant results
-
-
-### Writing
-
-Once results are found...
-
-- [ ] Write a paper?
+- find or export missing ICV data
+- choose model for ROI analysis
+- do ROI analysis
