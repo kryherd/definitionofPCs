@@ -1,5 +1,5 @@
 ######## ORGANIZING DATA
-setwd("~/Dropbox/Definition_of_PCs/RegressionDefinitionMethod/FreesurferResultsJan2018")
+setwd("~/definitionofPCs")
 # read in packages
 library(xlsx)
 library(phia)
