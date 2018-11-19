@@ -1,5 +1,11 @@
 # Progress & to-do
 
+11/19/2018
+
+- found missing ICV data from AndyHD (hard drive at Haskins)
+- created full behavioral + structural dataset
+
+
 11/15/2018
 
 - classifier updated and posted to GitHub
@@ -10,6 +16,6 @@
 
 **to do**:
 
-- find or export missing ICV data
+- ~~find or export missing ICV data~~
 - choose model for ROI analysis
 - do ROI analysis
