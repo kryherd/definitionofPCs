@@ -1,5 +1,6 @@
 # read in data
 library(openxlsx)
+library(dplyr)
 setwd("~/definitionofPCs/sMRIData")
 # one sheet for each hemisphere + measure -- some subjects
 lh_vol_1 <- read.xlsx("missingdata_stats.xlsx", 2)
@@ -13,7 +14,7 @@ lh_vol_2 <- read.xlsx("FullData_Dec5_2017_structuralStats.xlsx", 3)
 lh_thic_2 <- read.xlsx("FullData_Dec5_2017_structuralStats.xlsx", 4)
 rh_vol_2 <- read.xlsx("FullData_Dec5_2017_structuralStats.xlsx", 5)
 rh_thic_2 <- read.xlsx("FullData_Dec5_2017_structuralStats.xlsx", 6)
-#vol_extra_2 <- read.xlsx("FullData_Dec5_2017_structuralStats.xlsx", 2)
+vol_extra_2 <- read.xlsx("FullData_Dec5_2017_structuralStats.xlsx", 2)
 
 # stack the data together, get rid of extra columns
 lh_vol <- rbind(lh_vol_1, lh_vol_2)
@@ -30,20 +31,10 @@ colnames(rh_thic)[1] <- "mri_id"
 rh_thic <- rh_thic[,-c(37,38)]
 
 ## use this code if you get the full ICV for the "FullData_Dec5_2017_structuralStats.xlsx" file
-#vol_extra <- rbind(vol_extra_1, vol_extra_2)
-#colnames(vol_extra)[1] <- "mri_id"
-#vol_extra <- vol_extra[,c(1,64)]
-
-# for now, just use this file + the data from "missingdata_stats.xlsx"
-# merge together
-ICV <- read.csv("ICV.csv")
-vol_extra <- vol_extra_1[,c(1,64)]
-names(vol_extra) <- c("mri_id", "ICV")
-vol_ICV <- merge(vol_extra, ICV, by.x = "mri_id", by.y = "Subject", all = TRUE)
-vol_ICV$ICV.y[vol_ICV$ICV.y == vol_ICV$ICV.x] <- NA
-vol_ICV$ICV.x[is.na(vol_ICV$ICV.x)] <- vol_ICV$ICV.y[is.na(vol_ICV$ICV.x)]
-vol_ICV2 <- vol_ICV[,c(1,2)]
-colnames(vol_ICV2)[2] <- "ICV"
+vol_extra_1 <- vol_extra_1[,c(1,64)]
+vol_extra_2 <- vol_extra_2[,c(1,47)]
+vol_extra <- rbind(vol_extra_1, vol_extra_2)
+colnames(vol_extra)[1] <- "mri_id"
 
 # grab behavioral data
 data <- read.csv("../FullData_Sept27_2018.csv")
@@ -63,7 +54,7 @@ lh_ids <- merge(data_ids, lh_vol, by = "mri_id")
 lh_rh_ids <- merge(lh_ids, rh_vol, by = "mri_id")
 lh_rh_lh_ids <-merge(lh_rh_ids, lh_thic, by = "mri_id")
 vol_thic_ids <-merge(lh_rh_lh_ids, rh_thic, by = "mri_id")
-all_vars <- merge(vol_thic_ids, vol_ICV2, by= "mri_id", all.x = TRUE)
+all_vars <- merge(vol_thic_ids, vol_extra, by= "mri_id", all.x = TRUE)
 
 # write to csv
 write.csv(all_vars, "structural_data.csv")
