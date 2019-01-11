@@ -140,7 +140,6 @@ for (i in 1:length(volumeList)) {
     q <- names(y$model[1])
     group.pval <- anova(y)$`Pr(>F)`[3]
     if (group.pval <= 0.10){
-      sigList <- append(sigList, q)
       cat("ROI: ", (as.name(q)), "\n \n")
       print(anova(y))
       cat("-------------------------\n")
@@ -167,7 +166,6 @@ for (i in 1:length(thicknessList)) {
     q <- names(y$model[1])
     group.pval <- anova(y)$`Pr(>F)`[3]
     if (group.pval <= 0.10){
-      sigList <- append(sigList, q)
       cat("ROI: ", (as.name(q)), "\n \n")
       print(anova(y))
       cat("-------------------------\n")
@@ -194,7 +192,6 @@ for (i in 1:length(thicknessList)) {
     q <- names(y$model[1])
     group.pval <- anova(y)$`Pr(>F)`[3]
     if (group.pval <= 0.10){
-      sigList <- append(sigList, q)
       cat("ROI: ", (as.name(q)), "\n \n")
       print(anova(y))
       cat("-------------------------\n")
@@ -212,4 +209,4 @@ for (i in 1:length(thicknessList)) {
 }
 
 
-write.csv(names, "model_names.csv", row.names = FALSE, col.names = FALSE)
+write.csv(names, "model_names.csv", row.names = FALSE)
