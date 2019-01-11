@@ -1,0 +1,53 @@
+ROI:  lh_parsopercularis_thickness 
+ 
+Analysis of Variance Table
+
+Response: lh_parsopercularis_thickness
+                      Df  Sum Sq Mean Sq F value    Pr(>F)    
+lh_meanthick_demeaned  1 0.74502 0.74502 57.8170 9.064e-11 ***
+age.mri                1 0.00001 0.00001  0.0006   0.98055    
+groups                 2 0.10092 0.05046  3.9157   0.02437 *  
+Residuals             71 0.91490 0.01289                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
+    groups, list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0  0.08166    0.02979   2.741   0.0206 *
+UPC - EAC == 0  0.05799    0.03601   1.610   0.2464  
+UPC - UGC == 0 -0.02367    0.03645  -0.650   0.7921  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
+    groups, list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)   
+UGC - EAC == 0  0.08166    0.02979   2.741  0.00774 **
+UPC - EAC == 0  0.05799    0.03601   1.610  0.11179   
+UPC - UGC == 0 -0.02367    0.03645  -0.650  0.51811   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+
+==========================
+

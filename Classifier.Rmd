@@ -269,7 +269,7 @@ Now that we have our groups, we need to merge those groups with MRI IDs to see h
 
 ```{r]}
 extra_info <- data %>%
-  dplyr::select(SubjectID, handedness, gender, StructuralMRI.ID)
+  dplyr::select(SubjectID, handedness, gender, StructuralMRI.ID, age.mri)
 
 newList <- list()
 tableList <- list()
@@ -375,4 +375,17 @@ write.xlsx(subset(g.diffs, GroupDiff_measure == "ktea2.raw"), file="summary.xlsx
 write.xlsx(subset(g.diffs, GroupDiff_measure == "wasi.matr.raw"), file="summary.xlsx", sheetName="Matrix Reasoning", append=TRUE, row.names=FALSE, showNA = FALSE)
 write.xlsx(subset(g.diffs, GroupDiff_measure == "ppvt.raw"), file="summary.xlsx", sheetName="PPVT", append=TRUE, row.names=FALSE, showNA = FALSE)
 write.xlsx(subset(g.diffs, GroupDiff_measure == "decode_composite"), file="summary.xlsx", sheetName="Decoding Composite", append=TRUE, row.names=FALSE, showNA = FALSE)
+```
+
+# Write out group lists
+
+```{r}
+for (i in 1:length(newList)){
+  df <- newList[[i]]
+  ktea <- df$KTEA
+  wj <- df$WJ3
+  ci <- names(newList[i])
+  write.csv(ktea, paste0("./group_output/", ci, "_KTEA.csv"), row.names = FALSE)
+  write.csv(wj, paste0("./group_output/", ci, "_WJ3.csv"), row.names = FALSE)
+}
 ```
