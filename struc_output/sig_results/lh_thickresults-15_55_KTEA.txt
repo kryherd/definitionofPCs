@@ -1,13 +1,12 @@
-ROI:  lh_parsopercularis_thickness 
+ROI:  lh_lateraloccipital_thickness 
  
 Analysis of Variance Table
 
-Response: lh_parsopercularis_thickness
-                       Df  Sum Sq Mean Sq F value   Pr(>F)    
-lh_meanthick_demeaned   1 1.29412 1.29412 91.0720 5.99e-16 ***
-age.mri                 1 0.00966 0.00966  0.6800  0.41142    
-groups                  2 0.10006 0.05003  3.5208  0.03308 *  
-Residuals             106 1.50624 0.01421                     
+Response: lh_lateraloccipital_thickness
+           Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri     1 0.04977 0.049768  3.7847 0.05437 .
+groups      2 0.06339 0.031697  2.4105 0.09468 .
+Residuals 106 1.39386 0.013150                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -17,14 +16,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.05453    0.02593   2.103   0.0934 .
-UPC - EAC == 0  0.07491    0.03112   2.407   0.0462 *
-UPC - UGC == 0  0.02038    0.02991   0.682   0.7738  
+UGC - EAC == 0 -0.01086    0.02484  -0.437   0.8996  
+UPC - EAC == 0  0.05173    0.03033   1.706   0.2064  
+UPC - UGC == 0  0.06259    0.02899   2.159   0.0823 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -36,14 +35,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.05453    0.02593   2.103   0.0378 *
-UPC - EAC == 0  0.07491    0.03112   2.407   0.0178 *
-UPC - UGC == 0  0.02038    0.02991   0.682   0.4970  
+UGC - EAC == 0 -0.01086    0.02484  -0.437   0.6629  
+UPC - EAC == 0  0.05173    0.03033   1.706   0.0910 .
+UPC - UGC == 0  0.06259    0.02899   2.159   0.0331 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)

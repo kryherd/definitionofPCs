@@ -3,11 +3,10 @@ ROI:  lh_bankssts_thickness
 Analysis of Variance Table
 
 Response: lh_bankssts_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.73702 0.73702 24.7205 4.437e-06 ***
-age.mri                1 0.02000 0.02000  0.6707    0.4155    
-groups                 2 0.08379 0.04189  1.4051    0.2521    
-Residuals             71 2.11681 0.02981                      
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.14531 0.145310  3.2249 0.07684 .
+groups     2 0.06804 0.034019  0.7550 0.47380  
+Residuals 70 3.15410 0.045059                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -17,14 +16,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.04135    0.04531  -0.913    0.633
-UPC - EAC == 0 -0.09058    0.05478  -1.654    0.229
-UPC - UGC == 0 -0.04923    0.05544  -0.888    0.648
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.061455   0.055478  -1.108    0.511
+UPC - EAC == 0 -0.064324   0.067799  -0.949    0.610
+UPC - UGC == 0 -0.002869   0.067144  -0.043    0.999
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -34,14 +33,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.04135    0.04531  -0.913    0.365
-UPC - EAC == 0 -0.09058    0.05478  -1.654    0.103
-UPC - UGC == 0 -0.04923    0.05544  -0.888    0.378
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.061455   0.055478  -1.108    0.272
+UPC - EAC == 0 -0.064324   0.067799  -0.949    0.346
+UPC - UGC == 0 -0.002869   0.067144  -0.043    0.966
 (Adjusted p values reported -- none method)
 
 
@@ -52,13 +51,10 @@ ROI:  lh_caudalanteriorcingulate_thickness
 Analysis of Variance Table
 
 Response: lh_caudalanteriorcingulate_thickness
-                      Df Sum Sq Mean Sq F value   Pr(>F)   
-lh_meanthick_demeaned  1 0.5538 0.55378 10.1786 0.002116 **
-age.mri                1 0.0391 0.03908  0.7184 0.399526   
-groups                 2 0.2105 0.10523  1.9342 0.152084   
-Residuals             71 3.8628 0.05441                    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.0951 0.095138  1.5832 0.2125
+groups     2 0.2244 0.112217  1.8675 0.1621
+Residuals 70 4.2063 0.060091               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -66,14 +62,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.05723    0.06121   0.935    0.619
-UPC - EAC == 0  0.14502    0.07400   1.960    0.129
-UPC - UGC == 0  0.08779    0.07489   1.172    0.472
+UGC - EAC == 0  0.01897    0.06407   0.296    0.953
+UPC - EAC == 0  0.14540    0.07830   1.857    0.158
+UPC - UGC == 0  0.12642    0.07754   1.630    0.238
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -83,14 +79,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.05723    0.06121   0.935    0.353  
-UPC - EAC == 0  0.14502    0.07400   1.960    0.054 .
-UPC - UGC == 0  0.08779    0.07489   1.172    0.245  
+UGC - EAC == 0  0.01897    0.06407   0.296   0.7680  
+UPC - EAC == 0  0.14540    0.07830   1.857   0.0675 .
+UPC - UGC == 0  0.12642    0.07754   1.630   0.1075  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -103,13 +99,10 @@ ROI:  lh_caudalmiddlefrontal_thickness
 Analysis of Variance Table
 
 Response: lh_caudalmiddlefrontal_thickness
-                      Df  Sum Sq Mean Sq  F value Pr(>F)    
-lh_meanthick_demeaned  1 1.25910 1.25910 120.0426 <2e-16 ***
-age.mri                1 0.00219 0.00219   0.2090 0.6490    
-groups                 2 0.01457 0.00728   0.6943 0.5028    
-Residuals             71 0.74470 0.01049                    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.03255 0.032546  1.2160 0.2739
+groups     2 0.00641 0.003204  0.1197 0.8874
+Residuals 70 1.87352 0.026765               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -117,14 +110,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.02035    0.02688   0.757    0.729
-UPC - EAC == 0 -0.01710    0.03249  -0.526    0.858
-UPC - UGC == 0 -0.03744    0.03288  -1.139    0.492
+UGC - EAC == 0 -0.01035    0.04276  -0.242    0.968
+UPC - EAC == 0  0.01483    0.05225   0.284    0.956
+UPC - UGC == 0  0.02518    0.05175   0.487    0.877
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -134,14 +127,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.02035    0.02688   0.757    0.452
-UPC - EAC == 0 -0.01710    0.03249  -0.526    0.600
-UPC - UGC == 0 -0.03744    0.03288  -1.139    0.259
+UGC - EAC == 0 -0.01035    0.04276  -0.242    0.809
+UPC - EAC == 0  0.01483    0.05225   0.284    0.777
+UPC - UGC == 0  0.02518    0.05175   0.487    0.628
 (Adjusted p values reported -- none method)
 
 
@@ -152,11 +145,10 @@ ROI:  lh_cuneus_thickness
 Analysis of Variance Table
 
 Response: lh_cuneus_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.32314 0.32314 25.2096 3.678e-06 ***
-age.mri                1 0.00629 0.00629  0.4908    0.4859    
-groups                 2 0.01691 0.00845  0.6595    0.5203    
-Residuals             71 0.91010 0.01282                      
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.04896 0.048956  3.2628 0.07517 .
+groups     2 0.04791 0.023957  1.5967 0.20986  
+Residuals 70 1.05032 0.015005                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -166,14 +158,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.02329    0.02971  -0.784    0.713
-UPC - EAC == 0  0.01641    0.03592   0.457    0.891
-UPC - UGC == 0  0.03970    0.03635   1.092    0.520
+UGC - EAC == 0 -0.02730    0.03201  -0.853    0.670
+UPC - EAC == 0  0.04169    0.03912   1.066    0.537
+UPC - UGC == 0  0.06899    0.03875   1.781    0.182
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -183,14 +175,16 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.02329    0.02971  -0.784    0.436
-UPC - EAC == 0  0.01641    0.03592   0.457    0.649
-UPC - UGC == 0  0.03970    0.03635   1.092    0.278
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.02730    0.03201  -0.853   0.3967  
+UPC - EAC == 0  0.04169    0.03912   1.066   0.2902  
+UPC - UGC == 0  0.06899    0.03875   1.781   0.0793 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
 
 
@@ -201,11 +195,10 @@ ROI:  lh_entorhinal_thickness
 Analysis of Variance Table
 
 Response: lh_entorhinal_thickness
-                      Df Sum Sq Mean Sq F value   Pr(>F)   
-lh_meanthick_demeaned  1 0.2386 0.23860  2.3092 0.133053   
-age.mri                1 0.8630 0.86303  8.3525 0.005105 **
-groups                 2 0.0503 0.02516  0.2435 0.784512   
-Residuals             71 7.3361 0.10333                    
+          Df Sum Sq Mean Sq F value  Pr(>F)  
+age.mri    1 0.6481 0.64809  5.6698 0.01998 *
+groups     2 0.0330 0.01651  0.1445 0.86574  
+Residuals 70 8.0014 0.11431                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -215,14 +208,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.05886    0.08436   0.698    0.764
-UPC - EAC == 0  0.02962    0.10198   0.290    0.954
-UPC - UGC == 0 -0.02924    0.10321  -0.283    0.956
+UGC - EAC == 0 0.041693   0.088362   0.472    0.884
+UPC - EAC == 0 0.046668   0.107986   0.432    0.902
+UPC - UGC == 0 0.004975   0.106942   0.047    0.999
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -232,14 +225,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.05886    0.08436   0.698    0.488
-UPC - EAC == 0  0.02962    0.10198   0.290    0.772
-UPC - UGC == 0 -0.02924    0.10321  -0.283    0.778
+UGC - EAC == 0 0.041693   0.088362   0.472    0.639
+UPC - EAC == 0 0.046668   0.107986   0.432    0.667
+UPC - UGC == 0 0.004975   0.106942   0.047    0.963
 (Adjusted p values reported -- none method)
 
 
@@ -250,13 +243,10 @@ ROI:  lh_fusiform_thickness
 Analysis of Variance Table
 
 Response: lh_fusiform_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.52838 0.52838 50.4104 7.695e-10 ***
-age.mri                1 0.05642 0.05642  5.3829   0.02321 *  
-groups                 2 0.00237 0.00118  0.1129   0.89341    
-Residuals             71 0.74420 0.01048                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq   Mean Sq F value Pr(>F)
+age.mri    1 0.00367 0.0036696  0.1892 0.6649
+groups     2 0.02532 0.0126584  0.6527 0.5238
+Residuals 70 1.35756 0.0193936               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -264,14 +254,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.012607   0.026869  -0.469    0.885
-UPC - EAC == 0 -0.008310   0.032481  -0.256    0.964
-UPC - UGC == 0  0.004298   0.032872   0.131    0.991
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.03194    0.03640  -0.878    0.655
+UPC - EAC == 0  0.01309    0.04448   0.294    0.953
+UPC - UGC == 0  0.04503    0.04405   1.022    0.564
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -281,14 +271,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.012607   0.026869  -0.469    0.640
-UPC - EAC == 0 -0.008310   0.032481  -0.256    0.799
-UPC - UGC == 0  0.004298   0.032872   0.131    0.896
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.03194    0.03640  -0.878    0.383
+UPC - EAC == 0  0.01309    0.04448   0.294    0.769
+UPC - UGC == 0  0.04503    0.04405   1.022    0.310
 (Adjusted p values reported -- none method)
 
 
@@ -299,11 +289,10 @@ ROI:  lh_inferiorparietal_thickness
 Analysis of Variance Table
 
 Response: lh_inferiorparietal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.88819 0.88819 89.6204 3.241e-14 ***
-age.mri                1 0.01745 0.01745  1.7610    0.1888    
-groups                 2 0.00018 0.00009  0.0089    0.9912    
-Residuals             71 0.70366 0.00991                      
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.13040 0.130402  6.5051 0.01295 *
+groups     2 0.03108 0.015541  0.7753 0.46448  
+Residuals 70 1.40322 0.020046                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -313,14 +302,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 0.001420   0.026126   0.054    0.998
-UPC - EAC == 0 0.004203   0.031584   0.133    0.990
-UPC - UGC == 0 0.002783   0.031964   0.087    0.996
+UGC - EAC == 0 -0.02956    0.03700  -0.799    0.704
+UPC - EAC == 0  0.02398    0.04522   0.530    0.856
+UPC - UGC == 0  0.05354    0.04478   1.195    0.458
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -330,14 +319,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 0.001420   0.026126   0.054    0.957
-UPC - EAC == 0 0.004203   0.031584   0.133    0.895
-UPC - UGC == 0 0.002783   0.031964   0.087    0.931
+UGC - EAC == 0 -0.02956    0.03700  -0.799    0.427
+UPC - EAC == 0  0.02398    0.04522   0.530    0.598
+UPC - UGC == 0  0.05354    0.04478   1.195    0.236
 (Adjusted p values reported -- none method)
 
 
@@ -348,11 +337,10 @@ ROI:  lh_inferiortemporal_thickness
 Analysis of Variance Table
 
 Response: lh_inferiortemporal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 1.23526 1.23526 64.1939 1.588e-11 ***
-age.mri                1 0.00427 0.00427  0.2217    0.6392    
-groups                 2 0.00494 0.00247  0.1285    0.8796    
-Residuals             71 1.36623 0.01924                      
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.13383 0.133833  3.6418 0.06045 .
+groups     2 0.02572 0.012859  0.3499 0.70598  
+Residuals 70 2.57247 0.036750                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -362,14 +350,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.007057   0.036405  -0.194    0.979
-UPC - EAC == 0 -0.022305   0.044009  -0.507    0.867
-UPC - UGC == 0 -0.015248   0.044540  -0.342    0.937
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.03199    0.05010  -0.639    0.798
+UPC - EAC == 0  0.01356    0.06123   0.221    0.973
+UPC - UGC == 0  0.04555    0.06064   0.751    0.733
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -379,14 +367,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.007057   0.036405  -0.194    0.847
-UPC - EAC == 0 -0.022305   0.044009  -0.507    0.614
-UPC - UGC == 0 -0.015248   0.044540  -0.342    0.733
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.03199    0.05010  -0.639    0.525
+UPC - EAC == 0  0.01356    0.06123   0.221    0.825
+UPC - UGC == 0  0.04555    0.06064   0.751    0.455
 (Adjusted p values reported -- none method)
 
 
@@ -397,13 +385,10 @@ ROI:  lh_isthmuscingulate_thickness
 Analysis of Variance Table
 
 Response: lh_isthmuscingulate_thickness
-                      Df  Sum Sq Mean Sq F value   Pr(>F)   
-lh_meanthick_demeaned  1 0.40956 0.40956  9.4136 0.003048 **
-age.mri                1 0.05387 0.05387  1.2383 0.269558   
-groups                 2 0.00536 0.00268  0.0616 0.940287   
-Residuals             71 3.08905 0.04351                    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.0132 0.013162  0.2795 0.5987
+groups     2 0.0045 0.002241  0.0476 0.9535
+Residuals 70 3.2961 0.047087               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -411,14 +396,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.018197   0.054741   0.332    0.941
-UPC - EAC == 0  0.001925   0.066175   0.029    1.000
-UPC - UGC == 0 -0.016272   0.066973  -0.243    0.968
+UGC - EAC == 0 -0.010637   0.056713  -0.188    0.981
+UPC - EAC == 0  0.009932   0.069309   0.143    0.989
+UPC - UGC == 0  0.020568   0.068638   0.300    0.951
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -428,14 +413,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.018197   0.054741   0.332    0.741
-UPC - EAC == 0  0.001925   0.066175   0.029    0.977
-UPC - UGC == 0 -0.016272   0.066973  -0.243    0.809
+UGC - EAC == 0 -0.010637   0.056713  -0.188    0.852
+UPC - EAC == 0  0.009932   0.069309   0.143    0.886
+UPC - UGC == 0  0.020568   0.068638   0.300    0.765
 (Adjusted p values reported -- none method)
 
 
@@ -446,11 +431,10 @@ ROI:  lh_lateraloccipital_thickness
 Analysis of Variance Table
 
 Response: lh_lateraloccipital_thickness
-                      Df  Sum Sq Mean Sq F value   Pr(>F)    
-lh_meanthick_demeaned  1 0.42920 0.42920 60.3996 4.43e-11 ***
-age.mri                1 0.00037 0.00037  0.0517   0.8208    
-groups                 2 0.02520 0.01260  1.7734   0.1772    
-Residuals             71 0.50453 0.00711                     
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.02321 0.023208  1.8654 0.17637  
+groups     2 0.06970 0.034852  2.8014 0.06754 .
+Residuals 70 0.87086 0.012441                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -460,14 +444,16 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.03049    0.02212  -1.378    0.356
-UPC - EAC == 0  0.01677    0.02674   0.627    0.805
-UPC - UGC == 0  0.04726    0.02707   1.746    0.194
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.04059    0.02915  -1.392    0.349  
+UPC - EAC == 0  0.04098    0.03563   1.150    0.485  
+UPC - UGC == 0  0.08157    0.03528   2.312    0.060 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -477,14 +463,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.03049    0.02212  -1.378   0.1725  
-UPC - EAC == 0  0.01677    0.02674   0.627   0.5326  
-UPC - UGC == 0  0.04726    0.02707   1.746   0.0851 .
+UGC - EAC == 0 -0.04059    0.02915  -1.392   0.1682  
+UPC - EAC == 0  0.04098    0.03563   1.150   0.2539  
+UPC - UGC == 0  0.08157    0.03528   2.312   0.0237 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -497,11 +483,10 @@ ROI:  lh_lateralorbitofrontal_thickness
 Analysis of Variance Table
 
 Response: lh_lateralorbitofrontal_thickness
-                      Df  Sum Sq Mean Sq F value   Pr(>F)    
-lh_meanthick_demeaned  1 0.62657 0.62657  43.372 6.69e-09 ***
-age.mri                1 0.03797 0.03797   2.628   0.1094    
-groups                 2 0.00841 0.00420   0.291   0.7484    
-Residuals             71 1.02571 0.01445                     
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.15390 0.153901  6.5502 0.01265 *
+groups     2 0.03421 0.017106  0.7280 0.48647  
+Residuals 70 1.64470 0.023496                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -511,14 +496,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.009309   0.031544  -0.295    0.953
-UPC - EAC == 0 -0.029087   0.038132  -0.763    0.726
-UPC - UGC == 0 -0.019778   0.038592  -0.512    0.865
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.04833    0.04006  -1.207    0.451
+UPC - EAC == 0 -0.02578    0.04896  -0.526    0.858
+UPC - UGC == 0  0.02256    0.04849   0.465    0.887
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -528,14 +513,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.009309   0.031544  -0.295    0.769
-UPC - EAC == 0 -0.029087   0.038132  -0.763    0.448
-UPC - UGC == 0 -0.019778   0.038592  -0.512    0.610
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.04833    0.04006  -1.207    0.232
+UPC - EAC == 0 -0.02578    0.04896  -0.526    0.600
+UPC - UGC == 0  0.02256    0.04849   0.465    0.643
 (Adjusted p values reported -- none method)
 
 
@@ -546,11 +531,10 @@ ROI:  lh_lingual_thickness
 Analysis of Variance Table
 
 Response: lh_lingual_thickness
-                      Df  Sum Sq  Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.23115 0.231150 26.8491 1.977e-06 ***
-age.mri                1 0.00334 0.003340  0.3880    0.5354    
-groups                 2 0.00078 0.000389  0.0451    0.9559    
-Residuals             71 0.61125 0.008609                      
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.07833 0.078327  6.3860 0.01376 *
+groups     2 0.00504 0.002522  0.2056 0.81463  
+Residuals 70 0.85859 0.012266                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -560,14 +544,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.0067910  0.0243506   0.279    0.958
-UPC - EAC == 0  0.0002568  0.0294369   0.009    1.000
-UPC - UGC == 0 -0.0065342  0.0297918  -0.219    0.974
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.013775   0.028945  -0.476    0.882
+UPC - EAC == 0  0.006708   0.035373   0.190    0.980
+UPC - UGC == 0  0.020482   0.035031   0.585    0.828
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -577,14 +561,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.0067910  0.0243506   0.279    0.781
-UPC - EAC == 0  0.0002568  0.0294369   0.009    0.993
-UPC - UGC == 0 -0.0065342  0.0297918  -0.219    0.827
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.013775   0.028945  -0.476    0.636
+UPC - EAC == 0  0.006708   0.035373   0.190    0.850
+UPC - UGC == 0  0.020482   0.035031   0.585    0.561
 (Adjusted p values reported -- none method)
 
 
@@ -595,11 +579,10 @@ ROI:  lh_medialorbitofrontal_thickness
 Analysis of Variance Table
 
 Response: lh_medialorbitofrontal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.42225 0.42225 21.8535 1.362e-05 ***
-age.mri                1 0.35517 0.35517 18.3816 5.597e-05 ***
-groups                 2 0.03175 0.01588  0.8216    0.4439    
-Residuals             71 1.37186 0.01932                      
+          Df  Sum Sq Mean Sq F value    Pr(>F)    
+age.mri    1 0.60342 0.60342 26.4367 2.366e-06 ***
+groups     2 0.01594 0.00797  0.3492    0.7065    
+Residuals 70 1.59775 0.02282                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -609,14 +592,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 0.041677   0.036480   1.142    0.489
-UPC - EAC == 0 0.043610   0.044100   0.989    0.584
-UPC - UGC == 0 0.001933   0.044632   0.043    0.999
+UGC - EAC == 0 0.002683   0.039485   0.068    0.997
+UPC - EAC == 0 0.037838   0.048255   0.784    0.713
+UPC - UGC == 0 0.035155   0.047788   0.736    0.742
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -626,14 +609,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 0.041677   0.036480   1.142    0.257
-UPC - EAC == 0 0.043610   0.044100   0.989    0.326
-UPC - UGC == 0 0.001933   0.044632   0.043    0.966
+UGC - EAC == 0 0.002683   0.039485   0.068    0.946
+UPC - EAC == 0 0.037838   0.048255   0.784    0.436
+UPC - UGC == 0 0.035155   0.047788   0.736    0.464
 (Adjusted p values reported -- none method)
 
 
@@ -644,13 +627,10 @@ ROI:  lh_middletemporal_thickness
 Analysis of Variance Table
 
 Response: lh_middletemporal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 1.43563 1.43563 62.7143 2.361e-11 ***
-age.mri                1 0.00058 0.00058  0.0253    0.8741    
-groups                 2 0.05486 0.02743  1.1982    0.3077    
-Residuals             71 1.62531 0.02289                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.02130 0.021298   0.501 0.4814
+groups     2 0.03928 0.019641   0.462 0.6319
+Residuals 70 2.97602 0.042515               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -658,14 +638,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.007774   0.039707  -0.196    0.979
-UPC - EAC == 0 -0.071341   0.048001  -1.486    0.302
-UPC - UGC == 0 -0.063567   0.048580  -1.309    0.393
+UGC - EAC == 0 -0.048191   0.053889  -0.894    0.644
+UPC - EAC == 0 -0.045848   0.065857  -0.696    0.765
+UPC - UGC == 0  0.002343   0.065220   0.036    0.999
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -675,14 +655,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.007774   0.039707  -0.196    0.845
-UPC - EAC == 0 -0.071341   0.048001  -1.486    0.142
-UPC - UGC == 0 -0.063567   0.048580  -1.309    0.195
+UGC - EAC == 0 -0.048191   0.053889  -0.894    0.374
+UPC - EAC == 0 -0.045848   0.065857  -0.696    0.489
+UPC - UGC == 0  0.002343   0.065220   0.036    0.971
 (Adjusted p values reported -- none method)
 
 
@@ -693,13 +673,10 @@ ROI:  lh_parahippocampal_thickness
 Analysis of Variance Table
 
 Response: lh_parahippocampal_thickness
-                      Df Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 1.1966 1.19660 15.1142 0.0002252 ***
-age.mri                1 0.0001 0.00010  0.0012 0.9724479    
-groups                 2 0.0502 0.02508  0.3168 0.7295162    
-Residuals             71 5.6211 0.07917                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.0170 0.017015  0.1771 0.6752
+groups     2 0.1455 0.072763  0.7572 0.4728
+Residuals 70 6.7265 0.096093               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -707,14 +684,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.05865    0.07384  -0.794    0.706
-UPC - EAC == 0 -0.02400    0.08927  -0.269    0.961
-UPC - UGC == 0  0.03465    0.09034   0.384    0.922
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.090049   0.081018  -1.111    0.508
+UPC - EAC == 0  0.001123   0.099010   0.011    1.000
+UPC - UGC == 0  0.091173   0.098053   0.930    0.622
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -724,14 +701,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.05865    0.07384  -0.794    0.430
-UPC - EAC == 0 -0.02400    0.08927  -0.269    0.789
-UPC - UGC == 0  0.03465    0.09034   0.384    0.702
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.090049   0.081018  -1.111    0.270
+UPC - EAC == 0  0.001123   0.099010   0.011    0.991
+UPC - UGC == 0  0.091173   0.098053   0.930    0.356
 (Adjusted p values reported -- none method)
 
 
@@ -742,11 +719,10 @@ ROI:  lh_paracentral_thickness
 Analysis of Variance Table
 
 Response: lh_paracentral_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.88415 0.88415 66.8267 7.929e-12 ***
-age.mri                1 0.00247 0.00247  0.1869    0.6669    
-groups                 2 0.03865 0.01933  1.4606    0.2390    
-Residuals             71 0.93937 0.01323                      
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.02368 0.023684  1.1387 0.28960  
+groups     2 0.13942 0.069712  3.3516 0.04074 *
+Residuals 70 1.45599 0.020800                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -756,14 +732,16 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.01332    0.03019  -0.441    0.898
-UPC - EAC == 0  0.04883    0.03649   1.338    0.377
-UPC - UGC == 0  0.06215    0.03693   1.683    0.217
+                Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.009177   0.037693  -0.243   0.9677  
+UPC - EAC == 0  0.102984   0.046064   2.236   0.0715 .
+UPC - UGC == 0  0.112161   0.045619   2.459   0.0425 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -773,14 +751,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.01332    0.03019  -0.441   0.6604  
-UPC - EAC == 0  0.04883    0.03649   1.338   0.1851  
-UPC - UGC == 0  0.06215    0.03693   1.683   0.0968 .
+                Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.009177   0.037693  -0.243   0.8084  
+UPC - EAC == 0  0.102984   0.046064   2.236   0.0286 *
+UPC - UGC == 0  0.112161   0.045619   2.459   0.0164 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -793,11 +771,10 @@ ROI:  lh_parsopercularis_thickness
 Analysis of Variance Table
 
 Response: lh_parsopercularis_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.74502 0.74502 57.8170 9.064e-11 ***
-age.mri                1 0.00001 0.00001  0.0006   0.98055    
-groups                 2 0.10092 0.05046  3.9157   0.02437 *  
-Residuals             71 0.91490 0.01289                      
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.06208 0.062085  2.7996 0.09875 .
+groups     2 0.05444 0.027220  1.2274 0.29928  
+Residuals 70 1.55235 0.022176                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -807,16 +784,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.08166    0.02979   2.741   0.0207 *
-UPC - EAC == 0  0.05799    0.03601   1.610   0.2463  
-UPC - UGC == 0 -0.02367    0.03645  -0.650   0.7921  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0  0.04346    0.03892   1.117    0.505
+UPC - EAC == 0  0.06977    0.04756   1.467    0.311
+UPC - UGC == 0  0.02631    0.04710   0.559    0.841
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -826,16 +801,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)   
-UGC - EAC == 0  0.08166    0.02979   2.741  0.00774 **
-UPC - EAC == 0  0.05799    0.03601   1.610  0.11179   
-UPC - UGC == 0 -0.02367    0.03645  -0.650  0.51811   
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0  0.04346    0.03892   1.117    0.268
+UPC - EAC == 0  0.06977    0.04756   1.467    0.147
+UPC - UGC == 0  0.02631    0.04710   0.559    0.578
 (Adjusted p values reported -- none method)
 
 
@@ -846,13 +819,10 @@ ROI:  lh_parsorbitalis_thickness
 Analysis of Variance Table
 
 Response: lh_parsorbitalis_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.86592 0.86592 23.0915 8.351e-06 ***
-age.mri                1 0.00664 0.00664  0.1771    0.6751    
-groups                 2 0.10753 0.05377  1.4338    0.2452    
-Residuals             71 2.66247 0.03750                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.0728 0.072833  1.3991 0.2409
+groups     2 0.0697 0.034845  0.6694 0.5153
+Residuals 70 3.6439 0.052056               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -860,14 +830,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.07571    0.05082   1.490    0.300
-UPC - EAC == 0  0.08187    0.06144   1.333    0.380
-UPC - UGC == 0  0.00616    0.06218   0.099    0.995
+UGC - EAC == 0  0.02389    0.05963   0.401    0.915
+UPC - EAC == 0  0.08404    0.07287   1.153    0.483
+UPC - UGC == 0  0.06016    0.07217   0.834    0.682
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -877,14 +847,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.07571    0.05082   1.490    0.141
-UPC - EAC == 0  0.08187    0.06144   1.333    0.187
-UPC - UGC == 0  0.00616    0.06218   0.099    0.921
+UGC - EAC == 0  0.02389    0.05963   0.401    0.690
+UPC - EAC == 0  0.08404    0.07287   1.153    0.253
+UPC - UGC == 0  0.06016    0.07217   0.834    0.407
 (Adjusted p values reported -- none method)
 
 
@@ -895,13 +865,10 @@ ROI:  lh_parstriangularis_thickness
 Analysis of Variance Table
 
 Response: lh_parstriangularis_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.62724 0.62724 33.8173 1.596e-07 ***
-age.mri                1 0.00251 0.00251  0.1356    0.7138    
-groups                 2 0.00951 0.00475  0.2563    0.7746    
-Residuals             71 1.31689 0.01855                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.03875 0.038748  1.5294 0.2203
+groups     2 0.05220 0.026099  1.0302 0.3623
+Residuals 70 1.77341 0.025334               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -909,14 +876,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.002007   0.035742  -0.056    0.998
-UPC - EAC == 0  0.027311   0.043207   0.632    0.802
-UPC - UGC == 0  0.029318   0.043728   0.670    0.780
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.03240    0.04160  -0.779    0.716
+UPC - EAC == 0  0.03893    0.05084   0.766    0.724
+UPC - UGC == 0  0.07134    0.05035   1.417    0.336
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -926,14 +893,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.002007   0.035742  -0.056    0.955
-UPC - EAC == 0  0.027311   0.043207   0.632    0.529
-UPC - UGC == 0  0.029318   0.043728   0.670    0.505
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.03240    0.04160  -0.779    0.439
+UPC - EAC == 0  0.03893    0.05084   0.766    0.446
+UPC - UGC == 0  0.07134    0.05035   1.417    0.161
 (Adjusted p values reported -- none method)
 
 
@@ -944,11 +911,10 @@ ROI:  lh_pericalcarine_thickness
 Analysis of Variance Table
 
 Response: lh_pericalcarine_thickness
-                      Df  Sum Sq  Mean Sq F value  Pr(>F)  
-lh_meanthick_demeaned  1 0.07437 0.074371  6.5329 0.01273 *
-age.mri                1 0.03870 0.038704  3.3998 0.06938 .
-groups                 2 0.00517 0.002584  0.2269 0.79754  
-Residuals             71 0.80828 0.011384                  
+          Df  Sum Sq  Mean Sq F value   Pr(>F)   
+age.mri    1 0.08707 0.087075  8.7254 0.004271 **
+groups     2 0.01315 0.006573  0.6587 0.520703   
+Residuals 70 0.69856 0.009979                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -958,14 +924,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.013647   0.028001  -0.487    0.877
-UPC - EAC == 0  0.007856   0.033850   0.232    0.971
-UPC - UGC == 0  0.021503   0.034258   0.628    0.804
+UGC - EAC == 0 -0.003748   0.026109  -0.144    0.989
+UPC - EAC == 0  0.031032   0.031907   0.973    0.595
+UPC - UGC == 0  0.034780   0.031599   1.101    0.515
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -975,14 +941,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.013647   0.028001  -0.487    0.628
-UPC - EAC == 0  0.007856   0.033850   0.232    0.817
-UPC - UGC == 0  0.021503   0.034258   0.628    0.532
+UGC - EAC == 0 -0.003748   0.026109  -0.144    0.886
+UPC - EAC == 0  0.031032   0.031907   0.973    0.334
+UPC - UGC == 0  0.034780   0.031599   1.101    0.275
 (Adjusted p values reported -- none method)
 
 
@@ -993,13 +959,10 @@ ROI:  lh_postcentral_thickness
 Analysis of Variance Table
 
 Response: lh_postcentral_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.71513 0.71513 84.4147 1.057e-13 ***
-age.mri                1 0.00158 0.00158  0.1866    0.6671    
-groups                 2 0.01169 0.00584  0.6897    0.5050    
-Residuals             71 0.60148 0.00847                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.03437 0.034375  2.3841 0.1271
+groups     2 0.06193 0.030964  2.1476 0.1244
+Residuals 70 1.00927 0.014418               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1007,14 +970,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.023976   0.024155  -0.993    0.582
-UPC - EAC == 0  0.005251   0.029201   0.180    0.982
-UPC - UGC == 0  0.029227   0.029553   0.989    0.584
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.04550    0.03138  -1.450    0.319
+UPC - EAC == 0  0.02811    0.03835   0.733    0.743
+UPC - UGC == 0  0.07362    0.03798   1.938    0.135
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1024,14 +987,16 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.023976   0.024155  -0.993    0.324
-UPC - EAC == 0  0.005251   0.029201   0.180    0.858
-UPC - UGC == 0  0.029227   0.029553   0.989    0.326
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.04550    0.03138  -1.450   0.1516  
+UPC - EAC == 0  0.02811    0.03835   0.733   0.4660  
+UPC - UGC == 0  0.07362    0.03798   1.938   0.0566 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
 
 
@@ -1042,13 +1007,10 @@ ROI:  lh_posteriorcingulate_thickness
 Analysis of Variance Table
 
 Response: lh_posteriorcingulate_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.31647 0.31647 14.7419 0.0002651 ***
-age.mri                1 0.04424 0.04424  2.0609 0.1555159    
-groups                 2 0.00679 0.00339  0.1581 0.8540349    
-Residuals             71 1.52417 0.02147                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq   Mean Sq F value Pr(>F)
+age.mri    1 0.00006 0.0000593  0.0020 0.9643
+groups     2 0.00533 0.0026632  0.0905 0.9135
+Residuals 70 2.05903 0.0294147               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1056,14 +1018,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.02162    0.03845   0.562    0.840
-UPC - EAC == 0  0.01111    0.04648   0.239    0.969
-UPC - UGC == 0 -0.01050    0.04704  -0.223    0.973
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.004347   0.044824  -0.097    0.995
+UPC - EAC == 0  0.018353   0.054779   0.335    0.940
+UPC - UGC == 0  0.022700   0.054250   0.418    0.908
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1073,14 +1035,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.02162    0.03845   0.562    0.576
-UPC - EAC == 0  0.01111    0.04648   0.239    0.812
-UPC - UGC == 0 -0.01050    0.04704  -0.223    0.824
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.004347   0.044824  -0.097    0.923
+UPC - EAC == 0  0.018353   0.054779   0.335    0.739
+UPC - UGC == 0  0.022700   0.054250   0.418    0.677
 (Adjusted p values reported -- none method)
 
 
@@ -1091,13 +1053,10 @@ ROI:  lh_precentral_thickness
 Analysis of Variance Table
 
 Response: lh_precentral_thickness
-                      Df  Sum Sq Mean Sq  F value  Pr(>F)    
-lh_meanthick_demeaned  1 1.66985 1.66985 135.6138 < 2e-16 ***
-age.mri                1 0.04410 0.04410   3.5818 0.06249 .  
-groups                 2 0.00954 0.00477   0.3872 0.68037    
-Residuals             71 0.87424 0.01231                     
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.00046 0.000463  0.0146 0.9042
+groups     2 0.01898 0.009490  0.2992 0.7423
+Residuals 70 2.21986 0.031712               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1105,14 +1064,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.005767   0.029122   0.198    0.978
-UPC - EAC == 0 -0.024899   0.035204  -0.707    0.759
-UPC - UGC == 0 -0.030665   0.035629  -0.861    0.665
+UGC - EAC == 0 -0.003724   0.046542  -0.080    0.996
+UPC - EAC == 0  0.037786   0.056879   0.664    0.784
+UPC - UGC == 0  0.041509   0.056329   0.737    0.741
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1122,14 +1081,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.005767   0.029122   0.198    0.844
-UPC - EAC == 0 -0.024899   0.035204  -0.707    0.482
-UPC - UGC == 0 -0.030665   0.035629  -0.861    0.392
+UGC - EAC == 0 -0.003724   0.046542  -0.080    0.936
+UPC - EAC == 0  0.037786   0.056879   0.664    0.509
+UPC - UGC == 0  0.041509   0.056329   0.737    0.464
 (Adjusted p values reported -- none method)
 
 
@@ -1140,11 +1099,10 @@ ROI:  lh_precuneus_thickness
 Analysis of Variance Table
 
 Response: lh_precuneus_thickness
-                      Df  Sum Sq Mean Sq  F value Pr(>F)    
-lh_meanthick_demeaned  1 0.94492 0.94492 136.3722 <2e-16 ***
-age.mri                1 0.00312 0.00312   0.4508 0.5041    
-groups                 2 0.00539 0.00269   0.3886 0.6794    
-Residuals             71 0.49196 0.00693                    
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.06490 0.064905  3.8292 0.05436 .
+groups     2 0.02083 0.010417  0.6146 0.54376  
+Residuals 70 1.18649 0.016950                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1154,14 +1112,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.009332   0.021846   0.427    0.904
-UPC - EAC == 0 -0.014175   0.026409  -0.537    0.853
-UPC - UGC == 0 -0.023507   0.026727  -0.880    0.653
+UGC - EAC == 0 -0.036076   0.034026  -1.060    0.540
+UPC - EAC == 0 -0.006331   0.041583  -0.152    0.987
+UPC - UGC == 0  0.029745   0.041181   0.722    0.750
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1171,14 +1129,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.009332   0.021846   0.427    0.671
-UPC - EAC == 0 -0.014175   0.026409  -0.537    0.593
-UPC - UGC == 0 -0.023507   0.026727  -0.880    0.382
+UGC - EAC == 0 -0.036076   0.034026  -1.060    0.293
+UPC - EAC == 0 -0.006331   0.041583  -0.152    0.879
+UPC - UGC == 0  0.029745   0.041181   0.722    0.473
 (Adjusted p values reported -- none method)
 
 
@@ -1189,13 +1147,10 @@ ROI:  lh_rostralanteriorcingulate_thickness
 Analysis of Variance Table
 
 Response: lh_rostralanteriorcingulate_thickness
-                      Df Sum Sq Mean Sq F value   Pr(>F)   
-lh_meanthick_demeaned  1 0.4236 0.42364  8.2474 0.005376 **
-age.mri                1 0.1329 0.13287  2.5866 0.112207   
-groups                 2 0.2240 0.11200  2.1804 0.120509   
-Residuals             71 3.6470 0.05137                    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.0151 0.015137  0.2824 0.5968
+groups     2 0.0895 0.044751  0.8349 0.4382
+Residuals 70 3.7522 0.053602               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1203,16 +1158,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.12414    0.05948   2.087   0.0988 .
-UPC - EAC == 0  0.05548    0.07190   0.772   0.7201  
-UPC - UGC == 0 -0.06866    0.07277  -0.944   0.6130  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0  0.07747    0.06051   1.280    0.409
+UPC - EAC == 0  0.05161    0.07395   0.698    0.764
+UPC - UGC == 0 -0.02586    0.07323  -0.353    0.933
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1222,16 +1175,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.12414    0.05948   2.087   0.0405 *
-UPC - EAC == 0  0.05548    0.07190   0.772   0.4429  
-UPC - UGC == 0 -0.06866    0.07277  -0.944   0.3486  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0  0.07747    0.06051   1.280    0.205
+UPC - EAC == 0  0.05161    0.07395   0.698    0.488
+UPC - UGC == 0 -0.02586    0.07323  -0.353    0.725
 (Adjusted p values reported -- none method)
 
 
@@ -1242,11 +1193,10 @@ ROI:  lh_rostralmiddlefrontal_thickness
 Analysis of Variance Table
 
 Response: lh_rostralmiddlefrontal_thickness
-                      Df  Sum Sq Mean Sq  F value Pr(>F)    
-lh_meanthick_demeaned  1 1.02749 1.02749 130.2927 <2e-16 ***
-age.mri                1 0.00622 0.00622   0.7894 0.3773    
-groups                 2 0.00020 0.00010   0.0125 0.9876    
-Residuals             71 0.55991 0.00789                    
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.07807 0.078071  3.9109 0.05191 .
+groups     2 0.05074 0.025368  1.2708 0.28700  
+Residuals 70 1.39737 0.019962                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1256,14 +1206,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.002139   0.023305  -0.092    0.995
-UPC - EAC == 0  0.002297   0.028173   0.082    0.996
-UPC - UGC == 0  0.004436   0.028513   0.156    0.987
+UGC - EAC == 0 -0.049874   0.036927  -1.351    0.370
+UPC - EAC == 0  0.009019   0.045127   0.200    0.978
+UPC - UGC == 0  0.058893   0.044691   1.318    0.388
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1273,14 +1223,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.002139   0.023305  -0.092    0.927
-UPC - EAC == 0  0.002297   0.028173   0.082    0.935
-UPC - UGC == 0  0.004436   0.028513   0.156    0.877
+UGC - EAC == 0 -0.049874   0.036927  -1.351    0.181
+UPC - EAC == 0  0.009019   0.045127   0.200    0.842
+UPC - UGC == 0  0.058893   0.044691   1.318    0.192
 (Adjusted p values reported -- none method)
 
 
@@ -1291,13 +1241,10 @@ ROI:  lh_superiorfrontal_thickness
 Analysis of Variance Table
 
 Response: lh_superiorfrontal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 1.11944 1.11944 98.7815 4.434e-15 ***
-age.mri                1 0.00426 0.00426  0.3757    0.5419    
-groups                 2 0.01291 0.00646  0.5698    0.5682    
-Residuals             71 0.80461 0.01133                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.05905 0.059052  2.4742 0.1202
+groups     2 0.03740 0.018699  0.7835 0.4608
+Residuals 70 1.67069 0.023867               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1305,14 +1252,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 0.026438   0.027938   0.946    0.611
-UPC - EAC == 0 0.028049   0.033773   0.831    0.684
-UPC - UGC == 0 0.001611   0.034181   0.047    0.999
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.007848   0.040377  -0.194    0.979
+UPC - EAC == 0  0.051313   0.049344   1.040    0.553
+UPC - UGC == 0  0.059161   0.048867   1.211    0.449
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1322,14 +1269,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 0.026438   0.027938   0.946    0.347
-UPC - EAC == 0 0.028049   0.033773   0.831    0.409
-UPC - UGC == 0 0.001611   0.034181   0.047    0.963
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.007848   0.040377  -0.194    0.846
+UPC - EAC == 0  0.051313   0.049344   1.040    0.302
+UPC - UGC == 0  0.059161   0.048867   1.211    0.230
 (Adjusted p values reported -- none method)
 
 
@@ -1340,13 +1287,10 @@ ROI:  lh_superiorparietal_thickness
 Analysis of Variance Table
 
 Response: lh_superiorparietal_thickness
-                      Df  Sum Sq Mean Sq  F value Pr(>F)    
-lh_meanthick_demeaned  1 0.94161 0.94161 130.8287 <2e-16 ***
-age.mri                1 0.00034 0.00034   0.0470 0.8291    
-groups                 2 0.00912 0.00456   0.6336 0.5337    
-Residuals             71 0.51101 0.00720                    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.02548 0.025476  1.5593 0.2159
+groups     2 0.06771 0.033856  2.0722 0.1336
+Residuals 70 1.14366 0.016338               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1354,14 +1298,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.01810    0.02226  -0.813    0.695
-UPC - EAC == 0  0.01049    0.02691   0.390    0.919
-UPC - UGC == 0  0.02859    0.02724   1.050    0.547
+UGC - EAC == 0 -0.04024    0.03341  -1.204    0.453
+UPC - EAC == 0  0.04009    0.04083   0.982    0.589
+UPC - UGC == 0  0.08032    0.04043   1.987    0.122
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1371,14 +1315,16 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.01810    0.02226  -0.813    0.419
-UPC - EAC == 0  0.01049    0.02691   0.390    0.698
-UPC - UGC == 0  0.02859    0.02724   1.050    0.297
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.04024    0.03341  -1.204   0.2325  
+UPC - EAC == 0  0.04009    0.04083   0.982   0.3295  
+UPC - UGC == 0  0.08032    0.04043   1.987   0.0509 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
 
 
@@ -1389,13 +1335,10 @@ ROI:  lh_superiortemporal_thickness
 Analysis of Variance Table
 
 Response: lh_superiortemporal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 1.03862 1.03862 79.7183 3.182e-13 ***
-age.mri                1 0.00686 0.00686  0.5268    0.4704    
-groups                 2 0.00516 0.00258  0.1980    0.8208    
-Residuals             71 0.92503 0.01303                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.01288 0.012879  0.4557 0.5019
+groups     2 0.02061 0.010303  0.3645 0.6958
+Residuals 70 1.97846 0.028264               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1403,14 +1346,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.00484    0.02996  -0.162    0.986
-UPC - EAC == 0 -0.02253    0.03621  -0.622    0.807
-UPC - UGC == 0 -0.01769    0.03665  -0.483    0.879
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.031054   0.043939  -0.707    0.759
+UPC - EAC == 0  0.007364   0.053697   0.137    0.990
+UPC - UGC == 0  0.038418   0.053178   0.722    0.750
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1420,14 +1363,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.00484    0.02996  -0.162    0.872
-UPC - EAC == 0 -0.02253    0.03621  -0.622    0.536
-UPC - UGC == 0 -0.01769    0.03665  -0.483    0.631
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.031054   0.043939  -0.707    0.482
+UPC - EAC == 0  0.007364   0.053697   0.137    0.891
+UPC - UGC == 0  0.038418   0.053178   0.722    0.472
 (Adjusted p values reported -- none method)
 
 
@@ -1438,13 +1381,10 @@ ROI:  lh_supramarginal_thickness
 Analysis of Variance Table
 
 Response: lh_supramarginal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.97650 0.97650 72.6993 1.767e-12 ***
-age.mri                1 0.00001 0.00001  0.0008    0.9777    
-groups                 2 0.00459 0.00230  0.1710    0.8432    
-Residuals             71 0.95367 0.01343                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.02319 0.023194  0.9122 0.3428
+groups     2 0.02793 0.013967  0.5493 0.5798
+Residuals 70 1.77982 0.025426               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1452,14 +1392,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.0158542  0.0304158  -0.521    0.860
-UPC - EAC == 0 -0.0165827  0.0367690  -0.451    0.893
-UPC - UGC == 0 -0.0007285  0.0372123  -0.020    1.000
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.02260    0.04167  -0.542    0.850
+UPC - EAC == 0  0.02981    0.05093   0.585    0.827
+UPC - UGC == 0  0.05241    0.05044   1.039    0.553
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1469,14 +1409,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                 Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.0158542  0.0304158  -0.521    0.604
-UPC - EAC == 0 -0.0165827  0.0367690  -0.451    0.653
-UPC - UGC == 0 -0.0007285  0.0372123  -0.020    0.984
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.02260    0.04167  -0.542    0.589
+UPC - EAC == 0  0.02981    0.05093   0.585    0.560
+UPC - UGC == 0  0.05241    0.05044   1.039    0.302
 (Adjusted p values reported -- none method)
 
 
@@ -1487,11 +1427,10 @@ ROI:  lh_frontalpole_thickness
 Analysis of Variance Table
 
 Response: lh_frontalpole_thickness
-                      Df Sum Sq Mean Sq F value   Pr(>F)   
-lh_meanthick_demeaned  1 0.7727 0.77265 10.4801 0.001835 **
-age.mri                1 0.3213 0.32127  4.3576 0.040434 * 
-groups                 2 0.0551 0.02754  0.3735 0.689665   
-Residuals             71 5.2345 0.07373                    
+          Df Sum Sq Mean Sq F value  Pr(>F)  
+age.mri    1 0.3914 0.39138  5.1671 0.02609 *
+groups     2 0.0619 0.03094  0.4085 0.66622  
+Residuals 70 5.3022 0.07575                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1501,14 +1440,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.02500    0.07126  -0.351    0.934
-UPC - EAC == 0 -0.07445    0.08614  -0.864    0.663
-UPC - UGC == 0 -0.04945    0.08718  -0.567    0.837
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.057626   0.071930  -0.801    0.702
+UPC - EAC == 0 -0.063017   0.087905  -0.717    0.753
+UPC - UGC == 0 -0.005391   0.087055  -0.062    0.998
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1518,14 +1457,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.02500    0.07126  -0.351    0.727
-UPC - EAC == 0 -0.07445    0.08614  -0.864    0.390
-UPC - UGC == 0 -0.04945    0.08718  -0.567    0.572
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.057626   0.071930  -0.801    0.426
+UPC - EAC == 0 -0.063017   0.087905  -0.717    0.476
+UPC - UGC == 0 -0.005391   0.087055  -0.062    0.951
 (Adjusted p values reported -- none method)
 
 
@@ -1536,11 +1475,10 @@ ROI:  lh_temporalpole_thickness
 Analysis of Variance Table
 
 Response: lh_temporalpole_thickness
-                      Df Sum Sq  Mean Sq F value Pr(>F)
-lh_meanthick_demeaned  1 0.0065 0.006513  0.0663 0.7976
-age.mri                1 0.0054 0.005391  0.0549 0.8155
-groups                 2 0.0704 0.035197  0.3582 0.7002
-Residuals             71 6.9772 0.098271               
+          Df Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.0217 0.021727  0.2574 0.6135
+groups     2 0.1250 0.062491  0.7403 0.4807
+Residuals 70 5.9088 0.084411               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1548,14 +1486,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.06960    0.08227  -0.846    0.674
-UPC - EAC == 0 -0.03573    0.09945  -0.359    0.931
-UPC - UGC == 0  0.03387    0.10065   0.337    0.939
+UGC - EAC == 0 -0.09202    0.07593  -1.212    0.448
+UPC - EAC == 0 -0.05652    0.09280  -0.609    0.815
+UPC - UGC == 0  0.03550    0.09190   0.386    0.921
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1565,14 +1503,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0 -0.06960    0.08227  -0.846    0.400
-UPC - EAC == 0 -0.03573    0.09945  -0.359    0.720
-UPC - UGC == 0  0.03387    0.10065   0.337    0.737
+UGC - EAC == 0 -0.09202    0.07593  -1.212    0.230
+UPC - EAC == 0 -0.05652    0.09280  -0.609    0.544
+UPC - UGC == 0  0.03550    0.09190   0.386    0.700
 (Adjusted p values reported -- none method)
 
 
@@ -1583,13 +1521,10 @@ ROI:  lh_transversetemporal_thickness
 Analysis of Variance Table
 
 Response: lh_transversetemporal_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 1.04701 1.04701 26.3179 2.414e-06 ***
-age.mri                1 0.00197 0.00197  0.0496    0.8244    
-groups                 2 0.14908 0.07454  1.8736    0.1611    
-Residuals             71 2.82459 0.03978                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.0566 0.056624  0.9793 0.3258
+groups     2 0.0385 0.019260  0.3331 0.7178
+Residuals 70 4.0476 0.057823               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1597,14 +1532,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.10127    0.05235   1.935    0.135
-UPC - EAC == 0  0.04505    0.06328   0.712    0.756
-UPC - UGC == 0 -0.05623    0.06404  -0.878    0.654
+UGC - EAC == 0 0.045597   0.062847   0.726    0.748
+UPC - EAC == 0 0.049502   0.076804   0.645    0.795
+UPC - UGC == 0 0.003905   0.076062   0.051    0.999
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1614,16 +1549,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.10127    0.05235   1.935    0.057 .
-UPC - EAC == 0  0.04505    0.06328   0.712    0.479  
-UPC - UGC == 0 -0.05623    0.06404  -0.878    0.383  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 0.045597   0.062847   0.726    0.471
+UPC - EAC == 0 0.049502   0.076804   0.645    0.521
+UPC - UGC == 0 0.003905   0.076062   0.051    0.959
 (Adjusted p values reported -- none method)
 
 
@@ -1634,13 +1567,10 @@ ROI:  lh_insula_thickness
 Analysis of Variance Table
 
 Response: lh_insula_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.83498 0.83498 52.1453 4.607e-10 ***
-age.mri                1 0.00060 0.00060  0.0376    0.8468    
-groups                 2 0.00354 0.00177  0.1105    0.8955    
-Residuals             71 1.13689 0.01601                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+age.mri    1 0.05298 0.052976  1.7230 0.1936
+groups     2 0.01201 0.006006  0.1953 0.8230
+Residuals 70 2.15224 0.030746               
 -------------------------
 Tukey Test for pairwise comparisons
 	 Simultaneous Tests for General Linear Hypotheses
@@ -1648,14 +1578,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.005522   0.033209   0.166    0.985
-UPC - EAC == 0 -0.013527   0.040146  -0.337    0.939
-UPC - UGC == 0 -0.019049   0.040630  -0.469    0.885
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.02092    0.04583  -0.456    0.891
+UPC - EAC == 0  0.01093    0.05601   0.195    0.979
+UPC - UGC == 0  0.03185    0.05546   0.574    0.833
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1665,14 +1595,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.005522   0.033209   0.166    0.868
-UPC - EAC == 0 -0.013527   0.040146  -0.337    0.737
-UPC - UGC == 0 -0.019049   0.040630  -0.469    0.641
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.02092    0.04583  -0.456    0.649
+UPC - EAC == 0  0.01093    0.05601   0.195    0.846
+UPC - UGC == 0  0.03185    0.05546   0.574    0.568
 (Adjusted p values reported -- none method)
 
 

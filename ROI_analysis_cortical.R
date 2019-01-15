@@ -86,7 +86,7 @@ for (i in 1:length(thicknessList)) {
   name <- names[i]
   sink(paste0("./struc_output/all_results/lh_thickresults-",name, ".txt"))
   thicknessVars <- names(select(df, starts_with("lh")))[-c(35:36)]
-  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~  lh_meanthick_demeaned + age.mri + groups, list(j=as.name(x))), data=df)})
+  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~ age.mri + groups, list(j=as.name(x))), data=df)})
   lapply(models, function(y) { 
     q <- names(y$model[1])
     cat("ROI: ", (as.name(q)), "\n \n")
@@ -110,7 +110,7 @@ for (i in 1:length(thicknessList)) {
   name <- names[i]
   sink(paste0("./struc_output/all_results/rh_thickresults-",name, ".txt"))
   thicknessVars <- names(select(df, starts_with("rh")))[-c(35:36)]
-  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~  lh_meanthick_demeaned + age.mri + groups, list(j=as.name(x))), data=df)})
+  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~ age.mri + groups, list(j=as.name(x))), data=df)})
   lapply(models, function(y) { 
     q <- names(y$model[1])
     cat("ROI: ", (as.name(q)), "\n \n")
@@ -161,10 +161,10 @@ for (i in 1:length(thicknessList)) {
   name <- names[i]
   sink(paste0("./struc_output/sig_results/lh_thickresults-",name, ".txt"))
   thicknessVars <- names(select(df, starts_with("lh")))[-c(35:36)]
-  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~  lh_meanthick_demeaned + age.mri + groups, list(j=as.name(x))), data=df)})
+  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~ age.mri + groups, list(j=as.name(x))), data=df)})
   lapply(models, function(y) { 
     q <- names(y$model[1])
-    group.pval <- anova(y)$`Pr(>F)`[3]
+    group.pval <- anova(y)$`Pr(>F)`[2]
     if (group.pval <= 0.10){
       cat("ROI: ", (as.name(q)), "\n \n")
       print(anova(y))
@@ -187,10 +187,10 @@ for (i in 1:length(thicknessList)) {
   name <- names[i]
   sink(paste0("./struc_output/sig_results/rh_thickresults-",name, ".txt"))
   thicknessVars <- names(select(df, starts_with("rh")))[-c(35:36)]
-  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~  lh_meanthick_demeaned + age.mri + groups, list(j=as.name(x))), data=df)})
+  models <- lapply(thicknessVars, function(x) { lm(substitute(j ~ age.mri + groups, list(j=as.name(x))), data=df)})
   lapply(models, function(y) { 
     q <- names(y$model[1])
-    group.pval <- anova(y)$`Pr(>F)`[3]
+    group.pval <- anova(y)$`Pr(>F)`[2]
     if (group.pval <= 0.10){
       cat("ROI: ", (as.name(q)), "\n \n")
       print(anova(y))

@@ -1,13 +1,12 @@
-ROI:  rh_parsopercularis_thickness 
+ROI:  rh_transversetemporal_thickness 
  
 Analysis of Variance Table
 
-Response: rh_parsopercularis_thickness
-                       Df Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned   1 1.7975 1.79748 22.8066 5.776e-06 ***
-age.mri                 1 0.0008 0.00080  0.0101   0.92007    
-groups                  2 0.4116 0.20580  2.6113   0.07816 .  
-Residuals             106 8.3543 0.07881                      
+Response: rh_transversetemporal_thickness
+           Df  Sum Sq Mean Sq F value  Pr(>F)  
+age.mri     1  0.0255 0.02550  0.2139 0.64465  
+groups      2  0.8363 0.41816  3.5080 0.03348 *
+Residuals 106 12.6356 0.11920                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -17,14 +16,16 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.11675    0.06106   1.912    0.139
-UPC - EAC == 0  0.14613    0.07329   1.994    0.118
-UPC - UGC == 0  0.02938    0.07044   0.417    0.908
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0  0.14296    0.07479   1.911   0.1394  
+UPC - EAC == 0  0.22915    0.09131   2.510   0.0356 *
+UPC - UGC == 0  0.08619    0.08727   0.988   0.5846  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -34,65 +35,14 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.11675    0.06106   1.912   0.0586 .
-UPC - EAC == 0  0.14613    0.07329   1.994   0.0487 *
-UPC - UGC == 0  0.02938    0.07044   0.417   0.6775  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-(Adjusted p values reported -- none method)
-
-
-==========================
-
-ROI:  rh_superiorfrontal_thickness 
- 
-Analysis of Variance Table
-
-Response: rh_superiorfrontal_thickness
-                       Df Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned   1 2.7005 2.70051 36.9421 1.945e-08 ***
-age.mri                 1 0.0381 0.03815  0.5218   0.47165    
-groups                  2 0.4204 0.21022  2.8758   0.06078 .  
-Residuals             106 7.7487 0.07310                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
--------------------------
-Tukey Test for pairwise comparisons
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  0.11992    0.05881   2.039    0.107
-UPC - EAC == 0  0.14554    0.07058   2.062    0.102
-UPC - UGC == 0  0.02562    0.06784   0.378    0.924
-(Adjusted p values reported -- single-step method)
-
--------------------------
-Pairwise comparisons (no correction)
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.11992    0.05881   2.039   0.0439 *
-UPC - EAC == 0  0.14554    0.07058   2.062   0.0416 *
-UPC - UGC == 0  0.02562    0.06784   0.378   0.7064  
+UGC - EAC == 0  0.14296    0.07479   1.911   0.0586 .
+UPC - EAC == 0  0.22915    0.09131   2.510   0.0136 *
+UPC - UGC == 0  0.08619    0.08727   0.988   0.3256  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)

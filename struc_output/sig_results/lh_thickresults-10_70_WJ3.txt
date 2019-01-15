@@ -1,13 +1,12 @@
-ROI:  lh_parsopercularis_thickness 
+ROI:  lh_lateraloccipital_thickness 
  
 Analysis of Variance Table
 
-Response: lh_parsopercularis_thickness
-                      Df  Sum Sq Mean Sq F value    Pr(>F)    
-lh_meanthick_demeaned  1 0.74502 0.74502 57.8170 9.064e-11 ***
-age.mri                1 0.00001 0.00001  0.0006   0.98055    
-groups                 2 0.10092 0.05046  3.9157   0.02437 *  
-Residuals             71 0.91490 0.01289                      
+Response: lh_lateraloccipital_thickness
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.02321 0.023208  1.8654 0.17637  
+groups     2 0.06970 0.034852  2.8014 0.06754 .
+Residuals 70 0.87086 0.012441                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -17,14 +16,14 @@ Tukey Test for pairwise comparisons
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  0.08166    0.02979   2.741   0.0207 *
-UPC - EAC == 0  0.05799    0.03601   1.610   0.2464  
-UPC - UGC == 0 -0.02367    0.03645  -0.650   0.7921  
+UGC - EAC == 0 -0.04059    0.02915  -1.392   0.3485  
+UPC - EAC == 0  0.04098    0.03563   1.150   0.4848  
+UPC - UGC == 0  0.08157    0.03528   2.312   0.0601 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -36,14 +35,66 @@ Pairwise comparisons (no correction)
 Multiple Comparisons of Means: Tukey Contrasts
 
 
-Fit: lm(formula = substitute(j ~ lh_meanthick_demeaned + age.mri + 
-    groups, list(j = as.name(x))), data = df)
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)   
-UGC - EAC == 0  0.08166    0.02979   2.741  0.00774 **
-UPC - EAC == 0  0.05799    0.03601   1.610  0.11179   
-UPC - UGC == 0 -0.02367    0.03645  -0.650  0.51811   
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.04059    0.02915  -1.392   0.1682  
+UPC - EAC == 0  0.04098    0.03563   1.150   0.2539  
+UPC - UGC == 0  0.08157    0.03528   2.312   0.0237 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+
+==========================
+
+ROI:  lh_paracentral_thickness 
+ 
+Analysis of Variance Table
+
+Response: lh_paracentral_thickness
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.02368 0.023684  1.1387 0.28960  
+groups     2 0.13942 0.069712  3.3516 0.04074 *
+Residuals 70 1.45599 0.020800                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+                Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.009177   0.037693  -0.243   0.9677  
+UPC - EAC == 0  0.102984   0.046064   2.236   0.0715 .
+UPC - UGC == 0  0.112161   0.045619   2.459   0.0424 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+                Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.009177   0.037693  -0.243   0.8084  
+UPC - EAC == 0  0.102984   0.046064   2.236   0.0286 *
+UPC - UGC == 0  0.112161   0.045619   2.459   0.0164 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
