@@ -250,7 +250,7 @@ for (i in 1:length(ciList)){
   for (model in names(resultsList)){
     my.bin <- eval(substitute(c(range(scale(i$resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use)), list(i = as.name(model))))
     my.bin <- sort(my.bin)
-    groups <- eval(substitute(grouping[findInterval(scale(WJ3$resid), vec=my.bin, all.inside=T)],list(i = as.name(model))))
+    groups <- eval(substitute(grouping[findInterval(scale(i$resid), vec=my.bin, all.inside=T)],list(i = as.name(model))))
     x <- as.data.frame(groups)
     y <- cbind(imputed_data$SubjectID, x)
     groupsList[[model]] <- cbind(eval(as.name(model)), y)

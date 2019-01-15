@@ -1,0 +1,52 @@
+ROI:  rh_lingual_thickness 
+ 
+Analysis of Variance Table
+
+Response: rh_lingual_thickness
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.03778 0.037777  3.2507 0.07490 .
+groups     2 0.06282 0.031409  2.7027 0.07272 .
+Residuals 86 0.99944 0.011621                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0  0.02207    0.02749   0.803    0.702  
+UPC - EAC == 0  0.06444    0.02793   2.307    0.060 .
+UPC - UGC == 0  0.04236    0.02884   1.469    0.311  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0  0.02207    0.02749   0.803   0.4242  
+UPC - EAC == 0  0.06444    0.02793   2.307   0.0234 *
+UPC - UGC == 0  0.04236    0.02884   1.469   0.1456  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+
+==========================
+

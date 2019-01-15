@@ -4,10 +4,10 @@ Analysis of Variance Table
 
 Response: lh_bankssts_volume
              Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 2741508 2741508 20.5203 2.405e-05 ***
-age.mri       1    4514    4514  0.0338    0.8547    
-groups        2  373431  186716  1.3976    0.2541    
-Residuals    69 9218367  133600                      
+ICV_demeaned  1 1906589 1906589 14.3503 0.0003093 ***
+age.mri       1   52926   52926  0.3984 0.5299091    
+groups        2  475137  237568  1.7881 0.1745247    
+Residuals    73 9698789  132860                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -22,107 +22,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -0.478     96.099  -0.005    1.000
-UPC - EAC == 0 -177.691    117.407  -1.513    0.289
-UPC - UGC == 0 -177.213    115.633  -1.533    0.281
-(Adjusted p values reported -- single-step method)
-
--------------------------
-Pairwise comparisons (no correction)
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -0.478     96.099  -0.005    0.996
-UPC - EAC == 0 -177.691    117.407  -1.513    0.135
-UPC - UGC == 0 -177.213    115.633  -1.533    0.130
-(Adjusted p values reported -- none method)
-
-
-==========================
-
-ROI:  lh_caudalanteriorcingulate_volume 
- 
-Analysis of Variance Table
-
-Response: lh_caudalanteriorcingulate_volume
-             Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  3890006 3890006 15.2009 0.0002214 ***
-age.mri       1     3548    3548  0.0139 0.9066106    
-groups        2   263573  131787  0.5150 0.5997920    
-Residuals    69 17657591  255907                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
--------------------------
-Tukey Test for pairwise comparisons
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    39.01     133.00   0.293    0.953
-UPC - EAC == 0   163.09     162.49   1.004    0.575
-UPC - UGC == 0   124.08     160.04   0.775    0.718
-(Adjusted p values reported -- single-step method)
-
--------------------------
-Pairwise comparisons (no correction)
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    39.01     133.00   0.293    0.770
-UPC - EAC == 0   163.09     162.49   1.004    0.319
-UPC - UGC == 0   124.08     160.04   0.775    0.441
-(Adjusted p values reported -- none method)
-
-
-==========================
-
-ROI:  lh_caudalmiddlefrontal_volume 
- 
-Analysis of Variance Table
-
-Response: lh_caudalmiddlefrontal_volume
-             Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 28335450 28335450 24.0894 5.911e-06 ***
-age.mri       1    65457    65457  0.0556    0.8142    
-groups        2  5507553  2753776  2.3411    0.1038    
-Residuals    69 81161964  1176260                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
--------------------------
-Tukey Test for pairwise comparisons
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    79.98     285.15   0.280    0.957
-UPC - EAC == 0   717.48     348.37   2.060    0.105
-UPC - UGC == 0   637.50     343.11   1.858    0.158
+UGC - EAC == 0   -62.24      92.98  -0.669    0.781
+UPC - EAC == 0  -218.06     115.53  -1.888    0.148
+UPC - UGC == 0  -155.82     114.76  -1.358    0.366
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -137,9 +39,111 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    79.98     285.15   0.280   0.7799  
-UPC - EAC == 0   717.48     348.37   2.060   0.0432 *
-UPC - UGC == 0   637.50     343.11   1.858   0.0674 .
+UGC - EAC == 0   -62.24      92.98  -0.669   0.5053  
+UPC - EAC == 0  -218.06     115.53  -1.888   0.0631 .
+UPC - UGC == 0  -155.82     114.76  -1.358   0.1787  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+
+==========================
+
+ROI:  lh_caudalanteriorcingulate_volume 
+ 
+Analysis of Variance Table
+
+Response: lh_caudalanteriorcingulate_volume
+             Df   Sum Sq Mean Sq F value   Pr(>F)    
+ICV_demeaned  1  4484603 4484603 17.1960 8.99e-05 ***
+age.mri       1    45742   45742  0.1754   0.6766    
+groups        2   258966  129483  0.4965   0.6107    
+Residuals    73 19037955  260794                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0    30.26     130.26   0.232    0.970
+UPC - EAC == 0   158.45     161.86   0.979    0.590
+UPC - UGC == 0   128.20     160.78   0.797    0.704
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0    30.26     130.26   0.232    0.817
+UPC - EAC == 0   158.45     161.86   0.979    0.331
+UPC - UGC == 0   128.20     160.78   0.797    0.428
+(Adjusted p values reported -- none method)
+
+
+==========================
+
+ROI:  lh_caudalmiddlefrontal_volume 
+ 
+Analysis of Variance Table
+
+Response: lh_caudalmiddlefrontal_volume
+             Df   Sum Sq  Mean Sq F value    Pr(>F)    
+ICV_demeaned  1 25466927 25466927 20.8441 1.975e-05 ***
+age.mri       1       26       26  0.0000   0.99630    
+groups        2  6095170  3047585  2.4944   0.08956 .  
+Residuals    73 89189953  1221780                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0    134.0      282.0   0.475   0.8824  
+UPC - EAC == 0    765.5      350.3   2.185   0.0796 .
+UPC - UGC == 0    631.5      348.0   1.815   0.1704  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0    134.0      282.0   0.475   0.6360  
+UPC - EAC == 0    765.5      350.3   2.185   0.0321 *
+UPC - UGC == 0    631.5      348.0   1.815   0.0737 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -153,10 +157,10 @@ Analysis of Variance Table
 
 Response: lh_cuneus_volume
              Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  5297374 5297374 33.1649 2.151e-07 ***
-age.mri       1     1340    1340  0.0084    0.9273    
-groups        2   152987   76493  0.4789    0.6215    
-Residuals    69 11021245  159728                      
+ICV_demeaned  1  4693883 4693883 30.9453 4.141e-07 ***
+age.mri       1     2313    2313  0.0152    0.9021    
+groups        2   181162   90581  0.5972    0.5530    
+Residuals    73 11072888  151683                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -171,9 +175,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    39.00     105.08   0.371    0.926
-UPC - EAC == 0   125.46     128.38   0.977    0.592
-UPC - UGC == 0    86.46     126.44   0.684    0.773
+UGC - EAC == 0    27.80      99.34   0.280    0.957
+UPC - EAC == 0   133.09     123.44   1.078    0.528
+UPC - UGC == 0   105.29     122.62   0.859    0.666
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -188,9 +192,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    39.00     105.08   0.371    0.712
-UPC - EAC == 0   125.46     128.38   0.977    0.332
-UPC - UGC == 0    86.46     126.44   0.684    0.496
+UGC - EAC == 0    27.80      99.34   0.280    0.780
+UPC - EAC == 0   133.09     123.44   1.078    0.285
+UPC - UGC == 0   105.29     122.62   0.859    0.393
 (Adjusted p values reported -- none method)
 
 
@@ -202,10 +206,10 @@ Analysis of Variance Table
 
 Response: lh_entorhinal_volume
              Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 3466615 3466615 42.8155 8.851e-09 ***
-age.mri       1   66221   66221  0.8179    0.3689    
-groups        2  181496   90748  1.1208    0.3319    
-Residuals    69 5586678   80966                      
+ICV_demeaned  1 3193502 3193502 37.5768 4.075e-08 ***
+age.mri       1  100586  100586  1.1836    0.2802    
+groups        2  141512   70756  0.8326    0.4390    
+Residuals    73 6203977   84986                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -220,9 +224,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    16.36      74.81   0.219    0.974
-UPC - EAC == 0  -113.83      91.40  -1.245    0.429
-UPC - UGC == 0  -130.19      90.02  -1.446    0.321
+UGC - EAC == 0    49.25      74.36   0.662    0.785
+UPC - EAC == 0   -68.17      92.40  -0.738    0.740
+UPC - UGC == 0  -117.42      91.78  -1.279    0.409
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -237,9 +241,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    16.36      74.81   0.219    0.828
-UPC - EAC == 0  -113.83      91.40  -1.245    0.217
-UPC - UGC == 0  -130.19      90.02  -1.446    0.153
+UGC - EAC == 0    49.25      74.36   0.662    0.510
+UPC - EAC == 0   -68.17      92.40  -0.738    0.463
+UPC - UGC == 0  -117.42      91.78  -1.279    0.205
 (Adjusted p values reported -- none method)
 
 
@@ -250,11 +254,11 @@ ROI:  lh_fusiform_volume
 Analysis of Variance Table
 
 Response: lh_fusiform_volume
-             Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 82461603 82461603 61.0879 4.341e-11 ***
-age.mri       1  8356172  8356172  6.1903   0.01526 *  
-groups        2  3652344  1826172  1.3528   0.26528    
-Residuals    69 93142083  1349885                      
+             Df    Sum Sq  Mean Sq F value    Pr(>F)    
+ICV_demeaned  1  62282800 62282800 41.4634 1.121e-08 ***
+age.mri       1   3912865  3912865  2.6049    0.1108    
+groups        2    667934   333967  0.2223    0.8012    
+Residuals    73 109654460  1502116                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -269,9 +273,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    392.3      305.5   1.284    0.407
-UPC - EAC == 0    551.7      373.2   1.478    0.306
-UPC - UGC == 0    159.4      367.6   0.434    0.901
+UGC - EAC == 0    25.05     312.63   0.080    0.996
+UPC - EAC == 0   247.26     388.45   0.637    0.799
+UPC - UGC == 0   222.21     385.87   0.576    0.832
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -286,9 +290,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    392.3      305.5   1.284    0.203
-UPC - EAC == 0    551.7      373.2   1.478    0.144
-UPC - UGC == 0    159.4      367.6   0.434    0.666
+UGC - EAC == 0    25.05     312.63   0.080    0.936
+UPC - EAC == 0   247.26     388.45   0.637    0.526
+UPC - UGC == 0   222.21     385.87   0.576    0.566
 (Adjusted p values reported -- none method)
 
 
@@ -300,10 +304,10 @@ Analysis of Variance Table
 
 Response: lh_inferiorparietal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  84516082 84516082 45.4764 3.865e-09 ***
-age.mri       1   9334192  9334192  5.0225   0.02824 *  
-groups        2     79317    39659  0.0213   0.97889    
-Residuals    69 128233878  1858462                      
+ICV_demeaned  1  70606370 70606370 40.6737 1.451e-08 ***
+age.mri       1  10953112 10953112  6.3097   0.01422 *  
+groups        2     32356    16178  0.0093   0.99072    
+Residuals    73 126722433  1735924                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -318,9 +322,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   65.745    358.421   0.183    0.982
-UPC - EAC == 0   71.966    437.895   0.164    0.985
-UPC - UGC == 0    6.222    431.278   0.014    1.000
+UGC - EAC == 0   -38.34     336.08  -0.114    0.993
+UPC - EAC == 0   -48.12     417.59  -0.115    0.993
+UPC - UGC == 0    -9.77     414.82  -0.024    1.000
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -335,9 +339,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   65.745    358.421   0.183    0.855
-UPC - EAC == 0   71.966    437.895   0.164    0.870
-UPC - UGC == 0    6.222    431.278   0.014    0.989
+UGC - EAC == 0   -38.34     336.08  -0.114    0.909
+UPC - EAC == 0   -48.12     417.59  -0.115    0.909
+UPC - UGC == 0    -9.77     414.82  -0.024    0.981
 (Adjusted p values reported -- none method)
 
 
@@ -349,10 +353,10 @@ Analysis of Variance Table
 
 Response: lh_inferiortemporal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  81877519 81877519 41.4027 1.386e-08 ***
-age.mri       1   2140121  2140121  1.0822    0.3018    
-groups        2   4301450  2150725  1.0875    0.3427    
-Residuals    69 136453787  1977591                      
+ICV_demeaned  1  63573898 63573898 32.0852 2.749e-07 ***
+age.mri       1    801384   801384  0.4045    0.5268    
+groups        2   3662280  1831140  0.9242    0.4015    
+Residuals    73 144642647  1981406                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -367,9 +371,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    67.41     369.73   0.182    0.982
-UPC - EAC == 0   632.82     451.71   1.401    0.344
-UPC - UGC == 0   565.41     444.89   1.271    0.414
+UGC - EAC == 0   -88.82     359.06  -0.247    0.967
+UPC - EAC == 0   498.50     446.14   1.117    0.504
+UPC - UGC == 0   587.32     443.18   1.325    0.384
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -384,9 +388,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    67.41     369.73   0.182    0.856
-UPC - EAC == 0   632.82     451.71   1.401    0.166
-UPC - UGC == 0   565.41     444.89   1.271    0.208
+UGC - EAC == 0   -88.82     359.06  -0.247    0.805
+UPC - EAC == 0   498.50     446.14   1.117    0.268
+UPC - UGC == 0   587.32     443.18   1.325    0.189
 (Adjusted p values reported -- none method)
 
 
@@ -398,10 +402,10 @@ Analysis of Variance Table
 
 Response: lh_isthmuscingulate_volume
              Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  6806145 6806145 44.8568 4.679e-09 ***
-age.mri       1   186621  186621  1.2299    0.2713    
-groups        2   532911  266455  1.7561    0.1803    
-Residuals    69 10469404  151730                      
+ICV_demeaned  1  6372516 6372516 43.6595 5.517e-09 ***
+age.mri       1   141034  141034  0.9663    0.3289    
+groups        2   603717  301859  2.0681    0.1338    
+Residuals    73 10655046  145960                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -416,9 +420,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -170.14     102.41  -1.661    0.226
-UPC - EAC == 0  -186.97     125.12  -1.494    0.298
-UPC - UGC == 0   -16.83     123.23  -0.137    0.990
+UGC - EAC == 0  -172.44      97.45  -1.769    0.186
+UPC - EAC == 0  -198.68     121.09  -1.641    0.233
+UPC - UGC == 0   -26.24     120.28  -0.218    0.974
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -432,10 +436,12 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
     list(j = as.name(x))), data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -170.14     102.41  -1.661    0.101
-UPC - EAC == 0  -186.97     125.12  -1.494    0.140
-UPC - UGC == 0   -16.83     123.23  -0.137    0.892
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0  -172.44      97.45  -1.769    0.081 .
+UPC - EAC == 0  -198.68     121.09  -1.641    0.105  
+UPC - UGC == 0   -26.24     120.28  -0.218    0.828  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
 
 
@@ -447,10 +453,10 @@ Analysis of Variance Table
 
 Response: lh_lateraloccipital_volume
              Df    Sum Sq   Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 116124476 116124476 71.0291 3.299e-12 ***
-age.mri       1   2349064   2349064  1.4368   0.23475    
-groups        2   9063051   4531525  2.7718   0.06953 .  
-Residuals    69 112807206   1634887                      
+ICV_demeaned  1 102824008 102824008 60.7104 3.466e-11 ***
+age.mri       1   4840276   4840276  2.8578    0.0952 .  
+groups        2   7508054   3754027  2.2165    0.1163    
+Residuals    73 123638575   1693679                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -465,9 +471,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    788.2      336.2   2.345   0.0558 .
-UPC - EAC == 0    491.4      410.7   1.197   0.4574  
-UPC - UGC == 0   -296.8      404.5  -0.734   0.7431  
+UGC - EAC == 0    690.9      332.0   2.081   0.0999 .
+UPC - EAC == 0    472.2      412.5   1.145   0.4876  
+UPC - UGC == 0   -218.7      409.7  -0.534   0.8541  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -484,9 +490,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    788.2      336.2   2.345   0.0219 *
-UPC - EAC == 0    491.4      410.7   1.197   0.2356  
-UPC - UGC == 0   -296.8      404.5  -0.734   0.4656  
+UGC - EAC == 0    690.9      332.0   2.081   0.0409 *
+UPC - EAC == 0    472.2      412.5   1.145   0.2560  
+UPC - UGC == 0   -218.7      409.7  -0.534   0.5952  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -500,10 +506,10 @@ Analysis of Variance Table
 
 Response: lh_lateralorbitofrontal_volume
              Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 30092952 30092952 54.7058 2.532e-10 ***
-age.mri       1  4770539  4770539  8.6723    0.0044 ** 
-groups        2  1130918   565459  1.0279    0.3632    
-Residuals    69 37956000   550087                      
+ICV_demeaned  1 28823401 28823401 53.4712 2.734e-10 ***
+age.mri       1  6378988  6378988 11.8339 0.0009651 ***
+groups        2  1496823   748412  1.3884 0.2559821    
+Residuals    73 39350273   539045                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -518,9 +524,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -279.1      195.0  -1.431    0.329
-UPC - EAC == 0   -164.5      238.2  -0.690    0.769
-UPC - UGC == 0    114.6      234.6   0.488    0.876
+UGC - EAC == 0   -311.4      187.3  -1.663    0.225
+UPC - EAC == 0   -182.4      232.7  -0.784    0.713
+UPC - UGC == 0    129.0      231.2   0.558    0.842
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -535,9 +541,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -279.1      195.0  -1.431    0.157
-UPC - EAC == 0   -164.5      238.2  -0.690    0.492
-UPC - UGC == 0    114.6      234.6   0.488    0.627
+UGC - EAC == 0   -311.4      187.3  -1.663    0.101
+UPC - EAC == 0   -182.4      232.7  -0.784    0.436
+UPC - UGC == 0    129.0      231.2   0.558    0.578
 (Adjusted p values reported -- none method)
 
 
@@ -549,10 +555,10 @@ Analysis of Variance Table
 
 Response: lh_lingual_volume
              Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 29677148 29677148 36.0392 8.051e-08 ***
-age.mri       1   884863   884863  1.0746    0.3035    
-groups        2  1309587   654793  0.7952    0.4556    
-Residuals    69 56819318   823468                      
+ICV_demeaned  1 24544592 24544592 30.4877 4.888e-07 ***
+age.mri       1   746595   746595  0.9274    0.3387    
+groups        2  1399999   699999  0.8695    0.4235    
+Residuals    73 58769776   805065                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -567,9 +573,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -171.9      238.6  -0.721    0.751
-UPC - EAC == 0    182.9      291.5   0.627    0.805
-UPC - UGC == 0    354.8      287.1   1.236    0.434
+UGC - EAC == 0   -175.2      228.9  -0.766    0.724
+UPC - EAC == 0    189.0      284.4   0.665    0.783
+UPC - UGC == 0    364.2      282.5   1.289    0.404
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -584,9 +590,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -171.9      238.6  -0.721    0.474
-UPC - EAC == 0    182.9      291.5   0.627    0.533
-UPC - UGC == 0    354.8      287.1   1.236    0.221
+UGC - EAC == 0   -175.2      228.9  -0.766    0.446
+UPC - EAC == 0    189.0      284.4   0.665    0.508
+UPC - UGC == 0    364.2      282.5   1.289    0.201
 (Adjusted p values reported -- none method)
 
 
@@ -598,10 +604,10 @@ Analysis of Variance Table
 
 Response: lh_medialorbitofrontal_volume
              Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 14943937 14943937 48.0249 1.781e-09 ***
-age.mri       1  5210043  5210043 16.7434 0.0001143 ***
-groups        2  1625055   812528  2.6112 0.0806932 .  
-Residuals    69 21470760   311170                      
+ICV_demeaned  1 17976766 17976766 53.5378 2.681e-10 ***
+age.mri       1  4147628  4147628 12.3523 0.0007606 ***
+groups        2  2160300  1080150  3.2169 0.0458251 *  
+Residuals    73 24511732   335777                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -616,9 +622,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   -64.29     146.66  -0.438   0.8991  
-UPC - EAC == 0   329.70     179.18   1.840   0.1630  
-UPC - UGC == 0   393.99     176.47   2.233   0.0721 .
+UGC - EAC == 0    105.8      147.8   0.716    0.754  
+UPC - EAC == 0    461.5      183.7   2.513    0.037 *
+UPC - UGC == 0    355.7      182.4   1.950    0.131  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -635,9 +641,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   -64.29     146.66  -0.438   0.6625  
-UPC - EAC == 0   329.70     179.18   1.840   0.0701 .
-UPC - UGC == 0   393.99     176.47   2.233   0.0288 *
+UGC - EAC == 0    105.8      147.8   0.716   0.4765  
+UPC - EAC == 0    461.5      183.7   2.513   0.0142 *
+UPC - UGC == 0    355.7      182.4   1.950   0.0550 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -651,10 +657,10 @@ Analysis of Variance Table
 
 Response: lh_middletemporal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  79869377 79869377 45.7541 3.549e-09 ***
-age.mri       1   5859602  5859602  3.3567   0.07125 .  
-groups        2    345384   172692  0.0989   0.90594    
-Residuals    69 120447937  1745622                      
+ICV_demeaned  1  67837237 67837237 40.7090 1.435e-08 ***
+age.mri       1   8074767  8074767  4.8457   0.03088 *  
+groups        2    156836    78418  0.0471   0.95406    
+Residuals    73 121646767  1666394                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -669,9 +675,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    133.6      347.4   0.385    0.921
-UPC - EAC == 0    -15.9      424.4  -0.037    0.999
-UPC - UGC == 0   -149.5      418.0  -0.358    0.932
+UGC - EAC == 0    98.53     329.28   0.299    0.952
+UPC - EAC == 0    25.02     409.15   0.061    0.998
+UPC - UGC == 0   -73.51     406.42  -0.181    0.982
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -686,9 +692,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    133.6      347.4   0.385    0.702
-UPC - EAC == 0    -15.9      424.4  -0.037    0.970
-UPC - UGC == 0   -149.5      418.0  -0.358    0.722
+UGC - EAC == 0    98.53     329.28   0.299    0.766
+UPC - EAC == 0    25.02     409.15   0.061    0.951
+UPC - UGC == 0   -73.51     406.42  -0.181    0.857
 (Adjusted p values reported -- none method)
 
 
@@ -700,10 +706,10 @@ Analysis of Variance Table
 
 Response: lh_parahippocampal_volume
              Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 2218747 2218747 17.8352 7.224e-05 ***
-age.mri       1   19633   19633  0.1578    0.6924    
-groups        2   13039    6520  0.0524    0.9490    
-Residuals    69 8583789  124403                      
+ICV_demeaned  1 2404321 2404321 20.1481 2.623e-05 ***
+age.mri       1    2427    2427  0.0203    0.8870    
+groups        2    3166    1583  0.0133    0.9868    
+Residuals    73 8711254  119332                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -718,9 +724,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    10.12      92.73   0.109    0.993
-UPC - EAC == 0    36.50     113.29   0.322    0.944
-UPC - UGC == 0    26.38     111.58   0.236    0.969
+UGC - EAC == 0   -5.967     88.116  -0.068    0.997
+UPC - EAC == 0   11.745    109.488   0.107    0.994
+UPC - UGC == 0   17.712    108.760   0.163    0.985
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -735,9 +741,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    10.12      92.73   0.109    0.913
-UPC - EAC == 0    36.50     113.29   0.322    0.748
-UPC - UGC == 0    26.38     111.58   0.236    0.814
+UGC - EAC == 0   -5.967     88.116  -0.068    0.946
+UPC - EAC == 0   11.745    109.488   0.107    0.915
+UPC - UGC == 0   17.712    108.760   0.163    0.871
 (Adjusted p values reported -- none method)
 
 
@@ -749,10 +755,10 @@ Analysis of Variance Table
 
 Response: lh_paracentral_volume
              Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  4920650 4920650 27.2764 1.776e-06 ***
-age.mri       1    19031   19031  0.1055    0.7463    
-groups        2   858682  429341  2.3799    0.1001    
-Residuals    69 12447557  180399                      
+ICV_demeaned  1  6008899 6008899 31.7371 3.113e-07 ***
+age.mri       1    50449   50449  0.2665    0.6073    
+groups        2   884232  442116  2.3351    0.1040    
+Residuals    73 13821351  189334                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -767,9 +773,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    59.66     111.67   0.534   0.8540  
-UPC - EAC == 0   292.05     136.43   2.141   0.0884 .
-UPC - UGC == 0   232.38     134.37   1.729   0.2001  
+UGC - EAC == 0    81.48     110.99   0.734   0.7426  
+UPC - EAC == 0   297.17     137.91   2.155   0.0851 .
+UPC - UGC == 0   215.68     136.99   1.574   0.2612  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -786,9 +792,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    59.66     111.67   0.534   0.5949  
-UPC - EAC == 0   292.05     136.43   2.141   0.0358 *
-UPC - UGC == 0   232.38     134.37   1.729   0.0882 .
+UGC - EAC == 0    81.48     110.99   0.734   0.4652  
+UPC - EAC == 0   297.17     137.91   2.155   0.0345 *
+UPC - UGC == 0   215.68     136.99   1.574   0.1197  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -802,10 +808,10 @@ Analysis of Variance Table
 
 Response: lh_parsopercularis_volume
              Df   Sum Sq Mean Sq F value   Pr(>F)   
-ICV_demeaned  1  7210661 7210661 11.6604 0.001073 **
-age.mri       1   319767  319767  0.5171 0.474510   
-groups        2   158652   79326  0.1283 0.879817   
-Residuals    69 42668758  618388                    
+ICV_demeaned  1  5782918 5782918 10.5724 0.001739 **
+age.mri       1   485425  485425  0.8875 0.349275   
+groups        2   697619  348810  0.6377 0.531427   
+Residuals    73 39929882  546985                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -820,9 +826,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -79.73     206.75  -0.386    0.921
-UPC - EAC == 0    33.33     252.59   0.132    0.990
-UPC - UGC == 0   113.06     248.78   0.454    0.892
+UGC - EAC == 0  -212.22     188.65  -1.125    0.500
+UPC - EAC == 0   -86.93     234.41  -0.371    0.927
+UPC - UGC == 0   125.29     232.85   0.538    0.852
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -837,9 +843,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -79.73     206.75  -0.386    0.701
-UPC - EAC == 0    33.33     252.59   0.132    0.895
-UPC - UGC == 0   113.06     248.78   0.454    0.651
+UGC - EAC == 0  -212.22     188.65  -1.125    0.264
+UPC - EAC == 0   -86.93     234.41  -0.371    0.712
+UPC - UGC == 0   125.29     232.85   0.538    0.592
 (Adjusted p values reported -- none method)
 
 
@@ -850,11 +856,11 @@ ROI:  lh_parsorbitalis_volume
 Analysis of Variance Table
 
 Response: lh_parsorbitalis_volume
-             Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 1469486 1469486 11.9678 0.0009322 ***
-age.mri       1 2028744 2028744 16.5225 0.0001256 ***
-groups        2  135843   67921  0.5532 0.5776555    
-Residuals    69 8472273  122787                      
+             Df  Sum Sq Mean Sq F value   Pr(>F)    
+ICV_demeaned  1 1262466 1262466 10.3029 0.001975 ** 
+age.mri       1 1647136 1647136 13.4422 0.000464 ***
+groups        2  159627   79814  0.6514 0.524342    
+Residuals    73 8945067  122535                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -869,9 +875,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -87.139     92.128  -0.946    0.612
-UPC - EAC == 0    1.297    112.556   0.012    1.000
-UPC - UGC == 0   88.436    110.855   0.798    0.704
+UGC - EAC == 0   -97.49      89.29  -1.092    0.520
+UPC - EAC == 0   -16.10     110.95  -0.145    0.988
+UPC - UGC == 0    81.39     110.21   0.739    0.740
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -886,9 +892,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -87.139     92.128  -0.946    0.348
-UPC - EAC == 0    1.297    112.556   0.012    0.991
-UPC - UGC == 0   88.436    110.855   0.798    0.428
+UGC - EAC == 0   -97.49      89.29  -1.092    0.278
+UPC - EAC == 0   -16.10     110.95  -0.145    0.885
+UPC - UGC == 0    81.39     110.21   0.739    0.463
 (Adjusted p values reported -- none method)
 
 
@@ -900,10 +906,10 @@ Analysis of Variance Table
 
 Response: lh_parstriangularis_volume
              Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  5429437 5429437  19.503 3.632e-05 ***
-age.mri       1  4291154 4291154  15.414 0.0002019 ***
-groups        2    15566    7783   0.028 0.9724406    
-Residuals    69 19209031  278392                      
+ICV_demeaned  1  3981876 3981876 14.9809 0.0002342 ***
+age.mri       1  6057588 6057588 22.7902 9.051e-06 ***
+groups        2    19078    9539  0.0359 0.9647659    
+Residuals    73 19403213  265797                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -918,9 +924,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    12.28     138.72   0.089    0.996
-UPC - EAC == 0   -27.18     169.48  -0.160    0.986
-UPC - UGC == 0   -39.46     166.92  -0.236    0.969
+UGC - EAC == 0   -13.42     131.51  -0.102    0.994
+UPC - EAC == 0   -43.75     163.40  -0.268    0.961
+UPC - UGC == 0   -30.33     162.32  -0.187    0.981
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -935,9 +941,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    12.28     138.72   0.089    0.930
-UPC - EAC == 0   -27.18     169.48  -0.160    0.873
-UPC - UGC == 0   -39.46     166.92  -0.236    0.814
+UGC - EAC == 0   -13.42     131.51  -0.102    0.919
+UPC - EAC == 0   -43.75     163.40  -0.268    0.790
+UPC - UGC == 0   -30.33     162.32  -0.187    0.852
 (Adjusted p values reported -- none method)
 
 
@@ -949,10 +955,10 @@ Analysis of Variance Table
 
 Response: lh_pericalcarine_volume
              Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 1741265 1741265 21.6897 1.508e-05 ***
-age.mri       1  126617  126617  1.5772    0.2134    
-groups        2   33155   16578  0.2065    0.8139    
-Residuals    69 5539381   80281                      
+ICV_demeaned  1 1615879 1615879 21.5499 1.485e-05 ***
+age.mri       1   96247   96247  1.2836    0.2609    
+groups        2   32986   16493  0.2200    0.8031    
+Residuals    73 5473773   74983                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -967,9 +973,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    11.97      74.49   0.161    0.986
-UPC - EAC == 0    57.44      91.01   0.631    0.802
-UPC - UGC == 0    45.48      89.64   0.507    0.867
+UGC - EAC == 0    1.525     69.849   0.022    1.000
+UPC - EAC == 0   53.237     86.790   0.613    0.812
+UPC - UGC == 0   51.712     86.213   0.600    0.820
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -984,9 +990,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    11.97      74.49   0.161    0.873
-UPC - EAC == 0    57.44      91.01   0.631    0.530
-UPC - UGC == 0    45.48      89.64   0.507    0.614
+UGC - EAC == 0    1.525     69.849   0.022    0.983
+UPC - EAC == 0   53.237     86.790   0.613    0.542
+UPC - UGC == 0   51.712     86.213   0.600    0.550
 (Adjusted p values reported -- none method)
 
 
@@ -998,10 +1004,10 @@ Analysis of Variance Table
 
 Response: lh_postcentral_volume
              Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 41283059 41283059 35.5858 9.383e-08 ***
-age.mri       1   484697   484697  0.4178    0.5202    
-groups        2  1628259   814129  0.7018    0.4992    
-Residuals    69 80046815  1160099                      
+ICV_demeaned  1 38977561 38977561 34.0565 1.369e-07 ***
+age.mri       1   362624   362624  0.3168    0.5752    
+groups        2  2713482  1356741  1.1854    0.3114    
+Residuals    73 83548304  1144497                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1016,9 +1022,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    73.78     283.18   0.261    0.963
-UPC - EAC == 0   399.99     345.97   1.156    0.481
-UPC - UGC == 0   326.21     340.74   0.957    0.604
+UGC - EAC == 0    203.9      272.9   0.747    0.735
+UPC - EAC == 0    520.3      339.1   1.534    0.279
+UPC - UGC == 0    316.4      336.8   0.939    0.615
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1033,9 +1039,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    73.78     283.18   0.261    0.795
-UPC - EAC == 0   399.99     345.97   1.156    0.252
-UPC - UGC == 0   326.21     340.74   0.957    0.342
+UGC - EAC == 0    203.9      272.9   0.747    0.457
+UPC - EAC == 0    520.3      339.1   1.534    0.129
+UPC - UGC == 0    316.4      336.8   0.939    0.351
 (Adjusted p values reported -- none method)
 
 
@@ -1046,11 +1052,11 @@ ROI:  lh_posteriorcingulate_volume
 Analysis of Variance Table
 
 Response: lh_posteriorcingulate_volume
-             Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 6194223 6194223 44.1997 5.737e-09 ***
-age.mri       1   10617   10617  0.0758     0.784    
-groups        2   77232   38616  0.2755     0.760    
-Residuals    69 9669785  140142                      
+             Df   Sum Sq Mean Sq F value   Pr(>F)    
+ICV_demeaned  1  6049356 6049356 43.8146 5.25e-09 ***
+age.mri       1     3675    3675  0.0266   0.8709    
+groups        2    66584   33292  0.2411   0.7864    
+Residuals    73 10078891  138067                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1065,9 +1071,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    73.03      98.42   0.742    0.738
-UPC - EAC == 0    40.78     120.25   0.339    0.938
-UPC - UGC == 0   -32.25     118.43  -0.272    0.960
+UGC - EAC == 0    64.27      94.78   0.678    0.776
+UPC - EAC == 0    16.70     117.77   0.142    0.989
+UPC - UGC == 0   -47.57     116.99  -0.407    0.912
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1082,9 +1088,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    73.03      98.42   0.742    0.461
-UPC - EAC == 0    40.78     120.25   0.339    0.736
-UPC - UGC == 0   -32.25     118.43  -0.272    0.786
+UGC - EAC == 0    64.27      94.78   0.678    0.500
+UPC - EAC == 0    16.70     117.77   0.142    0.888
+UPC - UGC == 0   -47.57     116.99  -0.407    0.685
 (Adjusted p values reported -- none method)
 
 
@@ -1096,10 +1102,10 @@ Analysis of Variance Table
 
 Response: lh_precentral_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  78374889 78374889 38.6760 3.351e-08 ***
-age.mri       1   3484079  3484079  1.7193    0.1941    
-groups        2    399087   199543  0.0985    0.9064    
-Residuals    69 139824944  2026448                      
+ICV_demeaned  1  89197468 89197468 42.5243 7.945e-09 ***
+age.mri       1   3201226  3201226  1.5262    0.2207    
+groups        2    635359   317679  0.1515    0.8597    
+Residuals    73 153122053  2097562                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1114,9 +1120,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   123.71     374.27   0.331    0.941
-UPC - EAC == 0   187.03     457.26   0.409    0.912
-UPC - UGC == 0    63.32     450.35   0.141    0.989
+UGC - EAC == 0   192.47     369.43   0.521    0.860
+UPC - EAC == 0   172.47     459.04   0.376    0.925
+UPC - UGC == 0   -19.99     455.98  -0.044    0.999
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1131,9 +1137,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   123.71     374.27   0.331    0.742
-UPC - EAC == 0   187.03     457.26   0.409    0.684
-UPC - UGC == 0    63.32     450.35   0.141    0.889
+UGC - EAC == 0   192.47     369.43   0.521    0.604
+UPC - EAC == 0   172.47     459.04   0.376    0.708
+UPC - UGC == 0   -19.99     455.98  -0.044    0.965
 (Adjusted p values reported -- none method)
 
 
@@ -1144,11 +1150,11 @@ ROI:  lh_precuneus_volume
 Analysis of Variance Table
 
 Response: lh_precuneus_volume
-             Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 83678258 83678258 97.5708 7.727e-15 ***
-age.mri       1 19552595 19552595 22.7988 9.748e-06 ***
-groups        2  1090499   545249  0.6358    0.5326    
-Residuals    69 59175492   857616                      
+             Df   Sum Sq  Mean Sq  F value    Pr(>F)    
+ICV_demeaned  1 82902264 82902264 102.0800 1.641e-15 ***
+age.mri       1 18640826 18640826  22.9530 8.487e-06 ***
+groups        2   991415   495707   0.6104    0.5459    
+Residuals    73 59285540   812131                       
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1163,9 +1169,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -221.26     243.48  -0.909    0.635
-UPC - EAC == 0    63.94     297.47   0.215    0.975
-UPC - UGC == 0   285.21     292.97   0.973    0.594
+UGC - EAC == 0  -220.18     229.87  -0.958    0.604
+UPC - EAC == 0    31.08     285.63   0.109    0.993
+UPC - UGC == 0   251.26     283.73   0.886    0.649
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1180,9 +1186,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -221.26     243.48  -0.909    0.367
-UPC - EAC == 0    63.94     297.47   0.215    0.830
-UPC - UGC == 0   285.21     292.97   0.973    0.334
+UGC - EAC == 0  -220.18     229.87  -0.958    0.341
+UPC - EAC == 0    31.08     285.63   0.109    0.914
+UPC - UGC == 0   251.26     283.73   0.886    0.379
 (Adjusted p values reported -- none method)
 
 
@@ -1193,11 +1199,11 @@ ROI:  lh_rostralanteriorcingulate_volume
 Analysis of Variance Table
 
 Response: lh_rostralanteriorcingulate_volume
-             Df   Sum Sq  Mean Sq F value   Pr(>F)    
-ICV_demeaned  1 10847379 10847379 53.8302 3.25e-10 ***
-age.mri       1   768113   768113  3.8118  0.05495 .  
-groups        2    86248    43124  0.2140  0.80788    
-Residuals    69 13904250   201511                     
+             Df   Sum Sq Mean Sq F value    Pr(>F)    
+ICV_demeaned  1  9719168 9719168 43.3156 6.159e-09 ***
+age.mri       1   565219  565219  2.5190    0.1168    
+groups        2    40697   20348  0.0907    0.9134    
+Residuals    73 16379778  224381                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1212,9 +1218,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    13.31     118.02   0.113    0.993
-UPC - EAC == 0   -77.05     144.19  -0.534    0.854
-UPC - UGC == 0   -90.36     142.01  -0.636    0.800
+UGC - EAC == 0    19.43     120.83   0.161    0.986
+UPC - EAC == 0   -44.07     150.13  -0.294    0.953
+UPC - UGC == 0   -63.50     149.14  -0.426    0.904
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1229,9 +1235,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    13.31     118.02   0.113    0.911
-UPC - EAC == 0   -77.05     144.19  -0.534    0.595
-UPC - UGC == 0   -90.36     142.01  -0.636    0.527
+UGC - EAC == 0    19.43     120.83   0.161    0.873
+UPC - EAC == 0   -44.07     150.13  -0.294    0.770
+UPC - UGC == 0   -63.50     149.14  -0.426    0.672
 (Adjusted p values reported -- none method)
 
 
@@ -1243,10 +1249,10 @@ Analysis of Variance Table
 
 Response: lh_rostralmiddlefrontal_volume
              Df    Sum Sq   Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 145606784 145606784 46.1922 3.104e-09 ***
-age.mri       1  16988894  16988894  5.3895   0.02322 *  
-groups        2   3538264   1769132  0.5612   0.57308    
-Residuals    69 217501435   3152195                      
+ICV_demeaned  1 140140503 140140503 47.4275 1.688e-09 ***
+age.mri       1  17006321  17006321  5.7554   0.01899 *  
+groups        2   2983280   1491640  0.5048   0.60571    
+Residuals    73 215703242   2954839                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1261,9 +1267,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    16.51     466.79   0.035    0.999
-UPC - EAC == 0   554.51     570.30   0.972    0.595
-UPC - UGC == 0   538.00     561.68   0.958    0.604
+UGC - EAC == 0   -19.34     438.47  -0.044    0.999
+UPC - EAC == 0   488.81     544.82   0.897    0.642
+UPC - UGC == 0   508.15     541.20   0.939    0.616
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1278,9 +1284,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    16.51     466.79   0.035    0.972
-UPC - EAC == 0   554.51     570.30   0.972    0.334
-UPC - UGC == 0   538.00     561.68   0.958    0.341
+UGC - EAC == 0   -19.34     438.47  -0.044    0.965
+UPC - EAC == 0   488.81     544.82   0.897    0.373
+UPC - UGC == 0   508.15     541.20   0.939    0.351
 (Adjusted p values reported -- none method)
 
 
@@ -1292,10 +1298,10 @@ Analysis of Variance Table
 
 Response: lh_superiorfrontal_volume
              Df    Sum Sq   Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 329908200 329908200 82.3295 2.193e-13 ***
-age.mri       1   7779524   7779524  1.9414    0.1680    
-groups        2   4012779   2006390  0.5007    0.6083    
-Residuals    69 276494718   4007170                      
+ICV_demeaned  1 322148066 322148066 79.8832 2.436e-13 ***
+age.mri       1   4919141   4919141  1.2198    0.2730    
+groups        2   2713533   1356766  0.3364    0.7154    
+Residuals    73 294389839   4032738                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1310,9 +1316,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    313.1      526.3   0.595    0.822
-UPC - EAC == 0    631.3      643.0   0.982    0.589
-UPC - UGC == 0    318.1      633.3   0.502    0.870
+UGC - EAC == 0    203.9      512.2   0.398    0.916
+UPC - EAC == 0    520.3      636.5   0.817    0.692
+UPC - UGC == 0    316.3      632.3   0.500    0.871
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1327,9 +1333,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    313.1      526.3   0.595    0.554
-UPC - EAC == 0    631.3      643.0   0.982    0.330
-UPC - UGC == 0    318.1      633.3   0.502    0.617
+UGC - EAC == 0    203.9      512.2   0.398    0.692
+UPC - EAC == 0    520.3      636.5   0.817    0.416
+UPC - UGC == 0    316.3      632.3   0.500    0.618
 (Adjusted p values reported -- none method)
 
 
@@ -1341,10 +1347,10 @@ Analysis of Variance Table
 
 Response: lh_superiorparietal_volume
              Df    Sum Sq   Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 103520287 103520287 66.5685 1.023e-11 ***
-age.mri       1   4661329   4661329  2.9975   0.08786 .  
-groups        2    262409    131204  0.0844   0.91919    
-Residuals    69 107301567   1555095                      
+ICV_demeaned  1 107471389 107471389 64.8920 1.107e-11 ***
+age.mri       1   5110055   5110055  3.0855   0.08319 .  
+groups        2    164719     82360  0.0497   0.95152    
+Residuals    73 120899500   1656158                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1359,9 +1365,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    33.09     327.87   0.101    0.994
-UPC - EAC == 0   161.47     400.56   0.403    0.914
-UPC - UGC == 0   128.38     394.51   0.325    0.943
+UGC - EAC == 0   -18.29     328.27  -0.056    0.998
+UPC - EAC == 0   106.11     407.89   0.260    0.963
+UPC - UGC == 0   124.40     405.17   0.307    0.949
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1376,9 +1382,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    33.09     327.87   0.101    0.920
-UPC - EAC == 0   161.47     400.56   0.403    0.688
-UPC - UGC == 0   128.38     394.51   0.325    0.746
+UGC - EAC == 0   -18.29     328.27  -0.056    0.956
+UPC - EAC == 0   106.11     407.89   0.260    0.795
+UPC - UGC == 0   124.40     405.17   0.307    0.760
 (Adjusted p values reported -- none method)
 
 
@@ -1390,10 +1396,10 @@ Analysis of Variance Table
 
 Response: lh_superiortemporal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  55963278 55963278 35.6332 9.234e-08 ***
-age.mri       1   8008034  8008034  5.0989   0.02711 *  
-groups        2    230266   115133  0.0733   0.92939    
-Residuals    69 108367153  1570538                      
+ICV_demeaned  1  45287624 45287624 31.2648 3.689e-07 ***
+age.mri       1   9856317  9856317  6.8044   0.01102 *  
+groups        2     75720    37860  0.0261   0.97421    
+Residuals    73 105741662  1448516                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1408,9 +1414,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   123.44     329.49   0.375    0.925
-UPC - EAC == 0    35.71     402.55   0.089    0.996
-UPC - UGC == 0   -87.73     396.46  -0.221    0.973
+UGC - EAC == 0    1.399    307.000   0.005    1.000
+UPC - EAC == 0  -78.793    381.461  -0.207    0.977
+UPC - UGC == 0  -80.193    378.924  -0.212    0.975
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1425,9 +1431,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   123.44     329.49   0.375    0.709
-UPC - EAC == 0    35.71     402.55   0.089    0.930
-UPC - UGC == 0   -87.73     396.46  -0.221    0.826
+UGC - EAC == 0    1.399    307.000   0.005    0.996
+UPC - EAC == 0  -78.793    381.461  -0.207    0.837
+UPC - UGC == 0  -80.193    378.924  -0.212    0.833
 (Adjusted p values reported -- none method)
 
 
@@ -1439,10 +1445,10 @@ Analysis of Variance Table
 
 Response: lh_supramarginal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  52687525 52687525 29.9321 6.739e-07 ***
-age.mri       1   1635074  1635074  0.9289    0.3385    
-groups        2   5257641  2628821  1.4934    0.2318    
-Residuals    69 121456299  1760236                      
+ICV_demeaned  1  37475221 37475221 20.7372 2.063e-05 ***
+age.mri       1   2116292  2116292  1.1711    0.2827    
+groups        2    374843   187421  0.1037    0.9016    
+Residuals    73 131921932  1807150                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1457,9 +1463,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   558.71     348.82   1.602    0.250
-UPC - EAC == 0   541.96     426.17   1.272    0.414
-UPC - UGC == 0   -16.75     419.73  -0.040    0.999
+UGC - EAC == 0   136.95     342.90   0.399    0.915
+UPC - EAC == 0   154.92     426.07   0.364    0.929
+UPC - UGC == 0    17.98     423.24   0.042    0.999
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1474,9 +1480,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   558.71     348.82   1.602    0.114
-UPC - EAC == 0   541.96     426.17   1.272    0.208
-UPC - UGC == 0   -16.75     419.73  -0.040    0.968
+UGC - EAC == 0   136.95     342.90   0.399    0.691
+UPC - EAC == 0   154.92     426.07   0.364    0.717
+UPC - UGC == 0    17.98     423.24   0.042    0.966
 (Adjusted p values reported -- none method)
 
 
@@ -1487,11 +1493,11 @@ ROI:  lh_frontalpole_volume
 Analysis of Variance Table
 
 Response: lh_frontalpole_volume
-             Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  238252  238252  8.3894  0.005052 ** 
-age.mri       1  667411  667411 23.5012 7.417e-06 ***
-groups        2    5599    2799  0.0986  0.906254    
-Residuals    69 1959535   28399                      
+             Df  Sum Sq Mean Sq F value   Pr(>F)    
+ICV_demeaned  1  259733  259733  8.4713 0.004781 ** 
+age.mri       1  635891  635891 20.7399 2.06e-05 ***
+groups        2    1573     786  0.0256 0.974685    
+Residuals    73 2238203   30660                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1506,9 +1512,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -15.701     44.307  -0.354    0.933
-UPC - EAC == 0  -21.293     54.131  -0.393    0.918
-UPC - UGC == 0   -5.592     53.313  -0.105    0.994
+UGC - EAC == 0   9.4644    44.6647   0.212    0.975
+UPC - EAC == 0   8.8767    55.4980   0.160    0.986
+UPC - UGC == 0  -0.5877    55.1289  -0.011    1.000
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1523,9 +1529,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -15.701     44.307  -0.354    0.724
-UPC - EAC == 0  -21.293     54.131  -0.393    0.695
-UPC - UGC == 0   -5.592     53.313  -0.105    0.917
+UGC - EAC == 0   9.4644    44.6647   0.212    0.833
+UPC - EAC == 0   8.8767    55.4980   0.160    0.873
+UPC - UGC == 0  -0.5877    55.1289  -0.011    0.992
 (Adjusted p values reported -- none method)
 
 
@@ -1536,58 +1542,11 @@ ROI:  lh_temporalpole_volume
 Analysis of Variance Table
 
 Response: lh_temporalpole_volume
-             Df   Sum Sq Mean Sq F value Pr(>F)
-ICV_demeaned  1   422163  422163  2.7043 0.1046
-age.mri       1   146021  146021  0.9354 0.3368
-groups        2   198338   99169  0.6353 0.5329
-Residuals    69 10771321  156106               
--------------------------
-Tukey Test for pairwise comparisons
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -71.86     103.88  -0.692    0.768
-UPC - EAC == 0  -139.64     126.91  -1.100    0.515
-UPC - UGC == 0   -67.77     124.99  -0.542    0.850
-(Adjusted p values reported -- single-step method)
-
--------------------------
-Pairwise comparisons (no correction)
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -71.86     103.88  -0.692    0.491
-UPC - EAC == 0  -139.64     126.91  -1.100    0.275
-UPC - UGC == 0   -67.77     124.99  -0.542    0.589
-(Adjusted p values reported -- none method)
-
-
-==========================
-
-ROI:  lh_transversetemporal_volume 
- 
-Analysis of Variance Table
-
-Response: lh_transversetemporal_volume
-             Df  Sum Sq Mean Sq F value   Pr(>F)    
-ICV_demeaned  1 1087575 1087575 25.4859 3.47e-06 ***
-age.mri       1   74915   74915  1.7555   0.1896    
-groups        2   70388   35194  0.8247   0.4426    
-Residuals    69 2944480   42674                     
+             Df   Sum Sq Mean Sq F value  Pr(>F)  
+ICV_demeaned  1   203706  203706  1.3331 0.25202  
+age.mri       1   332661  332661  2.1770 0.14438  
+groups        2   758257  379128  2.4811 0.09068 .
+Residuals    73 11154677  152804                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1602,9 +1561,60 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -25.11      54.31  -0.462    0.888
-UPC - EAC == 0   -84.99      66.35  -1.281    0.409
-UPC - UGC == 0   -59.88      65.35  -0.916    0.630
+UGC - EAC == 0  -174.28      99.71  -1.748    0.193
+UPC - EAC == 0  -244.94     123.90  -1.977    0.124
+UPC - UGC == 0   -70.66     123.07  -0.574    0.833
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0  -174.28      99.71  -1.748   0.0847 .
+UPC - EAC == 0  -244.94     123.90  -1.977   0.0518 .
+UPC - UGC == 0   -70.66     123.07  -0.574   0.5676  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+
+==========================
+
+ROI:  lh_transversetemporal_volume 
+ 
+Analysis of Variance Table
+
+Response: lh_transversetemporal_volume
+             Df  Sum Sq Mean Sq F value    Pr(>F)    
+ICV_demeaned  1 1029210 1029210 23.3090 7.374e-06 ***
+age.mri       1   88238   88238  1.9984    0.1617    
+groups        2   49413   24707  0.5595    0.5739    
+Residuals    73 3223316   44155                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0   -5.943     53.600  -0.111    0.993
+UPC - EAC == 0  -66.919     66.601  -1.005    0.574
+UPC - UGC == 0  -60.976     66.158  -0.922    0.626
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1619,9 +1629,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -25.11      54.31  -0.462    0.645
-UPC - EAC == 0   -84.99      66.35  -1.281    0.205
-UPC - UGC == 0   -59.88      65.35  -0.916    0.363
+UGC - EAC == 0   -5.943     53.600  -0.111    0.912
+UPC - EAC == 0  -66.919     66.601  -1.005    0.318
+UPC - UGC == 0  -60.976     66.158  -0.922    0.360
 (Adjusted p values reported -- none method)
 
 
@@ -1633,10 +1643,10 @@ Analysis of Variance Table
 
 Response: lh_insula_volume
              Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 25811552 25811552 57.5433 1.143e-10 ***
-age.mri       1   151306   151306  0.3373    0.5633    
-groups        2   853855   426927  0.9518    0.3911    
-Residuals    69 30950560   448559                      
+ICV_demeaned  1 24921323 24921323 52.7673 3.363e-10 ***
+age.mri       1   484694   484694  1.0263    0.3144    
+groups        2   309833   154916  0.3280    0.7214    
+Residuals    73 34476997   472288                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1651,9 +1661,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -193.22     176.09  -1.097    0.517
-UPC - EAC == 0  -263.58     215.13  -1.225    0.441
-UPC - UGC == 0   -70.36     211.88  -0.332    0.941
+UGC - EAC == 0  -106.30     175.30  -0.606    0.816
+UPC - EAC == 0  -160.88     217.82  -0.739    0.740
+UPC - UGC == 0   -54.57     216.37  -0.252    0.965
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1668,9 +1678,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -193.22     176.09  -1.097    0.276
-UPC - EAC == 0  -263.58     215.13  -1.225    0.225
-UPC - UGC == 0   -70.36     211.88  -0.332    0.741
+UGC - EAC == 0  -106.30     175.30  -0.606    0.546
+UPC - EAC == 0  -160.88     217.82  -0.739    0.463
+UPC - UGC == 0   -54.57     216.37  -0.252    0.802
 (Adjusted p values reported -- none method)
 
 
@@ -1682,10 +1692,10 @@ Analysis of Variance Table
 
 Response: rh_bankssts_volume
              Df   Sum Sq Mean Sq F value   Pr(>F)   
-ICV_demeaned  1  3128669 3128669 11.5126 0.001149 **
-age.mri       1   128179  128179  0.4717 0.494525   
-groups        2   212214  106107  0.3904 0.678243   
-Residuals    69 18751447  271760                    
+ICV_demeaned  1  2390197 2390197  8.9022 0.003872 **
+age.mri       1    61980   61980  0.2308 0.632338   
+groups        2    68782   34391  0.1281 0.879973   
+Residuals    73 19600155  268495                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1700,9 +1710,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   118.85     137.06   0.867    0.661
-UPC - EAC == 0    36.31     167.45   0.217    0.974
-UPC - UGC == 0   -82.54     164.92  -0.500    0.871
+UGC - EAC == 0    48.99     132.17   0.371    0.927
+UPC - EAC == 0   -26.62     164.23  -0.162    0.986
+UPC - UGC == 0   -75.61     163.14  -0.463    0.888
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1717,9 +1727,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   118.85     137.06   0.867    0.389
-UPC - EAC == 0    36.31     167.45   0.217    0.829
-UPC - UGC == 0   -82.54     164.92  -0.500    0.618
+UGC - EAC == 0    48.99     132.17   0.371    0.712
+UPC - EAC == 0   -26.62     164.23  -0.162    0.872
+UPC - UGC == 0   -75.61     163.14  -0.463    0.644
 (Adjusted p values reported -- none method)
 
 
@@ -1731,10 +1741,10 @@ Analysis of Variance Table
 
 Response: rh_caudalanteriorcingulate_volume
              Df   Sum Sq Mean Sq F value  Pr(>F)  
-ICV_demeaned  1  2012034 2012034  5.7473 0.01923 *
-age.mri       1   698333  698333  1.9948 0.16234  
-groups        2   482064  241032  0.6885 0.50574  
-Residuals    69 24155544  350080                  
+ICV_demeaned  1  1377952 1377952  4.0108 0.04892 *
+age.mri       1   327735  327735  0.9539 0.33194  
+groups        2   998272  499136  1.4528 0.24059  
+Residuals    73 25079744  343558                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1749,9 +1759,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -155.99     155.56  -1.003    0.576
-UPC - EAC == 0  -186.20     190.05  -0.980    0.590
-UPC - UGC == 0   -30.21     187.18  -0.161    0.986
+UGC - EAC == 0  -225.33     149.51  -1.507    0.292
+UPC - EAC == 0  -249.88     185.78  -1.345    0.373
+UPC - UGC == 0   -24.54     184.54  -0.133    0.990
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1766,9 +1776,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  -155.99     155.56  -1.003    0.319
-UPC - EAC == 0  -186.20     190.05  -0.980    0.331
-UPC - UGC == 0   -30.21     187.18  -0.161    0.872
+UGC - EAC == 0  -225.33     149.51  -1.507    0.136
+UPC - EAC == 0  -249.88     185.78  -1.345    0.183
+UPC - UGC == 0   -24.54     184.54  -0.133    0.895
 (Adjusted p values reported -- none method)
 
 
@@ -1780,10 +1790,10 @@ Analysis of Variance Table
 
 Response: rh_caudalmiddlefrontal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  28258770 28258770 19.2132 4.088e-05 ***
-age.mri       1    115775   115775  0.0787    0.7799    
-groups        2   4662139  2331070  1.5849    0.2123    
-Residuals    69 101485118  1470799                      
+ICV_demeaned  1  26207839 26207839 17.5053 7.883e-05 ***
+age.mri       1     57212    57212  0.0382    0.8456    
+groups        2   2810622  1405311  0.9387    0.3958    
+Residuals    73 109291060  1497138                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1798,9 +1808,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    452.8      318.9   1.420    0.334
-UPC - EAC == 0    614.7      389.6   1.578    0.260
-UPC - UGC == 0    161.9      383.7   0.422    0.906
+UGC - EAC == 0    326.1      312.1   1.045    0.549
+UPC - EAC == 0    479.8      387.8   1.237    0.433
+UPC - UGC == 0    153.8      385.2   0.399    0.915
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1815,9 +1825,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    452.8      318.9   1.420    0.160
-UPC - EAC == 0    614.7      389.6   1.578    0.119
-UPC - UGC == 0    161.9      383.7   0.422    0.674
+UGC - EAC == 0    326.1      312.1   1.045    0.300
+UPC - EAC == 0    479.8      387.8   1.237    0.220
+UPC - UGC == 0    153.8      385.2   0.399    0.691
 (Adjusted p values reported -- none method)
 
 
@@ -1829,10 +1839,10 @@ Analysis of Variance Table
 
 Response: rh_cuneus_volume
              Df   Sum Sq Mean Sq F value   Pr(>F)    
-ICV_demeaned  1  5422701 5422701 14.9764 0.000244 ***
-age.mri       1   270940  270940  0.7483 0.390019    
-groups        2   335032  167516  0.4626 0.631555    
-Residuals    69 24983750  362083                     
+ICV_demeaned  1  4887665 4887665 13.9843 0.000364 ***
+age.mri       1   286628  286628  0.8201 0.368135    
+groups        2   330311  165156  0.4725 0.625313    
+Residuals    73 25514220  349510                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1847,9 +1857,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    149.6      158.2   0.946    0.612
-UPC - EAC == 0     47.4      193.3   0.245    0.967
-UPC - UGC == 0   -102.2      190.4  -0.537    0.853
+UGC - EAC == 0   145.91     150.80   0.968    0.598
+UPC - EAC == 0    58.33     187.38   0.311    0.948
+UPC - UGC == 0   -87.58     186.13  -0.471    0.885
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1864,9 +1874,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    149.6      158.2   0.946    0.348
-UPC - EAC == 0     47.4      193.3   0.245    0.807
-UPC - UGC == 0   -102.2      190.4  -0.537    0.593
+UGC - EAC == 0   145.91     150.80   0.968    0.336
+UPC - EAC == 0    58.33     187.38   0.311    0.756
+UPC - UGC == 0   -87.58     186.13  -0.471    0.639
 (Adjusted p values reported -- none method)
 
 
@@ -1878,10 +1888,10 @@ Analysis of Variance Table
 
 Response: rh_entorhinal_volume
              Df   Sum Sq Mean Sq F value  Pr(>F)  
-ICV_demeaned  1   899292  899292  4.4759 0.03799 *
-age.mri       1    42065   42065  0.2094 0.64870  
-groups        2   384613  192307  0.9571 0.38903  
-Residuals    69 13863324  200918                  
+ICV_demeaned  1   645231  645231  3.5908 0.06206 .
+age.mri       1     4876    4876  0.0271 0.86961  
+groups        2   398302  199151  1.1083 0.33560  
+Residuals    73 13117198  179688                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1896,9 +1906,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    51.13     117.85   0.434    0.901
-UPC - EAC == 0  -144.29     143.98  -1.002    0.576
-UPC - UGC == 0  -195.42     141.80  -1.378    0.356
+UGC - EAC == 0    72.82     108.13   0.673    0.778
+UPC - EAC == 0  -125.50     134.35  -0.934    0.619
+UPC - UGC == 0  -198.33     133.46  -1.486    0.301
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1913,9 +1923,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    51.13     117.85   0.434    0.666
-UPC - EAC == 0  -144.29     143.98  -1.002    0.320
-UPC - UGC == 0  -195.42     141.80  -1.378    0.173
+UGC - EAC == 0    72.82     108.13   0.673    0.503
+UPC - EAC == 0  -125.50     134.35  -0.934    0.353
+UPC - UGC == 0  -198.33     133.46  -1.486    0.142
 (Adjusted p values reported -- none method)
 
 
@@ -1926,11 +1936,11 @@ ROI:  rh_fusiform_volume
 Analysis of Variance Table
 
 Response: rh_fusiform_volume
-             Df    Sum Sq  Mean Sq F value   Pr(>F)    
-ICV_demeaned  1  67968104 67968104 21.2163 1.82e-05 ***
-age.mri       1   6862099  6862099  2.1420   0.1479    
-groups        2   5173600  2586800  0.8075   0.4502    
-Residuals    69 221046839  3203577                     
+             Df    Sum Sq  Mean Sq F value    Pr(>F)    
+ICV_demeaned  1  48054101 48054101 14.9596 0.0002364 ***
+age.mri       1   4183431  4183431  1.3023 0.2575172    
+groups        2   2071036  1035518  0.3224 0.7254599    
+Residuals    73 234494700  3212256                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1945,9 +1955,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   518.59     470.58   1.102    0.514
-UPC - EAC == 0   599.80     574.92   1.043    0.551
-UPC - UGC == 0    81.21     566.24   0.143    0.989
+UGC - EAC == 0    265.5      457.2   0.581    0.830
+UPC - EAC == 0    422.6      568.1   0.744    0.737
+UPC - UGC == 0    157.1      564.3   0.278    0.958
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -1962,9 +1972,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   518.59     470.58   1.102    0.274
-UPC - EAC == 0   599.80     574.92   1.043    0.300
-UPC - UGC == 0    81.21     566.24   0.143    0.886
+UGC - EAC == 0    265.5      457.2   0.581    0.563
+UPC - EAC == 0    422.6      568.1   0.744    0.459
+UPC - UGC == 0    157.1      564.3   0.278    0.782
 (Adjusted p values reported -- none method)
 
 
@@ -1975,11 +1985,11 @@ ROI:  rh_inferiorparietal_volume
 Analysis of Variance Table
 
 Response: rh_inferiorparietal_volume
-             Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  88870118 88870118 13.5585 0.0004552 ***
-age.mri       1    385702   385702  0.0588 0.8090509    
-groups        2   3501132  1750566  0.2671 0.7664030    
-Residuals    69 452265474  6554572                      
+             Df    Sum Sq  Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  68967734 68967734 11.6200 0.001065 **
+age.mri       1    624285   624285  0.1052 0.746624   
+groups        2   1848010   924005  0.1557 0.856116   
+Residuals    73 433273297  5935251                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -1994,9 +2004,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    213.1      673.1   0.317    0.946
-UPC - EAC == 0    601.0      822.4   0.731    0.745
-UPC - UGC == 0    387.9      809.9   0.479    0.881
+UGC - EAC == 0    132.9      621.4   0.214    0.975
+UPC - EAC == 0    430.7      772.2   0.558    0.842
+UPC - UGC == 0    297.7      767.0   0.388    0.920
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2011,9 +2021,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    213.1      673.1   0.317    0.753
-UPC - EAC == 0    601.0      822.4   0.731    0.467
-UPC - UGC == 0    387.9      809.9   0.479    0.633
+UGC - EAC == 0    132.9      621.4   0.214    0.831
+UPC - EAC == 0    430.7      772.2   0.558    0.579
+UPC - UGC == 0    297.7      767.0   0.388    0.699
 (Adjusted p values reported -- none method)
 
 
@@ -2025,10 +2035,10 @@ Analysis of Variance Table
 
 Response: rh_inferiortemporal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  48815897 48815897 16.4983 0.0001269 ***
-age.mri       1    407597   407597  0.1378 0.7116601    
-groups        2  17745078  8872539  2.9986 0.0563925 .  
-Residuals    69 204160639  2958850                      
+ICV_demeaned  1  44351349 44351349 15.3126 0.0002025 ***
+age.mri       1    280788   280788  0.0969 0.7564156    
+groups        2   8636835  4318417  1.4910 0.2319305    
+Residuals    73 211436610  2896392                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2042,12 +2052,10 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
     list(j = as.name(x))), data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    844.8      452.3   1.868   0.1546  
-UPC - EAC == 0   1232.3      552.5   2.230   0.0726 .
-UPC - UGC == 0    387.5      544.2   0.712   0.7560  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0    508.8      434.1   1.172    0.471
+UPC - EAC == 0    883.3      539.4   1.638    0.235
+UPC - UGC == 0    374.5      535.8   0.699    0.763
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2061,12 +2069,10 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
     list(j = as.name(x))), data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    844.8      452.3   1.868    0.066 .
-UPC - EAC == 0   1232.3      552.5   2.230    0.029 *
-UPC - UGC == 0    387.5      544.2   0.712    0.479  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0    508.8      434.1   1.172    0.245
+UPC - EAC == 0    883.3      539.4   1.638    0.106
+UPC - UGC == 0    374.5      535.8   0.699    0.487
 (Adjusted p values reported -- none method)
 
 
@@ -2078,10 +2084,10 @@ Analysis of Variance Table
 
 Response: rh_isthmuscingulate_volume
              Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  4700539 4700539 16.7203 0.0001154 ***
-age.mri       1   124363  124363  0.4424 0.5081972    
-groups        2     5679    2839  0.0101 0.9899524    
-Residuals    69 19397819  281128                      
+ICV_demeaned  1  5153699 5153699 18.3284 5.572e-05 ***
+age.mri       1    16952   16952  0.0603    0.8067    
+groups        2    11878    5939  0.0211    0.9791    
+Residuals    73 20526559  281186                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2096,9 +2102,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -9.404    139.402  -0.067    0.997
-UPC - EAC == 0  -24.172    170.312  -0.142    0.989
-UPC - UGC == 0  -14.768    167.738  -0.088    0.996
+UGC - EAC == 0    14.34     135.26   0.106    0.994
+UPC - EAC == 0   -19.67     168.07  -0.117    0.992
+UPC - UGC == 0   -34.01     166.95  -0.204    0.977
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2113,9 +2119,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -9.404    139.402  -0.067    0.946
-UPC - EAC == 0  -24.172    170.312  -0.142    0.888
-UPC - UGC == 0  -14.768    167.738  -0.088    0.930
+UGC - EAC == 0    14.34     135.26   0.106    0.916
+UPC - EAC == 0   -19.67     168.07  -0.117    0.907
+UPC - UGC == 0   -34.01     166.95  -0.204    0.839
 (Adjusted p values reported -- none method)
 
 
@@ -2127,10 +2133,10 @@ Analysis of Variance Table
 
 Response: rh_lateraloccipital_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  64087397 64087397 17.2191 9.352e-05 ***
-age.mri       1    965792   965792  0.2595    0.6121    
-groups        2    793378   396689  0.1066    0.8990    
-Residuals    69 256809851  3721882                      
+ICV_demeaned  1  55465523 55465523 15.2400 0.0002091 ***
+age.mri       1    687433   687433  0.1889 0.6651302    
+groups        2   1141817   570908  0.1569 0.8551061    
+Residuals    73 265681190  3639468                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2145,9 +2151,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    159.5      507.2   0.315    0.947
-UPC - EAC == 0    272.7      619.7   0.440    0.898
-UPC - UGC == 0    113.2      610.3   0.185    0.981
+UGC - EAC == 0    170.3      486.6   0.350    0.934
+UPC - EAC == 0    328.0      604.7   0.542    0.850
+UPC - UGC == 0    157.8      600.6   0.263    0.962
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2162,9 +2168,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    159.5      507.2   0.315    0.754
-UPC - EAC == 0    272.7      619.7   0.440    0.661
-UPC - UGC == 0    113.2      610.3   0.185    0.853
+UGC - EAC == 0    170.3      486.6   0.350    0.727
+UPC - EAC == 0    328.0      604.7   0.542    0.589
+UPC - UGC == 0    157.8      600.6   0.263    0.794
 (Adjusted p values reported -- none method)
 
 
@@ -2176,10 +2182,10 @@ Analysis of Variance Table
 
 Response: rh_lateralorbitofrontal_volume
              Df    Sum Sq  Mean Sq F value  Pr(>F)   
-ICV_demeaned  1  15293220 15293220  9.2239 0.00337 **
-age.mri       1   1593090  1593090  0.9608 0.33040   
-groups        2    449443   224721  0.1355 0.87348   
-Residuals    69 114402150  1658002                   
+ICV_demeaned  1  12832039 12832039  7.9425 0.00621 **
+age.mri       1   2542126  2542126  1.5735 0.21370   
+groups        2     43863    21932  0.0136 0.98652   
+Residuals    73 117939763  1615613                   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2194,9 +2200,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   168.20     338.54   0.497    0.872
-UPC - EAC == 0   146.04     413.60   0.353    0.933
-UPC - UGC == 0   -22.16     407.35  -0.054    0.998
+UGC - EAC == 0   50.584    324.224   0.156    0.987
+UPC - EAC == 0   45.276    402.863   0.112    0.993
+UPC - UGC == 0   -5.309    400.184  -0.013    1.000
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2211,9 +2217,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   168.20     338.54   0.497    0.621
-UPC - EAC == 0   146.04     413.60   0.353    0.725
-UPC - UGC == 0   -22.16     407.35  -0.054    0.957
+UGC - EAC == 0   50.584    324.224   0.156    0.876
+UPC - EAC == 0   45.276    402.863   0.112    0.911
+UPC - UGC == 0   -5.309    400.184  -0.013    0.989
 (Adjusted p values reported -- none method)
 
 
@@ -2225,10 +2231,10 @@ Analysis of Variance Table
 
 Response: rh_lingual_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  23747445 23747445 16.0504 0.0001536 ***
-age.mri       1    356626   356626  0.2410 0.6250174    
-groups        2   1579898   789949  0.5339 0.5887114    
-Residuals    69 102089547  1479559                      
+ICV_demeaned  1  21557155 21557155 15.0876 0.0002235 ***
+age.mri       1    521890   521890  0.3653 0.5474702    
+groups        2   1612042   806021  0.5641 0.5713170    
+Residuals    73 104302112  1428796                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2243,9 +2249,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    208.0      319.8   0.650    0.792
-UPC - EAC == 0    392.3      390.7   1.004    0.575
-UPC - UGC == 0    184.3      384.8   0.479    0.881
+UGC - EAC == 0    195.5      304.9   0.641    0.797
+UPC - EAC == 0    392.3      378.9   1.035    0.555
+UPC - UGC == 0    196.8      376.3   0.523    0.859
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2260,9 +2266,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    208.0      319.8   0.650    0.518
-UPC - EAC == 0    392.3      390.7   1.004    0.319
-UPC - UGC == 0    184.3      384.8   0.479    0.634
+UGC - EAC == 0    195.5      304.9   0.641    0.523
+UPC - EAC == 0    392.3      378.9   1.035    0.304
+UPC - UGC == 0    196.8      376.3   0.523    0.603
 (Adjusted p values reported -- none method)
 
 
@@ -2273,11 +2279,11 @@ ROI:  rh_medialorbitofrontal_volume
 Analysis of Variance Table
 
 Response: rh_medialorbitofrontal_volume
-             Df   Sum Sq Mean Sq F value   Pr(>F)   
-ICV_demeaned  1  9245390 9245390 11.5833 0.001112 **
-age.mri       1  2695881 2695881  3.3776 0.070394 . 
-groups        2   441525  220763  0.2766 0.759204   
-Residuals    69 55073452  798166                    
+             Df   Sum Sq Mean Sq F value  Pr(>F)   
+ICV_demeaned  1  8952135 8952135 11.6112 0.00107 **
+age.mri       1  2475896 2475896  3.2113 0.07727 . 
+groups        2   665137  332568  0.4314 0.65127   
+Residuals    73 56282142  770988                   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2292,9 +2298,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   167.96     234.89   0.715    0.754
-UPC - EAC == 0    34.67     286.97   0.121    0.992
-UPC - UGC == 0  -133.29     282.64  -0.472    0.884
+UGC - EAC == 0   207.27     223.98   0.925    0.624
+UPC - EAC == 0    85.55     278.30   0.307    0.949
+UPC - UGC == 0  -121.72     276.45  -0.440    0.898
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2309,9 +2315,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   167.96     234.89   0.715    0.477
-UPC - EAC == 0    34.67     286.97   0.121    0.904
-UPC - UGC == 0  -133.29     282.64  -0.472    0.639
+UGC - EAC == 0   207.27     223.98   0.925    0.358
+UPC - EAC == 0    85.55     278.30   0.307    0.759
+UPC - UGC == 0  -121.72     276.45  -0.440    0.661
 (Adjusted p values reported -- none method)
 
 
@@ -2322,11 +2328,11 @@ ROI:  rh_middletemporal_volume
 Analysis of Variance Table
 
 Response: rh_middletemporal_volume
-             Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  64446502 64446502 14.8192 0.0002613 ***
-age.mri       1     58019    58019  0.0133 0.9083812    
-groups        2   8051027  4025513  0.9256 0.4011382    
-Residuals    69 300070896  4348854                      
+             Df    Sum Sq  Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  46383969 46383969 10.7873 0.001571 **
+age.mri       1    269217   269217  0.0626 0.803119   
+groups        2   2752299  1376150  0.3200 0.727130   
+Residuals    73 313889326  4299854                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2341,9 +2347,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    745.6      548.3    1.36    0.366
-UPC - EAC == 0    415.5      669.9    0.62    0.809
-UPC - UGC == 0   -330.2      659.7   -0.50    0.871
+UGC - EAC == 0    422.5      528.9   0.799    0.703
+UPC - EAC == 0    187.5      657.2   0.285    0.956
+UPC - UGC == 0   -234.9      652.9  -0.360    0.931
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2358,9 +2364,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    745.6      548.3    1.36    0.178
-UPC - EAC == 0    415.5      669.9    0.62    0.537
-UPC - UGC == 0   -330.2      659.7   -0.50    0.618
+UGC - EAC == 0    422.5      528.9   0.799    0.427
+UPC - EAC == 0    187.5      657.2   0.285    0.776
+UPC - UGC == 0   -234.9      652.9  -0.360    0.720
 (Adjusted p values reported -- none method)
 
 
@@ -2372,10 +2378,10 @@ Analysis of Variance Table
 
 Response: rh_parahippocampal_volume
              Df   Sum Sq Mean Sq F value   Pr(>F)   
-ICV_demeaned  1  1158342 1158342  7.2252 0.009003 **
-age.mri       1   436345  436345  2.7217 0.103537   
-groups        2   648207  324103  2.0216 0.140213   
-Residuals    69 11062054  160320                    
+ICV_demeaned  1  1167302 1167302  7.6290 0.007262 **
+age.mri       1   405979  405979  2.6533 0.107644   
+groups        2   382991  191496  1.2515 0.292132   
+Residuals    73 11169697  153010                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2390,9 +2396,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   150.46     105.27   1.429    0.330
-UPC - EAC == 0   243.04     128.61   1.890    0.148
-UPC - UGC == 0    92.58     126.67   0.731    0.745
+UGC - EAC == 0    98.95      99.78   0.992    0.582
+UPC - EAC == 0   189.84     123.98   1.531    0.280
+UPC - UGC == 0    90.89     123.15   0.738    0.740
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2406,12 +2412,10 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
     list(j = as.name(x))), data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   150.46     105.27   1.429    0.157  
-UPC - EAC == 0   243.04     128.61   1.890    0.063 .
-UPC - UGC == 0    92.58     126.67   0.731    0.467  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0    98.95      99.78   0.992    0.325
+UPC - EAC == 0   189.84     123.98   1.531    0.130
+UPC - UGC == 0    90.89     123.15   0.738    0.463
 (Adjusted p values reported -- none method)
 
 
@@ -2423,10 +2427,10 @@ Analysis of Variance Table
 
 Response: rh_paracentral_volume
              Df   Sum Sq Mean Sq F value   Pr(>F)   
-ICV_demeaned  1  4849205 4849205  9.6538 0.002743 **
-age.mri       1    43586   43586  0.0868 0.769207   
-groups        2   216383  108192  0.2154 0.806768   
-Residuals    69 34659334  502309                    
+ICV_demeaned  1  4651593 4651593  8.8273 0.004016 **
+age.mri       1     9842    9842  0.0187 0.891670   
+groups        2    24092   12046  0.0229 0.977407   
+Residuals    73 38467798  526956                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2441,9 +2445,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    97.38     186.34   0.523    0.860
-UPC - EAC == 0   132.59     227.66   0.582    0.829
-UPC - UGC == 0    35.21     224.22   0.157    0.986
+UGC - EAC == 0    9.746    185.167   0.053    0.998
+UPC - EAC == 0   48.449    230.079   0.211    0.976
+UPC - UGC == 0   38.703    228.548   0.169    0.984
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2458,9 +2462,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    97.38     186.34   0.523    0.603
-UPC - EAC == 0   132.59     227.66   0.582    0.562
-UPC - UGC == 0    35.21     224.22   0.157    0.876
+UGC - EAC == 0    9.746    185.167   0.053    0.958
+UPC - EAC == 0   48.449    230.079   0.211    0.834
+UPC - UGC == 0   38.703    228.548   0.169    0.866
 (Adjusted p values reported -- none method)
 
 
@@ -2471,11 +2475,11 @@ ROI:  rh_parsopercularis_volume
 Analysis of Variance Table
 
 Response: rh_parsopercularis_volume
-             Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  8270160 8270160 12.8205 0.0006333 ***
-age.mri       1   509474  509474  0.7898 0.3772514    
-groups        2  3240093 1620046  2.5114 0.0885486 .  
-Residuals    69 44510219  645076                      
+             Df   Sum Sq Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  6506891 6506891  9.9605 0.002324 **
+age.mri       1   599350  599350  0.9175 0.341304   
+groups        2  1550812  775406  1.1870 0.310966   
+Residuals    73 47688661  653269                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2490,9 +2494,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   435.67     211.16   2.063    0.104
-UPC - EAC == 0   431.73     257.99   1.673    0.221
-UPC - UGC == 0    -3.94     254.09  -0.016    1.000
+UGC - EAC == 0   286.55     206.17   1.390    0.349
+UPC - EAC == 0   301.53     256.17   1.177    0.468
+UPC - UGC == 0    14.98     254.47   0.059    0.998
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2506,12 +2510,10 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
     list(j = as.name(x))), data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   435.67     211.16   2.063   0.0429 *
-UPC - EAC == 0   431.73     257.99   1.673   0.0988 .
-UPC - UGC == 0    -3.94     254.09  -0.016   0.9877  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0   286.55     206.17   1.390    0.169
+UPC - EAC == 0   301.53     256.17   1.177    0.243
+UPC - UGC == 0    14.98     254.47   0.059    0.953
 (Adjusted p values reported -- none method)
 
 
@@ -2522,11 +2524,11 @@ ROI:  rh_parsorbitalis_volume
 Analysis of Variance Table
 
 Response: rh_parsorbitalis_volume
-             Df   Sum Sq Mean Sq F value  Pr(>F)  
-ICV_demeaned  1   641050  641050  2.3122 0.13293  
-age.mri       1  1765820 1765820  6.3692 0.01392 *
-groups        2    26763   13381  0.0483 0.95291  
-Residuals    69 19129910  277245                  
+             Df   Sum Sq Mean Sq F value   Pr(>F)   
+ICV_demeaned  1   835896  835896  3.1567 0.079782 . 
+age.mri       1  1905085 1905085  7.1944 0.009039 **
+groups        2    72255   36127  0.1364 0.872688   
+Residuals    73 19330497  264801                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2541,9 +2543,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    2.294    138.436   0.017    1.000
-UPC - EAC == 0   48.633    169.132   0.288    0.955
-UPC - UGC == 0   46.339    166.576   0.278    0.958
+UGC - EAC == 0    45.91     131.26   0.350    0.934
+UPC - EAC == 0    81.12     163.10   0.497    0.872
+UPC - UGC == 0    35.22     162.01   0.217    0.974
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2558,9 +2560,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    2.294    138.436   0.017    0.987
-UPC - EAC == 0   48.633    169.132   0.288    0.775
-UPC - UGC == 0   46.339    166.576   0.278    0.782
+UGC - EAC == 0    45.91     131.26   0.350    0.728
+UPC - EAC == 0    81.12     163.10   0.497    0.620
+UPC - UGC == 0    35.22     162.01   0.217    0.829
 (Adjusted p values reported -- none method)
 
 
@@ -2572,10 +2574,10 @@ Analysis of Variance Table
 
 Response: rh_parstriangularis_volume
              Df   Sum Sq Mean Sq F value  Pr(>F)  
-ICV_demeaned  1  3486916 3486916  5.1524 0.02634 *
-age.mri       1  1914880 1914880  2.8295 0.09707 .
-groups        2  1900281  950140  1.4040 0.25255  
-Residuals    69 46696577  676762                  
+ICV_demeaned  1  1492383 1492383  2.0465 0.15682  
+age.mri       1  4907547 4907547  6.7299 0.01145 *
+groups        2  1930571  965285  1.3237 0.27245  
+Residuals    73 53233059  729220                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2590,9 +2592,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    21.98     216.29   0.102    0.994
-UPC - EAC == 0   411.02     264.25   1.555    0.270
-UPC - UGC == 0   389.04     260.25   1.495    0.298
+UGC - EAC == 0   -170.5      217.8  -0.783    0.713
+UPC - EAC == 0    265.0      270.7   0.979    0.590
+UPC - UGC == 0    435.5      268.9   1.620    0.242
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2607,9 +2609,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    21.98     216.29   0.102    0.919
-UPC - EAC == 0   411.02     264.25   1.555    0.124
-UPC - UGC == 0   389.04     260.25   1.495    0.140
+UGC - EAC == 0   -170.5      217.8  -0.783    0.436
+UPC - EAC == 0    265.0      270.7   0.979    0.331
+UPC - UGC == 0    435.5      268.9   1.620    0.110
 (Adjusted p values reported -- none method)
 
 
@@ -2621,10 +2623,10 @@ Analysis of Variance Table
 
 Response: rh_pericalcarine_volume
              Df   Sum Sq Mean Sq F value  Pr(>F)  
-ICV_demeaned  1   753475  753475  4.2250 0.04362 *
-age.mri       1    32232   32232  0.1807 0.67207  
-groups        2   157092   78546  0.4404 0.64555  
-Residuals    69 12305269  178337                  
+ICV_demeaned  1   713542  713542  4.3079 0.04146 *
+age.mri       1    14875   14875  0.0898 0.76528  
+groups        2   159899   79949  0.4827 0.61908  
+Residuals    73 12091360  165635                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2639,9 +2641,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   104.16     111.03   0.938    0.617
-UPC - EAC == 0    57.69     135.65   0.425    0.905
-UPC - UGC == 0   -46.47     133.60  -0.348    0.935
+UGC - EAC == 0   101.98     103.81   0.982    0.588
+UPC - EAC == 0    54.14     128.99   0.420    0.907
+UPC - UGC == 0   -47.85     128.13  -0.373    0.926
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2656,9 +2658,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   104.16     111.03   0.938    0.351
-UPC - EAC == 0    57.69     135.65   0.425    0.672
-UPC - UGC == 0   -46.47     133.60  -0.348    0.729
+UGC - EAC == 0   101.98     103.81   0.982    0.329
+UPC - EAC == 0    54.14     128.99   0.420    0.676
+UPC - UGC == 0   -47.85     128.13  -0.373    0.710
 (Adjusted p values reported -- none method)
 
 
@@ -2669,11 +2671,11 @@ ROI:  rh_postcentral_volume
 Analysis of Variance Table
 
 Response: rh_postcentral_volume
-             Df    Sum Sq  Mean Sq F value   Pr(>F)    
-ICV_demeaned  1  38217294 38217294 17.3183 8.97e-05 ***
-age.mri       1   1468930  1468930  0.6657  0.41738    
-groups        2  11369479  5684740  2.5761  0.08337 .  
-Residuals    69 152266284  2206758                     
+             Df    Sum Sq  Mean Sq F value    Pr(>F)    
+ICV_demeaned  1  36154475 36154475 16.3784 0.0001276 ***
+age.mri       1   1185264  1185264  0.5369 0.4660511    
+groups        2  10325154  5162577  2.3387 0.1036400    
+Residuals    73 161144051  2207453                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2688,9 +2690,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    877.7      390.6   2.247   0.0697 .
-UPC - EAC == 0    595.9      477.2   1.249   0.4270  
-UPC - UGC == 0   -281.9      470.0  -0.600   0.8197  
+UGC - EAC == 0    815.1      379.0   2.151   0.0859 .
+UPC - EAC == 0    514.0      470.9   1.092   0.5202  
+UPC - UGC == 0   -301.0      467.8  -0.644   0.7953  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -2707,9 +2709,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    877.7      390.6   2.247   0.0278 *
-UPC - EAC == 0    595.9      477.2   1.249   0.2160  
-UPC - UGC == 0   -281.9      470.0  -0.600   0.5506  
+UGC - EAC == 0    815.1      379.0   2.151   0.0348 *
+UPC - EAC == 0    514.0      470.9   1.092   0.2786  
+UPC - UGC == 0   -301.0      467.8  -0.644   0.5219  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -2722,11 +2724,11 @@ ROI:  rh_posteriorcingulate_volume
 Analysis of Variance Table
 
 Response: rh_posteriorcingulate_volume
-             Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  4523300 4523300 12.7969 0.0006401 ***
-age.mri       1   256465  256465  0.7256 0.3972713    
-groups        2   484562  242281  0.6854 0.5072667    
-Residuals    69 24389349  353469                      
+             Df   Sum Sq Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  3641500 3641500 10.5969 0.001719 **
+age.mri       1   131162  131162  0.3817 0.538625   
+groups        2   216391  108195  0.3149 0.730883   
+Residuals    73 25085637  343639                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2741,9 +2743,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   182.95     156.31   1.170    0.473
-UPC - EAC == 0   100.94     190.97   0.529    0.857
-UPC - UGC == 0   -82.01     188.09  -0.436    0.900
+UGC - EAC == 0   118.35     149.53   0.791    0.708
+UPC - EAC == 0    50.72     185.80   0.273    0.959
+UPC - UGC == 0   -67.63     184.56  -0.366    0.928
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2758,9 +2760,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   182.95     156.31   1.170    0.246
-UPC - EAC == 0   100.94     190.97   0.529    0.599
-UPC - UGC == 0   -82.01     188.09  -0.436    0.664
+UGC - EAC == 0   118.35     149.53   0.791    0.431
+UPC - EAC == 0    50.72     185.80   0.273    0.786
+UPC - UGC == 0   -67.63     184.56  -0.366    0.715
 (Adjusted p values reported -- none method)
 
 
@@ -2772,10 +2774,10 @@ Analysis of Variance Table
 
 Response: rh_precentral_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  54650691 54650691 12.9907 0.0005867 ***
-age.mri       1   9625216  9625216  2.2879 0.1349492    
-groups        2  10211221  5105611  1.2136 0.3033818    
-Residuals    69 290277556  4206921                      
+ICV_demeaned  1  51781284 51781284 12.7133 0.0006451 ***
+age.mri       1   7738324  7738324  1.8999 0.1722983    
+groups        2   7127191  3563596  0.8749 0.4212155    
+Residuals    73 297328618  4072995                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2790,9 +2792,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    655.8      539.3   1.216    0.446
-UPC - EAC == 0    922.5      658.8   1.400    0.345
-UPC - UGC == 0    266.7      648.9   0.411    0.911
+UGC - EAC == 0    511.8      514.8   0.994    0.581
+UPC - EAC == 0    770.1      639.7   1.204    0.452
+UPC - UGC == 0    258.3      635.4   0.406    0.912
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2807,9 +2809,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    655.8      539.3   1.216    0.228
-UPC - EAC == 0    922.5      658.8   1.400    0.166
-UPC - UGC == 0    266.7      648.9   0.411    0.682
+UGC - EAC == 0    511.8      514.8   0.994    0.323
+UPC - EAC == 0    770.1      639.7   1.204    0.233
+UPC - UGC == 0    258.3      635.4   0.406    0.686
 (Adjusted p values reported -- none method)
 
 
@@ -2821,10 +2823,10 @@ Analysis of Variance Table
 
 Response: rh_precuneus_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  82161043 82161043 29.7155 7.285e-07 ***
-age.mri       1   4939491  4939491  1.7865    0.1857    
-groups        2   2901365  1450683  0.5247    0.5941    
-Residuals    69 190779400  2764919                      
+ICV_demeaned  1  84825982 84825982 31.0644 3.966e-07 ***
+age.mri       1   5169274  5169274  1.8931    0.1731    
+groups        2   1943736   971868  0.3559    0.7017    
+Residuals    73 199337529  2730651                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2839,9 +2841,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    268.0      437.2   0.613    0.813
-UPC - EAC == 0    536.3      534.1   1.004    0.575
-UPC - UGC == 0    268.3      526.0   0.510    0.866
+UGC - EAC == 0    218.4      421.5   0.518    0.862
+UPC - EAC == 0    429.4      523.7   0.820    0.690
+UPC - UGC == 0    211.1      520.3   0.406    0.913
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2856,9 +2858,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    268.0      437.2   0.613    0.542
-UPC - EAC == 0    536.3      534.1   1.004    0.319
-UPC - UGC == 0    268.3      526.0   0.510    0.612
+UGC - EAC == 0    218.4      421.5   0.518    0.606
+UPC - EAC == 0    429.4      523.7   0.820    0.415
+UPC - UGC == 0    211.1      520.3   0.406    0.686
 (Adjusted p values reported -- none method)
 
 
@@ -2869,11 +2871,11 @@ ROI:  rh_rostralanteriorcingulate_volume
 Analysis of Variance Table
 
 Response: rh_rostralanteriorcingulate_volume
-             Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  3646059 3646059 13.6577 0.0004356 ***
-age.mri       1   923389  923389  3.4589 0.0671748 .  
-groups        2    23115   11558  0.0433 0.9576559    
-Residuals    69 18420184  266959                      
+             Df   Sum Sq Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  3043887 3043887 11.5179 0.001117 **
+age.mri       1   492575  492575  1.8639 0.176371   
+groups        2   146883   73442  0.2779 0.758172   
+Residuals    73 19292117  264276                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2888,9 +2890,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    21.70     135.84   0.160    0.986
-UPC - EAC == 0   -25.74     165.96  -0.155    0.987
-UPC - UGC == 0   -47.44     163.46  -0.290    0.954
+UGC - EAC == 0   -71.76     131.13  -0.547    0.847
+UPC - EAC == 0  -111.83     162.94  -0.686    0.771
+UPC - UGC == 0   -40.08     161.85  -0.248    0.967
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2905,9 +2907,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    21.70     135.84   0.160    0.874
-UPC - EAC == 0   -25.74     165.96  -0.155    0.877
-UPC - UGC == 0   -47.44     163.46  -0.290    0.773
+UGC - EAC == 0   -71.76     131.13  -0.547    0.586
+UPC - EAC == 0  -111.83     162.94  -0.686    0.495
+UPC - UGC == 0   -40.08     161.85  -0.248    0.805
 (Adjusted p values reported -- none method)
 
 
@@ -2919,10 +2921,10 @@ Analysis of Variance Table
 
 Response: rh_rostralmiddlefrontal_volume
              Df    Sum Sq   Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 116427224 116427224 14.0071 0.0003732 ***
-age.mri       1   5621775   5621775  0.6763 0.4136818    
-groups        2   1260348    630174  0.0758 0.9270650    
-Residuals    69 573528973   8312014                      
+ICV_demeaned  1 129644004 129644004 16.1204 0.0001426 ***
+age.mri       1   2960037   2960037  0.3681 0.5459445    
+groups        2   6121518   3060759  0.3806 0.6848085    
+Residuals    73 587081650   8042214                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2937,9 +2939,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    159.6      758.0   0.211    0.976
-UPC - EAC == 0    357.6      926.1   0.386    0.921
-UPC - UGC == 0    198.0      912.1   0.217    0.974
+UGC - EAC == 0    514.8      723.4   0.712    0.756
+UPC - EAC == 0    676.3      898.8   0.752    0.732
+UPC - UGC == 0    161.5      892.9   0.181    0.982
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -2954,9 +2956,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    159.6      758.0   0.211    0.834
-UPC - EAC == 0    357.6      926.1   0.386    0.701
-UPC - UGC == 0    198.0      912.1   0.217    0.829
+UGC - EAC == 0    514.8      723.4   0.712    0.479
+UPC - EAC == 0    676.3      898.8   0.752    0.454
+UPC - UGC == 0    161.5      892.9   0.181    0.857
 (Adjusted p values reported -- none method)
 
 
@@ -2968,10 +2970,10 @@ Analysis of Variance Table
 
 Response: rh_superiorfrontal_volume
              Df    Sum Sq   Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 181676553 181676553 12.8867 0.0006147 ***
-age.mri       1    749081    749081  0.0531 0.8183791    
-groups        2  54218101  27109050  1.9229 0.1539346    
-Residuals    69 972760183  14097974                      
+ICV_demeaned  1 213304256 213304256 15.7311 0.0001688 ***
+age.mri       1      2979      2979  0.0002 0.9882150    
+groups        2  65192449  32596224  2.4040 0.0974795 .  
+Residuals    73 989833195  13559359                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -2986,9 +2988,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   1241.9      987.2   1.258    0.422
-UPC - EAC == 0   2288.9     1206.1   1.898    0.146
-UPC - UGC == 0   1047.0     1187.8   0.881    0.652
+UGC - EAC == 0   1422.2      939.3   1.514    0.288
+UPC - EAC == 0   2413.4     1167.1   2.068    0.103
+UPC - UGC == 0    991.2     1159.3   0.855    0.668
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -3003,9 +3005,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   1241.9      987.2   1.258   0.2126  
-UPC - EAC == 0   2288.9     1206.1   1.898   0.0619 .
-UPC - UGC == 0   1047.0     1187.8   0.881   0.3812  
+UGC - EAC == 0   1422.2      939.3   1.514   0.1343  
+UPC - EAC == 0   2413.4     1167.1   2.068   0.0422 *
+UPC - UGC == 0    991.2     1159.3   0.855   0.3954  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -3019,10 +3021,10 @@ Analysis of Variance Table
 
 Response: rh_superiorparietal_volume
              Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  71147783 71147783 15.9218 0.0001623 ***
-age.mri       1    127123   127123  0.0284 0.8665530    
-groups        2  11630072  5815036  1.3013 0.2787684    
-Residuals    69 308332051  4468580                      
+ICV_demeaned  1  71047213 71047213 16.5938 0.0001163 ***
+age.mri       1    220310   220310  0.0515 0.8211834    
+groups        2   9715911  4857955  1.1346 0.3271459    
+Residuals    73 312552673  4281543                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -3037,9 +3039,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    415.9      555.8   0.748    0.734
-UPC - EAC == 0   1094.5      679.0   1.612    0.246
-UPC - UGC == 0    678.7      668.8   1.015    0.568
+UGC - EAC == 0    344.5      527.8   0.653    0.790
+UPC - EAC == 0    987.6      655.8   1.506    0.292
+UPC - UGC == 0    643.1      651.5   0.987    0.585
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -3054,9 +3056,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    415.9      555.8   0.748    0.457
-UPC - EAC == 0   1094.5      679.0   1.612    0.112
-UPC - UGC == 0    678.7      668.8   1.015    0.314
+UGC - EAC == 0    344.5      527.8   0.653    0.516
+UPC - EAC == 0    987.6      655.8   1.506    0.136
+UPC - UGC == 0    643.1      651.5   0.987    0.327
 (Adjusted p values reported -- none method)
 
 
@@ -3067,11 +3069,11 @@ ROI:  rh_superiortemporal_volume
 Analysis of Variance Table
 
 Response: rh_superiortemporal_volume
-             Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  51807265 51807265 13.4942 0.0004685 ***
-age.mri       1   3291826  3291826  0.8574 0.3576896    
-groups        2  10343720  5171860  1.3471 0.2667420    
-Residuals    69 264906935  3839231                      
+             Df    Sum Sq  Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  39186408 39186408 10.5419 0.001764 **
+age.mri       1   6068030  6068030  1.6324 0.205417   
+groups        2   5785881  2892941  0.7783 0.462978   
+Residuals    73 271355914  3717204                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -3086,9 +3088,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    576.2      515.2   1.119    0.504
-UPC - EAC == 0    984.5      629.4   1.564    0.266
-UPC - UGC == 0    408.3      619.9   0.659    0.787
+UGC - EAC == 0    297.1      491.8   0.604    0.817
+UPC - EAC == 0    759.8      611.1   1.243    0.430
+UPC - UGC == 0    462.7      607.0   0.762    0.726
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -3103,9 +3105,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    576.2      515.2   1.119    0.267
-UPC - EAC == 0    984.5      629.4   1.564    0.122
-UPC - UGC == 0    408.3      619.9   0.659    0.512
+UGC - EAC == 0    297.1      491.8   0.604    0.548
+UPC - EAC == 0    759.8      611.1   1.243    0.218
+UPC - UGC == 0    462.7      607.0   0.762    0.448
 (Adjusted p values reported -- none method)
 
 
@@ -3116,11 +3118,11 @@ ROI:  rh_supramarginal_volume
 Analysis of Variance Table
 
 Response: rh_supramarginal_volume
-             Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  42815378 42815378 12.3166 0.0007953 ***
-age.mri       1   6144527  6144527  1.7676 0.1880605    
-groups        2  10304884  5152442  1.4822 0.2342805    
-Residuals    69 239860035  3476232                      
+             Df    Sum Sq  Mean Sq F value  Pr(>F)   
+ICV_demeaned  1  27576965 27576965  7.7663 0.00678 **
+age.mri       1   7796800  7796800  2.1958 0.14269   
+groups        2   5236814  2618407  0.7374 0.48188   
+Residuals    73 259211550  3550843                   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -3135,9 +3137,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    461.7      490.2   0.942    0.614
-UPC - EAC == 0   1021.5      598.9   1.706    0.209
-UPC - UGC == 0    559.8      589.8   0.949    0.610
+UGC - EAC == 0    44.72     480.66   0.093    0.995
+UPC - EAC == 0   682.21     597.25   1.142    0.489
+UPC - UGC == 0   637.49     593.28   1.075    0.531
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -3151,12 +3153,10 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
     list(j = as.name(x))), data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    461.7      490.2   0.942   0.3496  
-UPC - EAC == 0   1021.5      598.9   1.706   0.0926 .
-UPC - UGC == 0    559.8      589.8   0.949   0.3459  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+               Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0    44.72     480.66   0.093    0.926
+UPC - EAC == 0   682.21     597.25   1.142    0.257
+UPC - UGC == 0   637.49     593.28   1.075    0.286
 (Adjusted p values reported -- none method)
 
 
@@ -3168,10 +3168,10 @@ Analysis of Variance Table
 
 Response: rh_frontalpole_volume
              Df  Sum Sq Mean Sq F value   Pr(>F)   
-ICV_demeaned  1  360623  360623  4.4487 0.038559 * 
-age.mri       1  658598  658598  8.1246 0.005754 **
-groups        2    4388    2194  0.0271 0.973307   
-Residuals    69 5593303   81062                    
+ICV_demeaned  1  362201  362201  4.6821 0.033752 * 
+age.mri       1  823744  823744 10.6483 0.001677 **
+groups        2    8310    4155  0.0537 0.947745   
+Residuals    73 5647237   77359                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -3186,9 +3186,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  16.2646    74.8560   0.217    0.974
-UPC - EAC == 0  15.3749    91.4540   0.168    0.984
-UPC - UGC == 0  -0.8897    90.0721  -0.010    1.000
+UGC - EAC == 0    22.44      70.95   0.316    0.946
+UPC - EAC == 0    18.35      88.16   0.208    0.976
+UPC - UGC == 0    -4.09      87.57  -0.047    0.999
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -3203,9 +3203,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0  16.2646    74.8560   0.217    0.829
-UPC - EAC == 0  15.3749    91.4540   0.168    0.867
-UPC - UGC == 0  -0.8897    90.0721  -0.010    0.992
+UGC - EAC == 0    22.44      70.95   0.316    0.753
+UPC - EAC == 0    18.35      88.16   0.208    0.836
+UPC - UGC == 0    -4.09      87.57  -0.047    0.963
 (Adjusted p values reported -- none method)
 
 
@@ -3217,10 +3217,10 @@ Analysis of Variance Table
 
 Response: rh_temporalpole_volume
              Df   Sum Sq Mean Sq F value  Pr(>F)  
-ICV_demeaned  1   111809  111809  0.5035 0.48035  
-age.mri       1   623066  623066  2.8059 0.09845 .
-groups        2   132920   66460  0.2993 0.74230  
-Residuals    69 15321900  222057                  
+ICV_demeaned  1    68361   68361  0.2960 0.58808  
+age.mri       1   736670  736670  3.1894 0.07827 .
+groups        2   508048  254024  1.0998 0.33839  
+Residuals    73 16861123  230974                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -3235,9 +3235,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -76.92     123.89  -0.621    0.808
-UPC - EAC == 0  -103.35     151.36  -0.683    0.773
-UPC - UGC == 0   -26.42     149.08  -0.177    0.983
+UGC - EAC == 0  -154.84     122.59  -1.263    0.418
+UPC - EAC == 0  -186.98     152.32  -1.227    0.439
+UPC - UGC == 0   -32.14     151.31  -0.212    0.975
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -3252,9 +3252,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0   -76.92     123.89  -0.621    0.537
-UPC - EAC == 0  -103.35     151.36  -0.683    0.497
-UPC - UGC == 0   -26.42     149.08  -0.177    0.860
+UGC - EAC == 0  -154.84     122.59  -1.263    0.211
+UPC - EAC == 0  -186.98     152.32  -1.227    0.224
+UPC - UGC == 0   -32.14     151.31  -0.212    0.832
 (Adjusted p values reported -- none method)
 
 
@@ -3265,11 +3265,11 @@ ROI:  rh_transversetemporal_volume
 Analysis of Variance Table
 
 Response: rh_transversetemporal_volume
-             Df  Sum Sq Mean Sq F value  Pr(>F)  
-ICV_demeaned  1  239485  239485  6.9239 0.01048 *
-age.mri       1   11418   11418  0.3301 0.56746  
-groups        2  272229  136115  3.9353 0.02408 *
-Residuals    69 2386590   34588                  
+             Df  Sum Sq Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  274948  274948  8.1260 0.005669 **
+age.mri       1    3689    3689  0.1090 0.742194   
+groups        2  250011  125005  3.6945 0.029622 * 
+Residuals    73 2469996   33836                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -3284,9 +3284,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   105.28      48.90   2.153   0.0859 .
-UPC - EAC == 0   152.12      59.74   2.546   0.0344 *
-UPC - UGC == 0    46.84      58.84   0.796   0.7052  
+UGC - EAC == 0   101.63      46.92   2.166   0.0831 .
+UPC - EAC == 0   139.16      58.30   2.387   0.0501 .
+UPC - UGC == 0    37.53      57.91   0.648   0.7928  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -3303,9 +3303,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   105.28      48.90   2.153   0.0348 *
-UPC - EAC == 0   152.12      59.74   2.546   0.0131 *
-UPC - UGC == 0    46.84      58.84   0.796   0.4287  
+UGC - EAC == 0   101.63      46.92   2.166   0.0336 *
+UPC - EAC == 0   139.16      58.30   2.387   0.0196 *
+UPC - UGC == 0    37.53      57.91   0.648   0.5190  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -3319,10 +3319,10 @@ Analysis of Variance Table
 
 Response: rh_insula_volume
              Df   Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 24527972 24527972 18.5569 5.355e-05 ***
-age.mri       1   113762   113762  0.0861    0.7701    
-groups        2   550537   275268  0.2083    0.8125    
-Residuals    69 91202340  1321773                      
+ICV_demeaned  1 21519586 21519586 16.6861 0.0001118 ***
+age.mri       1   443903   443903  0.3442 0.5592257    
+groups        2   442930   221465  0.1717 0.8425523    
+Residuals    73 94145934  1289670                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -3337,9 +3337,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    39.57     302.27   0.131    0.991
-UPC - EAC == 0   231.64     369.29   0.627    0.805
-UPC - UGC == 0   192.07     363.71   0.528    0.857
+UGC - EAC == 0    3.656    289.678   0.013    1.000
+UPC - EAC == 0  194.155    359.938   0.539    0.851
+UPC - UGC == 0  190.499    357.545   0.533    0.855
 (Adjusted p values reported -- single-step method)
 
 -------------------------
@@ -3354,9 +3354,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)
-UGC - EAC == 0    39.57     302.27   0.131    0.896
-UPC - EAC == 0   231.64     369.29   0.627    0.533
-UPC - UGC == 0   192.07     363.71   0.528    0.599
+UGC - EAC == 0    3.656    289.678   0.013    0.990
+UPC - EAC == 0  194.155    359.938   0.539    0.591
+UPC - UGC == 0  190.499    357.545   0.533    0.596
 (Adjusted p values reported -- none method)
 
 
