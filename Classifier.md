@@ -59,8 +59,6 @@ missForest <- missForest(data_to_impute[,-c(1,2)], maxiter = 20)
 ##   missForest iteration 3 in progress...done!
 ##   missForest iteration 4 in progress...done!
 ##   missForest iteration 5 in progress...done!
-##   missForest iteration 6 in progress...done!
-##   missForest iteration 7 in progress...done!
 ```
 
 ```r
@@ -110,15 +108,15 @@ for (i in 2:length(comp)){
 ## 
 ## -----------------
 ##  towre.w.ipm 
-## Omnibus p-val:  1.332268e-15 
+## Omnibus p-val:  1.554312e-15 
 ## 
-## Skewness p-val:  0.001073266 
+## Skewness p-val:  0.00133538 
 ## 
 ## -----------------
 ##  towre.nw.ipm 
-## Omnibus p-val:  1.678324e-12 
+## Omnibus p-val:  2.935319e-12 
 ## 
-## Skewness p-val:  1.571518e-08
+## Skewness p-val:  3.091677e-08
 ```
 
 They're all significantly non-normal, so we will center, scale, and transform them.
@@ -137,10 +135,10 @@ for (name in vars_tf){
 ```
 
 ```
-## wj3.wid.raw :  4.117933 
-## wj3.watt.raw :  4.615495 
-## towre.w.ipm :  1.342197 
-## towre.nw.ipm :  1.39149
+## wj3.wid.raw :  4.07804 
+## wj3.watt.raw :  4.55837 
+## towre.w.ipm :  1.337575 
+## towre.nw.ipm :  1.383604
 ```
 
 ```r
@@ -166,27 +164,27 @@ for (i in 1:length(tf_data)){
 ## 
 ## -----------------
 ##  wj3.wid.raw 
-## Omnibus p-val:  6.206147e-14 
+## Omnibus p-val:  2.667422e-12 
 ## 
-## Skewness p-val:  0.286392 
+## Skewness p-val:  0.3158044 
 ## 
 ## -----------------
 ##  wj3.watt.raw 
 ## Omnibus p-val:  0 
 ## 
-## Skewness p-val:  2.878285e-05 
+## Skewness p-val:  5.361025e-05 
 ## 
 ## -----------------
 ##  towre.w.ipm 
-## Omnibus p-val:  9.346498e-08 
+## Omnibus p-val:  7.833206e-08 
 ## 
-## Skewness p-val:  0.1363591 
+## Skewness p-val:  0.1321468 
 ## 
 ## -----------------
 ##  towre.nw.ipm 
-## Omnibus p-val:  0.0004206878 
+## Omnibus p-val:  0.000345929 
 ## 
-## Skewness p-val:  0.7496716
+## Skewness p-val:  0.7210155
 ```
 
 Overall, the skewness has become more normal for all of our measures. Now we will combine the four measures into a single composite decoding score.
@@ -239,15 +237,15 @@ for (measure in normality_test){
 ## 
 ## -----------------
 ##  decode_composite 
-## Omnibus p-val:  0.006051503 
+## Omnibus p-val:  0.009005055 
 ## 
-## Skewness p-val:  0.003637204 
+## Skewness p-val:  0.004428766 
 ## 
 ## -----------------
 ##  wj3.rcomp.raw 
-## Omnibus p-val:  0.0003425483 
+## Omnibus p-val:  0.0003513845 
 ## 
-## Skewness p-val:  7.297563e-05 
+## Skewness p-val:  7.968979e-05 
 ## 
 ## -----------------
 ##  ktea2.raw 
@@ -270,11 +268,11 @@ for (name in to_transform){
 ```
 
 ```
-## wasi.matr.raw  :  2.198714 
-## ppvt.raw  :  4.98163 
-## decode_composite  :  1.141724 
-## wj3.rcomp.raw  :  1.929314 
-## ktea2.raw  :  3.190855
+## wasi.matr.raw  :  2.201685 
+## ppvt.raw  :  4.966291 
+## decode_composite  :  1.136464 
+## wj3.rcomp.raw  :  1.92116 
+## ktea2.raw  :  3.218034
 ```
 
 ```r
@@ -297,33 +295,33 @@ for (measure in normality_test2){
 ## 
 ## -----------------
 ##  wasi.matr.tf 
-## Omnibus p-val:  0.01182427 
+## Omnibus p-val:  0.01335272 
 ## 
-## Skewness p-val:  0.3062343 
+## Skewness p-val:  0.3091974 
 ## 
 ## -----------------
 ##  ppvt.tf 
-## Omnibus p-val:  5.313682e-07 
+## Omnibus p-val:  1.63165e-06 
 ## 
-## Skewness p-val:  0.1330319 
+## Skewness p-val:  0.144024 
 ## 
 ## -----------------
 ##  decode_composite 
-## Omnibus p-val:  0.2164284 
+## Omnibus p-val:  0.2905826 
 ## 
-## Skewness p-val:  0.9768757 
+## Skewness p-val:  0.9726863 
 ## 
 ## -----------------
 ##  wj3.rcomp.tf 
-## Omnibus p-val:  0.05604626 
+## Omnibus p-val:  0.07606887 
 ## 
-## Skewness p-val:  0.7863771 
+## Skewness p-val:  0.8005627 
 ## 
 ## -----------------
 ##  ktea2.tf 
-## Omnibus p-val:  6.661338e-16 
+## Omnibus p-val:  0 
 ## 
-## Skewness p-val:  0.04149442
+## Skewness p-val:  0.03321999
 ```
 
 The skewness is not longer significant for any of the predictors. That means we are almost ready to run our models! Let's center age.
@@ -408,11 +406,11 @@ Now we will pick the types of groups we want and the CIs we'd like to look at.
 
 
 ```r
-ci_names <- c("10_70", "15_65", "15_60", "15_70", "20_65", "20_70")
+ci_names <- c("10_70", "10_60", "15_65", "15_60", "15_70", "20_65", "20_70", "15_55")
 ci2z <- function(ci){qnorm(ci + (1 - ci)/2)}
 grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
 ## change here if you want to add more or different CIs
-ciList <- list(c(.10, .70), c(.15,.65), c(.15,.60), c(.15,.70), c(.20,.65), c(.20,.70))
+ciList <- list(c(.10, .70), c(.10,.60), c(.15,.65), c(.15,.60), c(.15,.70), c(.20,.65), c(.20,.70), c(.15,.55))
 allList <- list()
 for (i in 1:length(ciList)){
   ci.to.use <- ciList[[i]]
@@ -420,7 +418,7 @@ for (i in 1:length(ciList)){
   for (model in names(resultsList)){
     my.bin <- eval(substitute(c(range(scale(i$resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use)), list(i = as.name(model))))
     my.bin <- sort(my.bin)
-    groups <- eval(substitute(grouping[findInterval(scale(WJ3$resid), vec=my.bin, all.inside=T)],list(i = as.name(model))))
+    groups <- eval(substitute(grouping[findInterval(scale(i$resid), vec=my.bin, all.inside=T)],list(i = as.name(model))))
     x <- as.data.frame(groups)
     y <- cbind(imputed_data$SubjectID, x)
     groupsList[[model]] <- cbind(eval(as.name(model)), y)
@@ -440,7 +438,7 @@ Now that we have our groups, we need to merge those groups with MRI IDs to see h
 
 ```r
 extra_info <- data %>%
-  dplyr::select(SubjectID, handedness, gender, StructuralMRI.ID)
+  dplyr::select(SubjectID, handedness, gender, StructuralMRI.ID, age.mri)
 
 newList <- list()
 tableList <- list()
@@ -549,4 +547,18 @@ write.xlsx(subset(g.diffs, GroupDiff_measure == "ktea2.raw"), file="summary.xlsx
 write.xlsx(subset(g.diffs, GroupDiff_measure == "wasi.matr.raw"), file="summary.xlsx", sheetName="Matrix Reasoning", append=TRUE, row.names=FALSE, showNA = FALSE)
 write.xlsx(subset(g.diffs, GroupDiff_measure == "ppvt.raw"), file="summary.xlsx", sheetName="PPVT", append=TRUE, row.names=FALSE, showNA = FALSE)
 write.xlsx(subset(g.diffs, GroupDiff_measure == "decode_composite"), file="summary.xlsx", sheetName="Decoding Composite", append=TRUE, row.names=FALSE, showNA = FALSE)
+```
+
+# Write out group lists
+
+
+```r
+for (i in 1:length(newList)){
+  df <- newList[[i]]
+  ktea <- df$KTEA
+  wj <- df$WJ3
+  ci <- names(newList[i])
+  write.csv(ktea, paste0("./group_output/", ci, "_KTEA.csv"), row.names = FALSE)
+  write.csv(wj, paste0("./group_output/", ci, "_WJ3.csv"), row.names = FALSE)
+}
 ```
