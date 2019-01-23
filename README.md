@@ -15,4 +15,4 @@ In the two years, we have explored a lot of different things about reading compr
 * [Group Selection](./GroupSelection.md). We played around with a few different ways to select groups -- see more details here.
 * [Group Analysis of Structural MRI Data](./sMRI.md). Once we had some methods to select groups, we compared cortical thickness and gray matter volume in these groups.
 
-This project is a collaboration with [Clint Johns](http://www.haskins.yale.edu/staff/johnsc.html), [Nicole Landi](https://psych.uconn.edu/faculty/nicole-landi/), [Julie Van Dyke](http://www.haskins.yale.edu/staff/vandyke.html), [Andy Jahn](https://www.andysbrainblog.com/), and Kazunaga Matsuki.
+This project is a collaboration with [Clint Johns](https://haskinslabs.org/people/clinton-johns), [Nicole Landi](https://psych.uconn.edu/faculty/nicole-landi/), [Julie Van Dyke](http://www.haskins.yale.edu/staff/vandyke.html), [Andy Jahn](https://www.andysbrainblog.com/), and Kazunaga Matsuki.

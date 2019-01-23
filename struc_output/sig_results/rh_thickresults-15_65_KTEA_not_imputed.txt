@@ -1,0 +1,63 @@
+ROI:  rh_transversetemporal_thickness 
+ 
+Analysis of Variance Table
+
+Response: rh_transversetemporal_thickness
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.13552 0.135524  2.1360 0.15150  
+groups     2 0.41934 0.209672  3.3047 0.04671 *
+Residuals 41 2.60131 0.063447                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.13194    0.09069  -1.455   0.3228  
+UPC - EAC == 0  0.10834    0.09717   1.115   0.5102  
+UPC - UGC == 0  0.24028    0.09433   2.547   0.0382 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.13194    0.09069  -1.455   0.1533  
+UPC - EAC == 0  0.10834    0.09717   1.115   0.2713  
+UPC - UGC == 0  0.24028    0.09433   2.547   0.0147 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+-------------------------
+Pairwise Mann–Whitney U-tests
+	Pairwise comparisons using Wilcoxon rank sum test 
+
+data:  y$model$rh_transversetemporal_thickness and y$model$groups 
+
+    EAC   UGC  
+UGC 0.224 -    
+UPC 0.170 0.012
+
+P value adjustment method: none 
+
+==========================
+

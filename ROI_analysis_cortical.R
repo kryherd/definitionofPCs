@@ -13,7 +13,11 @@ struc <- read.csv("./sMRIData/structural_data.csv")
 temp <- list.files(path = "./group_output", pattern="*.csv", full.names = TRUE)
 names <- list.files(path = "./group_output", pattern="*.csv")
 for (i in 1:length(names)){
-  names[i] <- substr(names[i], 1, nchar(names[i])-4)
+  if (substr(names[i], nchar(names[i]) - 5, nchar(names[1])) == "ed.csv"){
+    names[i] <- paste(substr(names[i], 1, nchar(names[i])-4), "_not_imputed")
+  } else{
+    names[i] <- substr(names[i], 1, nchar(names[i])-4)
+  }
 }
 beh <- lapply(temp, read.csv)
 
@@ -63,7 +67,7 @@ for (i in 1:length(volumeList)) {
   sink(paste0("./struc_output/all_results/volumeresults-",name, ".txt"))
   volumeVars <- names(select(df, ends_with("_volume")))
   models <- lapply(volumeVars, function(x) { lm(substitute(j ~  ICV_demeaned + age.mri + groups, list(j=as.name(x))), data=df)})
-  lapply(models, function(y) { 
+  lapply(models, function(y) {
     q <- names(y$model[1])
     cat("ROI: ", (as.name(q)), "\n \n")
     print(anova(y))
@@ -75,6 +79,11 @@ for (i in 1:length(volumeList)) {
     cat("Pairwise comparisons (no correction)")
     postHocs2 <- glht(y, linfct = mcp(groups = "Tukey"))
     print(summary(postHocs2, test = adjusted("none")))
+    cat("-------------------------\n")
+    cat("Pairwise Mann–Whitney U-tests")
+    print(eval(substitute(pairwise.wilcox.test(y$model$i,
+                         y$model$groups,
+                         p.adjust.method="none"), list(i=as.name(q)))))
     cat("\n==========================\n\n")
     })
   sink()
@@ -99,6 +108,11 @@ for (i in 1:length(thicknessList)) {
     cat("Pairwise comparisons (no correction)")
     postHocs2 <- glht(y, linfct = mcp(groups = "Tukey"))
     print(summary(postHocs2, test = adjusted("none")))
+    cat("-------------------------\n")
+    cat("Pairwise Mann–Whitney U-tests")
+    print(eval(substitute(pairwise.wilcox.test(y$model$i,
+                                               y$model$groups,
+                                               p.adjust.method="none"), list(i=as.name(q)))))
     cat("\n==========================\n\n")
   })
   sink()
@@ -123,6 +137,11 @@ for (i in 1:length(thicknessList)) {
     cat("Pairwise comparisons (no correction)")
     postHocs2 <- glht(y, linfct = mcp(groups = "Tukey"))
     print(summary(postHocs2, test = adjusted("none")))
+    cat("-------------------------\n")
+    cat("Pairwise Mann–Whitney U-tests")
+    print(eval(substitute(pairwise.wilcox.test(y$model$i,
+                                               y$model$groups,
+                                               p.adjust.method="none"), list(i=as.name(q)))))
     cat("\n==========================\n\n")
   })
   sink()
@@ -150,6 +169,11 @@ for (i in 1:length(volumeList)) {
       cat("Pairwise comparisons (no correction)")
       postHocs2 <- glht(y, linfct = mcp(groups = "Tukey"))
       print(summary(postHocs2, test = adjusted("none")))
+      cat("-------------------------\n")
+      cat("Pairwise Mann–Whitney U-tests")
+      print(eval(substitute(pairwise.wilcox.test(y$model$i,
+                                                 y$model$groups,
+                                                 p.adjust.method="none"), list(i=as.name(q)))))
       cat("\n==========================\n\n")
     }
   })
@@ -176,6 +200,11 @@ for (i in 1:length(thicknessList)) {
       cat("Pairwise comparisons (no correction)")
       postHocs2 <- glht(y, linfct = mcp(groups = "Tukey"))
       print(summary(postHocs2, test = adjusted("none")))
+      cat("-------------------------\n")
+      cat("Pairwise Mann–Whitney U-tests")
+      print(eval(substitute(pairwise.wilcox.test(y$model$i,
+                                                 y$model$groups,
+                                                 p.adjust.method="none"), list(i=as.name(q)))))
       cat("\n==========================\n\n")
     }
   })
@@ -202,6 +231,11 @@ for (i in 1:length(thicknessList)) {
       cat("Pairwise comparisons (no correction)")
       postHocs2 <- glht(y, linfct = mcp(groups = "Tukey"))
       print(summary(postHocs2, test = adjusted("none")))
+      cat("-------------------------\n")
+      cat("Pairwise Mann–Whitney U-tests")
+      print(eval(substitute(pairwise.wilcox.test(y$model$i,
+                                                 y$model$groups,
+                                                 p.adjust.method="none"), list(i=as.name(q)))))
       cat("\n==========================\n\n")
     }
   })

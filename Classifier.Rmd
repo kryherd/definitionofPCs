@@ -238,11 +238,11 @@ Now we will pick the types of groups we want and the CIs we'd like to look at.
 * UGC: unexpected good comprehender
 
 ```{r}
-ci_names <- c("10_70", "10_60", "15_65", "15_60", "15_70", "20_65", "20_70", "15_55")
+ci_names <- c("10_70", "10_60", "15_65", "15_60", "15_70", "20_65", "20_70", "15_55", "10_65", "20_55", "20_70", "20_60", "20_65")
 ci2z <- function(ci){qnorm(ci + (1 - ci)/2)}
 grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
 ## change here if you want to add more or different CIs
-ciList <- list(c(.10, .70), c(.10,.60), c(.15,.65), c(.15,.60), c(.15,.70), c(.20,.65), c(.20,.70), c(.15,.55))
+ciList <- list(c(.10, .70), c(.10,.60), c(.15,.65), c(.15,.60), c(.15,.70), c(.20,.65), c(.20,.70), c(.15,.55), c(.10, .65), c(.20, .55), c(.20, .70), c(.20, .60), c(.20, .65))
 allList <- list()
 for (i in 1:length(ciList)){
   ci.to.use <- ciList[[i]]

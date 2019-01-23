@@ -3,10 +3,10 @@ ROI:  rh_lateraloccipital_thickness
 Analysis of Variance Table
 
 Response: rh_lateraloccipital_thickness
-          Df Sum Sq  Mean Sq F value  Pr(>F)  
-age.mri    1 0.0095 0.009499  0.5291 0.46895  
-groups     2 0.1181 0.059050  3.2894 0.04202 *
-Residuals 86 1.5438 0.017951                  
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.00008 0.000076  0.0041 0.94920  
+groups     2 0.11470 0.057352  3.0709 0.05169 .
+Residuals 83 1.55010 0.018676                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -21,9 +21,9 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.06019    0.03820  -1.575    0.260  
-UPC - EAC == 0  0.01818    0.03926   0.463    0.888  
-UPC - UGC == 0  0.07837    0.03171   2.472    0.040 *
+UGC - EAC == 0 -0.02148    0.03991  -0.538   0.8517  
+UPC - EAC == 0  0.05867    0.04107   1.429   0.3288  
+UPC - UGC == 0  0.08015    0.03279   2.444   0.0429 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -40,13 +40,24 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.06019    0.03820  -1.575   0.1188  
-UPC - EAC == 0  0.01818    0.03926   0.463   0.6444  
-UPC - UGC == 0  0.07837    0.03171   2.472   0.0154 *
+UGC - EAC == 0 -0.02148    0.03991  -0.538   0.5918  
+UPC - EAC == 0  0.05867    0.04107   1.429   0.1569  
+UPC - UGC == 0  0.08015    0.03279   2.444   0.0166 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
 
+-------------------------
+Pairwise Mann–Whitney U-tests
+	Pairwise comparisons using Wilcoxon rank sum test 
+
+data:  y$model$rh_lateraloccipital_thickness and y$model$groups 
+
+    EAC   UGC  
+UGC 0.636 -    
+UPC 0.152 0.033
+
+P value adjustment method: none 
 
 ==========================
 
@@ -56,9 +67,9 @@ Analysis of Variance Table
 
 Response: rh_lingual_thickness
           Df  Sum Sq  Mean Sq F value  Pr(>F)  
-age.mri    1 0.05042 0.050416  4.5544 0.03568 *
-groups     2 0.08436 0.042181  3.8105 0.02596 *
-Residuals 86 0.95199 0.011070                  
+age.mri    1 0.03395 0.033953  3.4150 0.06817 .
+groups     2 0.05216 0.026080  2.6231 0.07859 .
+Residuals 83 0.82522 0.009942                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -72,10 +83,10 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
     data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.003273   0.030000  -0.109   0.9934  
-UPC - EAC == 0  0.061259   0.030830   1.987   0.1205  
-UPC - UGC == 0  0.064532   0.024899   2.592   0.0295 *
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.03135    0.02912  -1.077   0.5290  
+UPC - EAC == 0  0.02315    0.02996   0.773   0.7192  
+UPC - UGC == 0  0.05450    0.02392   2.278   0.0638 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -91,14 +102,25 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
     data = df)
 
 Linear Hypotheses:
-                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.003273   0.030000  -0.109   0.9134  
-UPC - EAC == 0  0.061259   0.030830   1.987   0.0501 .
-UPC - UGC == 0  0.064532   0.024899   2.592   0.0112 *
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.03135    0.02912  -1.077   0.2848  
+UPC - EAC == 0  0.02315    0.02996   0.773   0.4420  
+UPC - UGC == 0  0.05450    0.02392   2.278   0.0253 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
 
+-------------------------
+Pairwise Mann–Whitney U-tests
+	Pairwise comparisons using Wilcoxon rank sum test 
+
+data:  y$model$rh_lingual_thickness and y$model$groups 
+
+    EAC   UGC  
+UGC 0.321 -    
+UPC 0.355 0.015
+
+P value adjustment method: none 
 
 ==========================
 
