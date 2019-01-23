@@ -14,7 +14,7 @@ temp <- list.files(path = "./group_output", pattern="*.csv", full.names = TRUE)
 names <- list.files(path = "./group_output", pattern="*.csv")
 for (i in 1:length(names)){
   if (substr(names[i], nchar(names[i]) - 5, nchar(names[1])) == "ed.csv"){
-    names[i] <- paste(substr(names[i], 1, nchar(names[i])-4), "_not_imputed")
+    names[i] <- paste(substr(names[i], 1, nchar(names[i])-4))
   } else{
     names[i] <- substr(names[i], 1, nchar(names[i])-4)
   }
