@@ -1,12 +1,12 @@
-ROI:  rh_lateraloccipital_thickness 
+ROI:  rh_cuneus_thickness 
  
 Analysis of Variance Table
 
-Response: rh_lateraloccipital_thickness
+Response: rh_cuneus_thickness
           Df  Sum Sq  Mean Sq F value  Pr(>F)  
-age.mri    1 0.00008 0.000076  0.0041 0.94920  
-groups     2 0.11470 0.057352  3.0709 0.05169 .
-Residuals 83 1.55010 0.018676                  
+age.mri    1 0.05914 0.059144  3.6027 0.06075 .
+groups     2 0.08205 0.041023  2.4989 0.08762 .
+Residuals 94 1.54315 0.016417                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -21,9 +21,9 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.02148    0.03991  -0.538   0.8517  
-UPC - EAC == 0  0.05867    0.04107   1.429   0.3288  
-UPC - UGC == 0  0.08015    0.03279   2.444   0.0429 *
+UGC - EAC == 0 -0.01020    0.03502  -0.291   0.9541  
+UPC - EAC == 0  0.05307    0.03592   1.477   0.3046  
+UPC - UGC == 0  0.06326    0.02934   2.156   0.0835 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -40,9 +40,72 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.02148    0.03991  -0.538   0.5918  
-UPC - EAC == 0  0.05867    0.04107   1.429   0.1569  
-UPC - UGC == 0  0.08015    0.03279   2.444   0.0166 *
+UGC - EAC == 0 -0.01020    0.03502  -0.291   0.7716  
+UPC - EAC == 0  0.05307    0.03592   1.477   0.1429  
+UPC - UGC == 0  0.06326    0.02934   2.156   0.0336 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+-------------------------
+Pairwise Mann–Whitney U-tests
+	Pairwise comparisons using Wilcoxon rank sum test 
+
+data:  y$model$rh_cuneus_thickness and y$model$groups 
+
+    EAC   UGC  
+UGC 0.844 -    
+UPC 0.025 0.056
+
+P value adjustment method: none 
+
+==========================
+
+ROI:  rh_lateraloccipital_thickness 
+ 
+Analysis of Variance Table
+
+Response: rh_lateraloccipital_thickness
+          Df  Sum Sq  Mean Sq F value  Pr(>F)  
+age.mri    1 0.00022 0.000225  0.0143 0.90514  
+groups     2 0.10984 0.054919  3.4929 0.03442 *
+Residuals 94 1.47795 0.015723                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.05166    0.03427  -1.507   0.2905  
+UPC - EAC == 0  0.02260    0.03515   0.643   0.7957  
+UPC - UGC == 0  0.07426    0.02872   2.586   0.0297 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.05166    0.03427  -1.507   0.1351  
+UPC - EAC == 0  0.02260    0.03515   0.643   0.5218  
+UPC - UGC == 0  0.07426    0.02872   2.586   0.0112 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -54,8 +117,8 @@ Pairwise Mann–Whitney U-tests
 data:  y$model$rh_lateraloccipital_thickness and y$model$groups 
 
     EAC   UGC  
-UGC 0.636 -    
-UPC 0.152 0.033
+UGC 0.101 -    
+UPC 0.716 0.036
 
 P value adjustment method: none 
 
@@ -67,9 +130,9 @@ Analysis of Variance Table
 
 Response: rh_lingual_thickness
           Df  Sum Sq  Mean Sq F value  Pr(>F)  
-age.mri    1 0.03395 0.033953  3.4150 0.06817 .
-groups     2 0.05216 0.026080  2.6231 0.07859 .
-Residuals 83 0.82522 0.009942                  
+age.mri    1 0.05651 0.056509  5.2586 0.02407 *
+groups     2 0.06203 0.031013  2.8860 0.06076 .
+Residuals 94 1.01012 0.010746                  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -83,10 +146,10 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
     data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.03135    0.02912  -1.077   0.5290  
-UPC - EAC == 0  0.02315    0.02996   0.773   0.7192  
-UPC - UGC == 0  0.05450    0.02392   2.278   0.0638 .
+                Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.006394   0.028335  -0.226   0.9722  
+UPC - EAC == 0  0.048022   0.029061   1.652   0.2275  
+UPC - UGC == 0  0.054416   0.023741   2.292   0.0612 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -102,10 +165,10 @@ Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))),
     data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0 -0.03135    0.02912  -1.077   0.2848  
-UPC - EAC == 0  0.02315    0.02996   0.773   0.4420  
-UPC - UGC == 0  0.05450    0.02392   2.278   0.0253 *
+                Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.006394   0.028335  -0.226   0.8220  
+UPC - EAC == 0  0.048022   0.029061   1.652   0.1018  
+UPC - UGC == 0  0.054416   0.023741   2.292   0.0241 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -117,8 +180,8 @@ Pairwise Mann–Whitney U-tests
 data:  y$model$rh_lingual_thickness and y$model$groups 
 
     EAC   UGC  
-UGC 0.321 -    
-UPC 0.355 0.015
+UGC 0.861 -    
+UPC 0.083 0.019
 
 P value adjustment method: none 
 

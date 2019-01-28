@@ -1,0 +1,61 @@
+ROI:  lh_inferiortemporal_thickness 
+ 
+Analysis of Variance Table
+
+Response: lh_inferiortemporal_thickness
+          Df  Sum Sq  Mean Sq F value Pr(>F)  
+age.mri    1 0.18807 0.188071  5.8158 0.0184 *
+groups     2 0.17143 0.085714  2.6506 0.0774 .
+Residuals 73 2.36067 0.032338                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+                Estimate Std. Error t value Pr(>|t|)
+UGC - EAC == 0 -0.102953   0.051115  -2.014    0.114
+UPC - EAC == 0 -0.093112   0.060280  -1.545    0.272
+UPC - UGC == 0  0.009841   0.069597   0.141    0.989
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ age.mri + groups, list(j = as.name(x))), 
+    data = df)
+
+Linear Hypotheses:
+                Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0 -0.102953   0.051115  -2.014   0.0477 *
+UPC - EAC == 0 -0.093112   0.060280  -1.545   0.1268  
+UPC - UGC == 0  0.009841   0.069597   0.141   0.8879  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+-------------------------
+Pairwise Mann–Whitney U-tests
+	Pairwise comparisons using Wilcoxon rank sum test 
+
+data:  y$model$lh_inferiortemporal_thickness and y$model$groups 
+
+    EAC   UGC  
+UGC 0.023 -    
+UPC 0.104 1.000
+
+P value adjustment method: none 
+
+==========================
+

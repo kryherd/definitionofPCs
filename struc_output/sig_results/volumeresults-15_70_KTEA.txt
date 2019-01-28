@@ -1,77 +1,13 @@
-ROI:  lh_cuneus_volume 
- 
-Analysis of Variance Table
-
-Response: lh_cuneus_volume
-             Df   Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  5843214 5843214 34.4636 8.168e-08 ***
-age.mri       1   122660  122660  0.7235   0.39740    
-groups        2   820465  410232  2.4196   0.09506 .  
-Residuals    85 14411530  169547                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
--------------------------
-Tukey Test for pairwise comparisons
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   -227.4      106.4  -2.137   0.0886 .
-UPC - EAC == 0    -68.6      109.6  -0.626   0.8062  
-UPC - UGC == 0    158.8      107.6   1.476   0.3072  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-(Adjusted p values reported -- single-step method)
-
--------------------------
-Pairwise comparisons (no correction)
-	 Simultaneous Tests for General Linear Hypotheses
-
-Multiple Comparisons of Means: Tukey Contrasts
-
-
-Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
-    list(j = as.name(x))), data = df)
-
-Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   -227.4      106.4  -2.137   0.0355 *
-UPC - EAC == 0    -68.6      109.6  -0.626   0.5330  
-UPC - UGC == 0    158.8      107.6   1.476   0.1435  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-(Adjusted p values reported -- none method)
-
--------------------------
-Pairwise Mann–Whitney U-tests
-	Pairwise comparisons using Wilcoxon rank sum test 
-
-data:  y$model$lh_cuneus_volume and y$model$groups 
-
-    EAC  UGC 
-UGC 0.11 -   
-UPC 0.77 0.04
-
-P value adjustment method: none 
-
-==========================
-
 ROI:  lh_parahippocampal_volume 
  
 Analysis of Variance Table
 
 Response: lh_parahippocampal_volume
-             Df  Sum Sq Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 1372446 1372446 14.1821 0.0003049 ***
-age.mri       1   34394   34394  0.3554 0.5526534    
-groups        2  690604  345302  3.5682 0.0325082 *  
-Residuals    85 8225711   96773                      
+             Df  Sum Sq Mean Sq F value   Pr(>F)   
+ICV_demeaned  1  977071  977071 11.0204 0.001298 **
+age.mri       1   32907   32907  0.3712 0.543893   
+groups        2  916148  458074  5.1666 0.007493 **
+Residuals    91 8068113   88661                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -85,10 +21,10 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
     list(j = as.name(x))), data = df)
 
 Linear Hypotheses:
-               Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  -212.73      80.41  -2.646    0.026 *
-UPC - EAC == 0   -84.03      82.79  -1.015    0.569  
-UPC - UGC == 0   128.70      81.26   1.584    0.258  
+               Estimate Std. Error t value Pr(>|t|)   
+UGC - EAC == 0  -231.73      72.93  -3.177  0.00569 **
+UPC - EAC == 0   -71.55      76.78  -0.932  0.62128   
+UPC - UGC == 0   160.18      79.87   2.006  0.11644   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -105,9 +41,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)   
-UGC - EAC == 0  -212.73      80.41  -2.646  0.00971 **
-UPC - EAC == 0   -84.03      82.79  -1.015  0.31298   
-UPC - UGC == 0   128.70      81.26   1.584  0.11695   
+UGC - EAC == 0  -231.73      72.93  -3.177  0.00203 **
+UPC - EAC == 0   -71.55      76.78  -0.932  0.35386   
+UPC - UGC == 0   160.18      79.87   2.006  0.04787 * 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -118,9 +54,73 @@ Pairwise Mann–Whitney U-tests
 
 data:  y$model$lh_parahippocampal_volume and y$model$groups 
 
+    EAC     UGC    
+UGC 0.00069 -      
+UPC 0.31745 0.10597
+
+P value adjustment method: none 
+
+==========================
+
+ROI:  lh_frontalpole_volume 
+ 
+Analysis of Variance Table
+
+Response: lh_frontalpole_volume
+             Df  Sum Sq Mean Sq F value    Pr(>F)    
+ICV_demeaned  1  569308  569308 20.9800 1.469e-05 ***
+age.mri       1  559875  559875 20.6324 1.703e-05 ***
+groups        2  146789   73394  2.7047   0.07227 .  
+Residuals    91 2469357   27136                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0    12.01      40.35   0.298   0.9523  
+UPC - EAC == 0    93.83      42.48   2.209   0.0748 .
+UPC - UGC == 0    81.83      44.19   1.852   0.1585  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0    12.01      40.35   0.298   0.7667  
+UPC - EAC == 0    93.83      42.48   2.209   0.0297 *
+UPC - UGC == 0    81.83      44.19   1.852   0.0673 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+-------------------------
+Pairwise Mann–Whitney U-tests
+	Pairwise comparisons using Wilcoxon rank sum test 
+
+data:  y$model$lh_frontalpole_volume and y$model$groups 
+
     EAC   UGC  
-UGC 0.011 -    
-UPC 0.423 0.118
+UGC 0.671 -    
+UPC 0.022 0.057
 
 P value adjustment method: none 
 
@@ -132,10 +132,10 @@ Analysis of Variance Table
 
 Response: rh_inferiorparietal_volume
              Df    Sum Sq   Mean Sq F value    Pr(>F)    
-ICV_demeaned  1 155675571 155675571 64.0392 5.598e-12 ***
-age.mri       1   2340350   2340350  0.9627   0.32928    
-groups        2  13074208   6537104  2.6891   0.07372 .  
-Residuals    85 206629969   2430941                      
+ICV_demeaned  1 127589708 127589708 51.8059 1.694e-10 ***
+age.mri       1    202174    202174  0.0821   0.77514    
+groups        2  12676002   6338001  2.5735   0.08181 .  
+Residuals    91 224118514   2462841                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -150,9 +150,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    484.9      403.0   1.203   0.4545  
-UPC - EAC == 0    962.2      414.9   2.319   0.0586 .
-UPC - UGC == 0    477.2      407.3   1.172   0.4732  
+UGC - EAC == 0    535.0      384.4   1.392   0.3490  
+UPC - EAC == 0    897.1      404.7   2.217   0.0735 .
+UPC - UGC == 0    362.0      421.0   0.860   0.6664  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -169,9 +169,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0    484.9      403.0   1.203   0.2322  
-UPC - EAC == 0    962.2      414.9   2.319   0.0228 *
-UPC - UGC == 0    477.2      407.3   1.172   0.2446  
+UGC - EAC == 0    535.0      384.4   1.392   0.1673  
+UPC - EAC == 0    897.1      404.7   2.217   0.0291 *
+UPC - UGC == 0    362.0      421.0   0.860   0.3921  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -183,23 +183,23 @@ Pairwise Mann–Whitney U-tests
 data:  y$model$rh_inferiorparietal_volume and y$model$groups 
 
     EAC   UGC  
-UGC 0.581 -    
-UPC 0.025 0.063
+UGC 0.669 -    
+UPC 0.056 0.136
 
 P value adjustment method: none 
 
 ==========================
 
-ROI:  rh_postcentral_volume 
+ROI:  rh_parahippocampal_volume 
  
 Analysis of Variance Table
 
-Response: rh_postcentral_volume
-             Df    Sum Sq  Mean Sq F value    Pr(>F)    
-ICV_demeaned  1  55849496 55849496 45.1566 1.961e-09 ***
-age.mri       1   4694351  4694351  3.7956   0.05469 .  
-groups        2   5916282  2958141  2.3918   0.09760 .  
-Residuals    85 105127589  1236795                      
+Response: rh_parahippocampal_volume
+             Df  Sum Sq Mean Sq F value    Pr(>F)    
+ICV_demeaned  1 1173887 1173887 13.7229 0.0003632 ***
+age.mri       1   98088   98088  1.1467 0.2870813    
+groups        2  431541  215771  2.5224 0.0858676 .  
+Residuals    91 7784353   85542                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -214,9 +214,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   -338.9      287.5  -1.179   0.4688  
-UPC - EAC == 0    294.7      296.0   0.996   0.5815  
-UPC - UGC == 0    633.7      290.5   2.181   0.0803 .
+UGC - EAC == 0   -95.35      71.64  -1.331   0.3814  
+UPC - EAC == 0    79.73      75.41   1.057   0.5426  
+UPC - UGC == 0   175.09      78.45   2.232   0.0711 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -233,9 +233,73 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0   -338.9      287.5  -1.179   0.2417  
-UPC - EAC == 0    294.7      296.0   0.996   0.3222  
-UPC - UGC == 0    633.7      290.5   2.181   0.0319 *
+UGC - EAC == 0   -95.35      71.64  -1.331   0.1865  
+UPC - EAC == 0    79.73      75.41   1.057   0.2932  
+UPC - UGC == 0   175.09      78.45   2.232   0.0281 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- none method)
+
+-------------------------
+Pairwise Mann–Whitney U-tests
+	Pairwise comparisons using Wilcoxon rank sum test 
+
+data:  y$model$rh_parahippocampal_volume and y$model$groups 
+
+    EAC   UGC  
+UGC 0.064 -    
+UPC 0.293 0.021
+
+P value adjustment method: none 
+
+==========================
+
+ROI:  rh_postcentral_volume 
+ 
+Analysis of Variance Table
+
+Response: rh_postcentral_volume
+             Df    Sum Sq  Mean Sq F value   Pr(>F)    
+ICV_demeaned  1  40679590 40679590 35.6076 4.57e-08 ***
+age.mri       1   9361126  9361126  8.1940 0.005216 ** 
+groups        2   5864989  2932495  2.5669 0.082325 .  
+Residuals    91 103962085  1142440                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+-------------------------
+Tukey Test for pairwise comparisons
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0   -145.5      261.8  -0.556   0.8436  
+UPC - EAC == 0    479.9      275.6   1.741   0.1953  
+UPC - UGC == 0    625.4      286.7   2.181   0.0797 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+-------------------------
+Pairwise comparisons (no correction)
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups, 
+    list(j = as.name(x))), data = df)
+
+Linear Hypotheses:
+               Estimate Std. Error t value Pr(>|t|)  
+UGC - EAC == 0   -145.5      261.8  -0.556   0.5797  
+UPC - EAC == 0    479.9      275.6   1.741   0.0850 .
+UPC - UGC == 0    625.4      286.7   2.181   0.0317 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -247,8 +311,8 @@ Pairwise Mann–Whitney U-tests
 data:  y$model$rh_postcentral_volume and y$model$groups 
 
     EAC    UGC   
-UGC 0.7362 -     
-UPC 0.0495 0.0056
+UGC 0.8012 -     
+UPC 0.0308 0.0094
 
 P value adjustment method: none 
 
@@ -260,10 +324,10 @@ Analysis of Variance Table
 
 Response: rh_rostralanteriorcingulate_volume
              Df   Sum Sq Mean Sq F value   Pr(>F)   
-ICV_demeaned  1  1792442 1792442  9.5215 0.002741 **
-age.mri       1     5530    5530  0.0294 0.864320   
-groups        2  1044206  522103  2.7734 0.068105 . 
-Residuals    85 16001347  188251                    
+ICV_demeaned  1  1801827 1801827  9.7682 0.002383 **
+age.mri       1     1170    1170  0.0063 0.936690   
+groups        2  1204041  602021  3.2637 0.042768 * 
+Residuals    91 16785755  184459                    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 -------------------------
@@ -278,9 +342,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  -244.34     112.15  -2.179   0.0806 .
-UPC - EAC == 0  -216.10     115.47  -1.872   0.1532  
-UPC - UGC == 0    28.23     113.34   0.249   0.9664  
+UGC - EAC == 0  -227.87     105.20  -2.166   0.0824 .
+UPC - EAC == 0  -238.89     110.74  -2.157   0.0841 .
+UPC - UGC == 0   -11.02     115.20  -0.096   0.9950  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -297,9 +361,9 @@ Fit: lm(formula = substitute(j ~ ICV_demeaned + age.mri + groups,
 
 Linear Hypotheses:
                Estimate Std. Error t value Pr(>|t|)  
-UGC - EAC == 0  -244.34     112.15  -2.179   0.0321 *
-UPC - EAC == 0  -216.10     115.47  -1.872   0.0647 .
-UPC - UGC == 0    28.23     113.34   0.249   0.8039  
+UGC - EAC == 0  -227.87     105.20  -2.166   0.0329 *
+UPC - EAC == 0  -238.89     110.74  -2.157   0.0336 *
+UPC - UGC == 0   -11.02     115.20  -0.096   0.9240  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- none method)
@@ -311,8 +375,8 @@ Pairwise Mann–Whitney U-tests
 data:  y$model$rh_rostralanteriorcingulate_volume and y$model$groups 
 
     EAC   UGC  
-UGC 0.035 -    
-UPC 0.239 0.326
+UGC 0.024 -    
+UPC 0.106 0.491
 
 P value adjustment method: none 
 

@@ -59,6 +59,7 @@ missForest <- missForest(data_to_impute[,-c(1,2)], maxiter = 20)
 ##   missForest iteration 3 in progress...done!
 ##   missForest iteration 4 in progress...done!
 ##   missForest iteration 5 in progress...done!
+##   missForest iteration 6 in progress...done!
 ```
 
 ```r
@@ -108,15 +109,15 @@ for (i in 2:length(comp)){
 ## 
 ## -----------------
 ##  towre.w.ipm 
-## Omnibus p-val:  1.554312e-15 
+## Omnibus p-val:  1.776357e-15 
 ## 
-## Skewness p-val:  0.00133538 
+## Skewness p-val:  0.001521536 
 ## 
 ## -----------------
 ##  towre.nw.ipm 
-## Omnibus p-val:  2.935319e-12 
+## Omnibus p-val:  3.56104e-12 
 ## 
-## Skewness p-val:  3.091677e-08
+## Skewness p-val:  3.52593e-08
 ```
 
 They're all significantly non-normal, so we will center, scale, and transform them.
@@ -135,10 +136,10 @@ for (name in vars_tf){
 ```
 
 ```
-## wj3.wid.raw :  4.07804 
-## wj3.watt.raw :  4.55837 
-## towre.w.ipm :  1.337575 
-## towre.nw.ipm :  1.383604
+## wj3.wid.raw :  4.04034 
+## wj3.watt.raw :  4.58461 
+## towre.w.ipm :  1.334818 
+## towre.nw.ipm :  1.381762
 ```
 
 ```r
@@ -164,27 +165,27 @@ for (i in 1:length(tf_data)){
 ## 
 ## -----------------
 ##  wj3.wid.raw 
-## Omnibus p-val:  2.667422e-12 
+## Omnibus p-val:  5.656586e-13 
 ## 
-## Skewness p-val:  0.3158044 
+## Skewness p-val:  0.3148306 
 ## 
 ## -----------------
 ##  wj3.watt.raw 
 ## Omnibus p-val:  0 
 ## 
-## Skewness p-val:  5.361025e-05 
+## Skewness p-val:  4.042754e-05 
 ## 
 ## -----------------
 ##  towre.w.ipm 
-## Omnibus p-val:  7.833206e-08 
+## Omnibus p-val:  7.616704e-08 
 ## 
-## Skewness p-val:  0.1321468 
+## Skewness p-val:  0.1304381 
 ## 
 ## -----------------
 ##  towre.nw.ipm 
-## Omnibus p-val:  0.000345929 
+## Omnibus p-val:  0.0003801495 
 ## 
-## Skewness p-val:  0.7210155
+## Skewness p-val:  0.7241641
 ```
 
 Overall, the skewness has become more normal for all of our measures. Now we will combine the four measures into a single composite decoding score.
@@ -237,15 +238,15 @@ for (measure in normality_test){
 ## 
 ## -----------------
 ##  decode_composite 
-## Omnibus p-val:  0.009005055 
+## Omnibus p-val:  0.008828323 
 ## 
-## Skewness p-val:  0.004428766 
+## Skewness p-val:  0.004712405 
 ## 
 ## -----------------
 ##  wj3.rcomp.raw 
-## Omnibus p-val:  0.0003513845 
+## Omnibus p-val:  0.0006240478 
 ## 
-## Skewness p-val:  7.968979e-05 
+## Skewness p-val:  0.0001404497 
 ## 
 ## -----------------
 ##  ktea2.raw 
@@ -268,11 +269,11 @@ for (name in to_transform){
 ```
 
 ```
-## wasi.matr.raw  :  2.201685 
-## ppvt.raw  :  4.966291 
-## decode_composite  :  1.136464 
-## wj3.rcomp.raw  :  1.92116 
-## ktea2.raw  :  3.218034
+## wasi.matr.raw  :  2.193338 
+## ppvt.raw  :  4.943843 
+## decode_composite  :  1.135444 
+## wj3.rcomp.raw  :  1.884975 
+## ktea2.raw  :  3.138444
 ```
 
 ```r
@@ -295,33 +296,33 @@ for (measure in normality_test2){
 ## 
 ## -----------------
 ##  wasi.matr.tf 
-## Omnibus p-val:  0.01335272 
+## Omnibus p-val:  0.01335038 
 ## 
-## Skewness p-val:  0.3091974 
+## Skewness p-val:  0.3145805 
 ## 
 ## -----------------
 ##  ppvt.tf 
-## Omnibus p-val:  1.63165e-06 
+## Omnibus p-val:  1.564427e-06 
 ## 
-## Skewness p-val:  0.144024 
+## Skewness p-val:  0.1468212 
 ## 
 ## -----------------
 ##  decode_composite 
-## Omnibus p-val:  0.2905826 
+## Omnibus p-val:  0.253762 
 ## 
-## Skewness p-val:  0.9726863 
+## Skewness p-val:  0.9600879 
 ## 
 ## -----------------
 ##  wj3.rcomp.tf 
-## Omnibus p-val:  0.07606887 
+## Omnibus p-val:  0.07478377 
 ## 
-## Skewness p-val:  0.8005627 
+## Skewness p-val:  0.8070647 
 ## 
 ## -----------------
 ##  ktea2.tf 
-## Omnibus p-val:  0 
+## Omnibus p-val:  1.110223e-16 
 ## 
-## Skewness p-val:  0.03321999
+## Skewness p-val:  0.04690503
 ```
 
 The skewness is not longer significant for any of the predictors. That means we are almost ready to run our models! Let's center age.
@@ -406,11 +407,11 @@ Now we will pick the types of groups we want and the CIs we'd like to look at.
 
 
 ```r
-ci_names <- c("10_70", "10_60", "15_65", "15_60", "15_70", "20_65", "20_70", "15_55")
+ci_names <- c("10_70", "10_60", "15_65", "15_60", "15_70", "20_65", "20_70", "15_55", "10_65", "20_55", "10_80", "15_80", "20_80")
 ci2z <- function(ci){qnorm(ci + (1 - ci)/2)}
 grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
 ## change here if you want to add more or different CIs
-ciList <- list(c(.10, .70), c(.10,.60), c(.15,.65), c(.15,.60), c(.15,.70), c(.20,.65), c(.20,.70), c(.15,.55))
+ciList <- list(c(.10, .70), c(.10,.60), c(.15,.65), c(.15,.60), c(.15,.70), c(.20,.65), c(.20,.70), c(.15,.55), c(.10, .65), c(.20, .55), c(.10, .80), c(.15, .80), c(.20, .80))
 allList <- list()
 for (i in 1:length(ciList)){
   ci.to.use <- ciList[[i]]
