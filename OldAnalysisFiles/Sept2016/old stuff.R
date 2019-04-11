@@ -1,0 +1,590 @@
+## Robust Model without Vocabulary
+
+Run model, get groups.
+```{r}
+model.data.nv <- data[, c(1, 2, 7, 11, 18, 19)]
+nv.cc <- model.data.nv[complete.cases(model.data.nv),]
+#just centering
+nv.cc$age.c <- nv.cc$age - mean(nv.cc$age, na.rm = TRUE)
+#centering and scaling
+nv.cc$wj3.rcomp.cs <- scale(nv.cc$wj3.rcomp.raw)
+nv.cc$wasi.matr.cs <- scale(nv.cc$wasi.matr.raw)
+
+### Run regression
+m1 <- rlm(wj3.rcomp.cs ~ age.c + composite1 + wasi.matr.cs, data = nv.cc, method = "MM")
+
+#standardize predicted values
+nv.cc$Pred <- predict(m1)
+nv.cc$stdPred <- scale(nv.cc$Pred)
+
+#obtained residuals
+nv.cc$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+nv.cc$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+nv.cc$CI_group[nv.cc$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(wj3.rcomp.cs ~ stdPred, data=nv.cc)
+
+p1 <- ggplot(nv.cc, aes(x=stdPred, y=wj3.rcomp.cs)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("WJ3 Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences 1
+Robust Model without Vocabulary
+
+```{r}
+# take away NSC group
+nv.cc2 <- subset(nv.cc, CI_group != "NSC")
+nv.cc2$CI_group <- as.factor(nv.cc2$CI_group)
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(wj3.rcomp.cs ~ CI_group, data = nv.cc2)
+summary(a1)
+pairwise.t.test(nv.cc2$wj3.rcomp.cs, nv.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(nv.cc2$wj3.rcomp.cs, list(nv.cc2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.c ~ CI_group, data = nv.cc2)
+summary(a1)
+pairwise.t.test(nv.cc2$age.c, nv.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(nv.cc2$age.c, list(nv.cc2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.cs ~ CI_group, data = nv.cc2)
+summary(a1)
+pairwise.t.test(nv.cc2$wasi.matr.cs, nv.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(nv.cc2$wasi.matr.cs, list(nv.cc2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(composite1 ~ CI_group, data = nv.cc2)
+summary(a1)
+pairwise.t.test(nv.cc2$composite1, nv.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(nv.cc2$composite1, list(nv.cc2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+Robust.Without.Vocab <- data.frame(table(nv.cc$CI_group, nv.cc$handedness))
+names(Robust.Without.Vocab) <- c("Group", "handedness", "rlm.w/o.vocab")
+Robust.Without.Vocab.r <- Robust.Without.Vocab[Robust.Without.Vocab$handedness == "right",]
+Robust.Without.Vocab.r <- Robust.Without.Vocab.r[,-2]
+```
+
+## Robust Model with Vocabulary
+
+Run model, get groups.
+```{r}
+model.data.v <- data[, c(1, 2, 6, 7, 11, 18, 19)]
+v.cc <- model.data.v[complete.cases(model.data.v),]
+#just centering
+v.cc$age.c <- v.cc$age - mean(v.cc$age, na.rm = TRUE)
+#centering and scaling
+v.cc$wj3.rcomp.cs <- scale(v.cc$wj3.rcomp.raw)
+v.cc$wasi.matr.cs <- scale(v.cc$wasi.matr.raw)
+v.cc$wasi.vocab.cs <- scale(v.cc$wasi.vocab.raw)
+
+### Run regression
+m1 <- rlm(wj3.rcomp.cs ~ age.c + composite1 + wasi.matr.cs + wasi.vocab.cs, data = v.cc, method = "MM")
+
+#standardize predicted values
+v.cc$Pred <- predict(m1)
+v.cc$stdPred <- scale(v.cc$Pred)
+
+#obtained residuals
+v.cc$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+v.cc$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+v.cc$CI_group[v.cc$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(wj3.rcomp.cs ~ stdPred, data=v.cc)
+
+p1 <- ggplot(v.cc, aes(x=stdPred, y=wj3.rcomp.cs)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("WJ3 Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences 2
+Robust Model with Vocabulary
+
+```{r}
+# take away NSC group
+v.cc2 <- subset(v.cc, CI_group != "NSC")
+v.cc2$CI_group <- as.factor(v.cc2$CI_group)
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(wj3.rcomp.cs ~ CI_group, data = v.cc2)
+summary(a1)
+pairwise.t.test(v.cc2$wj3.rcomp.cs, v.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(v.cc2$wj3.rcomp.cs, list(v.cc2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.c ~ CI_group, data = v.cc2)
+summary(a1)
+pairwise.t.test(v.cc2$age.c, v.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(v.cc2$age.c, list(v.cc2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.cs ~ CI_group, data = v.cc2)
+summary(a1)
+pairwise.t.test(v.cc2$wasi.matr.cs, v.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(v.cc2$wasi.matr.cs, list(v.cc2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(composite1 ~ CI_group, data = v.cc2)
+summary(a1)
+pairwise.t.test(v.cc2$composite1, v.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(v.cc2$composite1, list(v.cc2$CI_group), mean)
+```
+
+### Vocab
+```{r}
+a1 <- aov(wasi.vocab.cs ~ CI_group, data = v.cc2)
+summary(a1)
+pairwise.t.test(v.cc2$wasi.vocab.cs, v.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(v.cc2$wasi.vocab.cs, list(v.cc2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+Robust.With.Vocab <- data.frame(table(v.cc$CI_group, v.cc$handedness))
+names(Robust.With.Vocab) <- c("Group", "handedness", "rlm.w.vocab")
+Robust.With.Vocab.r <- Robust.With.Vocab[Robust.With.Vocab$handedness == "right",]
+Robust.With.Vocab.r <- Robust.With.Vocab.r[,-2]
+```
+
+## Robust Model with Oral Comprehension
+
+Run model, get groups.
+```{r}
+model.data.oc <- data[, c(1, 2, 6, 7, 11, 12, 18, 19)]
+oc.cc <- model.data.oc[complete.cases(model.data.oc),]
+#just centering
+oc.cc$age.c <- oc.cc$age - mean(oc.cc$age, na.rm = TRUE)
+#centering and scaling
+oc.cc$wj3.rcomp.cs <- scale(oc.cc$wj3.rcomp.raw)
+oc.cc$wasi.matr.cs <- scale(oc.cc$wasi.matr.raw)
+oc.cc$wasi.vocab.cs <- scale(oc.cc$wasi.vocab.raw)
+oc.cc$wj3.oralcomp.cs <- scale(oc.cc$wj3.oralcomp.raw)
+
+### Run regression
+m1 <- rlm(wj3.rcomp.cs ~ age.c + composite1 + wasi.matr.cs + wj3.oralcomp.cs, data = oc.cc, method = "MM")
+
+#standardize predicted values
+oc.cc$Pred <- predict(m1)
+oc.cc$stdPred <- scale(oc.cc$Pred)
+
+#obtained residuals
+oc.cc$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+oc.cc$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+oc.cc$CI_group[oc.cc$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(wj3.rcomp.cs ~ stdPred, data=oc.cc)
+
+p1 <- ggplot(oc.cc, aes(x=stdPred, y=wj3.rcomp.cs)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("WJ3 Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences 3
+Robust Model with Oral Comprehension
+
+```{r}
+# take away NSC group
+oc.cc2 <- subset(oc.cc, CI_group != "NSC")
+oc.cc2$CI_group <- as.factor(oc.cc2$CI_group)
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(wj3.rcomp.cs ~ CI_group, data = oc.cc2)
+summary(a1)
+pairwise.t.test(oc.cc2$wj3.rcomp.cs, oc.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(oc.cc2$wj3.rcomp.cs, list(oc.cc2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.c ~ CI_group, data = oc.cc2)
+summary(a1)
+pairwise.t.test(oc.cc2$age.c, oc.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(oc.cc2$age.c, list(oc.cc2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.cs ~ CI_group, data = oc.cc2)
+summary(a1)
+pairwise.t.test(oc.cc2$wasi.matr.cs, oc.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(oc.cc2$wasi.matr.cs, list(oc.cc2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(composite1 ~ CI_group, data = oc.cc2)
+summary(a1)
+pairwise.t.test(oc.cc2$composite1, oc.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(oc.cc2$composite1, list(oc.cc2$CI_group), mean)
+```
+
+### Oral Comprehension
+```{r}
+a1 <- aov(wj3.oralcomp.cs ~ CI_group, data = oc.cc2)
+summary(a1)
+pairwise.t.test(oc.cc2$wj3.oralcomp.cs, oc.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(oc.cc2$wj3.oralcomp.cs, list(oc.cc2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+Robust.With.OralComp <- data.frame(table(oc.cc$CI_group, oc.cc$handedness))
+names(Robust.With.OralComp) <- c("Group", "handedness", "rlm.w.oralcomp")
+Robust.With.OralComp.r <- Robust.With.OralComp[Robust.With.OralComp$handedness == "right",]
+Robust.With.OralComp.r <- Robust.With.OralComp.r[,-2]
+```
+
+## Robust Model with PPVT
+
+Run model, get groups.
+```{r}
+model.data.pm <- data[, c(1, 2, 5, 7, 11, 12, 18, 19)]
+pm.cc <- model.data.pm[complete.cases(model.data.pm),]
+#just centering
+pm.cc$age.c <- pm.cc$age - mean(pm.cc$age, na.rm = TRUE)
+#centering and scaling
+pm.cc$wj3.rcomp.cs <- scale(pm.cc$wj3.rcomp.raw)
+pm.cc$wasi.matr.cs <- scale(pm.cc$wasi.matr.raw)
+pm.cc$ppvt.cs <- scale(pm.cc$ppvt.raw)
+pm.cc$wj3.oralcomp.cs <- scale(pm.cc$wj3.oralcomp.raw)
+
+### Run regression
+m1 <- rlm(wj3.rcomp.cs ~ age.c + composite1 + wasi.matr.cs + ppvt.cs, data = pm.cc, method = "MM")
+
+#standardize predicted values
+pm.cc$Pred <- predict(m1)
+pm.cc$stdPred <- scale(pm.cc$Pred)
+
+#obtained residuals
+pm.cc$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+pm.cc$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+pm.cc$CI_group[pm.cc$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(wj3.rcomp.cs ~ stdPred, data=pm.cc)
+
+p1 <- ggplot(pm.cc, aes(x=stdPred, y=wj3.rcomp.cs)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("WJ3 Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences 4
+Robust Model with PPVT
+
+```{r}
+# take away NSC group
+pm.cc2 <- subset(pm.cc, CI_group != "NSC")
+pm.cc2$CI_group <- as.factor(pm.cc2$CI_group)
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(wj3.rcomp.cs ~ CI_group, data = pm.cc2)
+summary(a1)
+pairwise.t.test(pm.cc2$wj3.rcomp.cs, pm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(pm.cc2$wj3.rcomp.cs, list(pm.cc2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.c ~ CI_group, data = pm.cc2)
+summary(a1)
+pairwise.t.test(pm.cc2$age.c, pm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(pm.cc2$age.c, list(pm.cc2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.cs ~ CI_group, data = pm.cc2)
+summary(a1)
+pairwise.t.test(pm.cc2$wasi.matr.cs, pm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(pm.cc2$wasi.matr.cs, list(pm.cc2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(composite1 ~ CI_group, data = pm.cc2)
+summary(a1)
+pairwise.t.test(pm.cc2$composite1, pm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(pm.cc2$composite1, list(pm.cc2$CI_group), mean)
+```
+
+### Oral Comprehension
+```{r}
+a1 <- aov(wj3.oralcomp.cs ~ CI_group, data = pm.cc2)
+summary(a1)
+pairwise.t.test(pm.cc2$wj3.oralcomp.cs, pm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(pm.cc2$wj3.oralcomp.cs, list(pm.cc2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+Robust.With.PPVT <- data.frame(table(pm.cc$CI_group, pm.cc$handedness))
+names(Robust.With.PPVT) <- c("Group", "handedness", "rlm.w.ppvt")
+Robust.With.PPVT.r <- Robust.With.PPVT[Robust.With.PPVT$handedness == "right",]
+Robust.With.PPVT.r <- Robust.With.PPVT.r[,-2]
+```
+
+## Linear Model with PPVT
+
+Run model, get groups.
+```{r}
+model.data.plm <- data[, c(1, 2, 5, 7, 11, 12, 18, 19)]
+plm.cc <- model.data.plm[complete.cases(model.data.plm),]
+## Checking predictors, outcome
+dagoTest(plm.cc$composite1)
+dagoTest(plm.cc$wasi.matr.raw)
+dagoTest(plm.cc$ppvt.raw)
+dagoTest(plm.cc$wj3.rcomp.raw)
+
+## everything needs to be transformed except the composite
+vars_tf <- c("wasi.matr.raw","ppvt.raw","wj3.rcomp.raw")
+pp_md_tf <- preProcess(data[,vars_tf], method = c("center", "scale", "YeoJohnson"), na.remove=T)
+
+#check the lambda values associated with the predictors
+pp_md_tf$yj$wasi.matr.raw$lambda
+pp_md_tf$yj$ppvt.raw$lambda
+pp_md_tf$yj$wj3.rcomp.raw$lambda
+## ppvt lambda is still high
+x <- density(plm.cc$ppvt.raw, bw="SJ", na.rm=T)
+plot(x)
+# no obvious outlier?
+tf_data <- predict(pp_md_tf, plm.cc[,vars_tf])
+plm.cc$wasi.matr.tf <- tf_data$wasi.matr.raw
+plm.cc$ppvt.tf <- tf_data$ppvt.raw
+plm.cc$wj3.rcomp.tf <- tf_data$wj3.rcomp.raw
+
+dagoTest(plm.cc$wasi.matr.tf)
+dagoTest(plm.cc$ppvt.tf)
+dagoTest(plm.cc$wj3.rcomp.tf)
+# skewness has pretty much been fixed in all of them -- problem is just kurtosis
+
+plm.cc$age.c <- plm.cc$age - mean(plm.cc$age, na.rm = TRUE)
+
+### Run regression
+m1 <- lm(wj3.rcomp.tf~ age.c + composite1 + wasi.matr.tf + ppvt.tf, data = plm.cc)
+
+#standardize predicted values
+plm.cc$Pred <- predict(m1)
+plm.cc$stdPred <- scale(plm.cc$Pred)
+
+#obtained residuals
+plm.cc$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+plm.cc$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+plm.cc$CI_group[plm.cc$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(wj3.rcomp.tf ~ stdPred, data=plm.cc)
+
+p1 <- ggplot(plm.cc, aes(x=stdPred, y=wj3.rcomp.tf)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("WJ3 Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences 5
+Linear Model with PPVT
+
+```{r}
+# take away NSC group
+plm.cc2 <- subset(plm.cc, CI_group != "NSC")
+plm.cc2$CI_group <- as.factor(plm.cc2$CI_group)
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(wj3.rcomp.tf ~ CI_group, data = plm.cc2)
+summary(a1)
+pairwise.t.test(plm.cc2$wj3.rcomp.tf, plm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(plm.cc2$wj3.rcomp.tf, list(plm.cc2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.c ~ CI_group, data = plm.cc2)
+summary(a1)
+pairwise.t.test(plm.cc2$age.c, plm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(plm.cc2$age.c, list(plm.cc2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.tf ~ CI_group, data = plm.cc2)
+summary(a1)
+pairwise.t.test(plm.cc2$wasi.matr.tf, plm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(plm.cc2$wasi.matr.tf, list(plm.cc2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(composite1 ~ CI_group, data = plm.cc2)
+summary(a1)
+pairwise.t.test(plm.cc2$composite1, plm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(plm.cc2$composite1, list(plm.cc2$CI_group), mean)
+```
+
+### Vocab
+```{r}
+a1 <- aov(ppvt.tf ~ CI_group, data = plm.cc2)
+summary(a1)
+pairwise.t.test(plm.cc2$ppvt.tf, plm.cc2$CI_group, p.adjust.method = "bonferroni")
+aggregate(plm.cc2$ppvt.tf, list(plm.cc2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+LM.With.PPVT <- data.frame(table(plm.cc$CI_group, plm.cc$handedness))
+names(LM.With.PPVT) <- c("Group", "handedness", "lm.w.ppvt")
+LM.With.PPVT.r <- LM.With.PPVT[LM.With.PPVT$handedness == "right",]
+LM.With.PPVT.r <- LM.With.PPVT.r[,-2]
+```

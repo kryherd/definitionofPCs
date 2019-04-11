@@ -1,0 +1,187 @@
+  ---
+title: "Merging with MRI data"
+author: "Kayleigh Ryherd"
+date: "9/14/2017"
+output: html_document
+---
+
+```{r, warning = FALSE, message = FALSE}
+library(data.table)
+library(xtable)
+setwd("~/Dropbox/Definition_of_PCs/RegressionDefinitionMethod/MultipleCompTests-Aug2017/RegressionMethod/CheckingInfluentialPoints_Nov292017")
+MRI <- read.csv("FullData_Dec5_2017.csv")
+dfs <- list("WJ3Int-20_70.csv", "WJ3NoInt-20_70.csv", "KTEAInt-20_70.csv", "KTEANoInt-20_70.csv",
+            "WJ3Int-15_70.csv", "WJ3NoInt-15_70.csv", "KTEAInt-15_70.csv", "KTEANoInt-15_70.csv",
+            "WJ3Int-15_60.csv", "WJ3NoInt-15_60.csv", "KTEAInt-15_60.csv", "KTEANoInt-15_60.csv",
+            "WJ3Int-15_65.csv", "WJ3NoInt-15_65.csv", "KTEAInt-15_65.csv", "KTEANoInt-15_65.csv",
+            "CompositeInt-20_70.csv", "CompositeNoInt-20_70.csv", "CompositeInt-15_70.csv", 
+            "CompositeNoInt-15_70.csv", "CompositeInt-15_65.csv", "CompositeNoInt-15_65.csv", 
+            "CompositeInt-15_60.csv", "CompositeNoInt-15_60.csv")
+data.groups <- lapply(dfs, read.csv)
+data.groups <- lapply(data.groups, function(x) { x["X"] <- NULL; x })
+data.groups <- lapply(data.groups, function(x) { x["X.1"] <- NULL; x })
+
+# remove EPCs
+newList <- list()
+for (i in 1:length(data.groups)) {
+  new <- subset(data.groups[[i]], CI_group != "EPC")
+  new$CI_group <- factor(new$CI_group)
+  newList[[i]] <- new
+}
+
+# merge MRI IDs
+mergeList <- list()
+for (i in 1:length(newList)) {
+merged <- merge(newList[[i]], MRI, by.x = "SubjectID", by.y = "SubjectID", all = TRUE)
+merged2 <- merged[,c(1, 13, 15, 17, 19, 22, 26, 27, 45, 46, 47)]
+merged3 <- merged2[complete.cases(merged2$StructuralMRI.ID),]
+mergeList[[i]] <- merged3
+}
+
+# create counts of subjects in each group that have MRI data
+tableList <- list()
+for (i in 1:length(mergeList)) {
+  table <- table(mergeList[[i]]$CI_group)
+  tableList[[i]] <- table
+}
+
+names(tableList) <- dfs
+
+results <- data.frame(do.call("rbind", tableList))
+Model <- rownames(results)
+Model <- gsub('.csv', '', Model)
+results <- cbind(Model, results)
+
+write.csv(results, "MRIMergeImputedModels.csv")
+
+names(mergeList) <- dfs
+list2env(mergeList,envir=.GlobalEnv)
+```
+
+```{r, results = "asis"}
+
+rs <- xtable(results)
+print(rs, type ="html", include.rownames = FALSE)
+```
+
+
+```{r}
+
+ktea.list <- dfs <- list(`KTEAInt-20_70.csv`, `KTEANoInt-20_70.csv`,`KTEAInt-15_70.csv`, `KTEANoInt-15_70.csv`,
+            `KTEAInt-15_60.csv`, `KTEANoInt-15_60.csv`,`KTEAInt-15_65.csv`, `KTEANoInt-15_65.csv`)
+names(ktea.list) <- c("KTEAInt-20_70.csv", "KTEANoInt-20_70.csv","KTEAInt-15_70.csv", "KTEANoInt-15_70.csv",
+            "KTEAInt-15_60.csv", "KTEANoInt-15_60.csv","KTEAInt-15_65.csv", "KTEANoInt-15_65.csv")
+
+group.diffs <- list("ktea2.t", "age.mri", "wasi.matr.t", "decoding.comp", "ppvt.t")
+
+group.diffs.list <- list()
+for (j in group.diffs) {
+  form <- substitute(j ~ CI_group, list(j = as.name(j)))
+  form <- as.formula(form)
+  ares <- data.frame()
+  for (i in 1:length(ktea.list)){
+    a1 <- aov(form, data = ktea.list[[i]])
+    p.val <- summary(a1)[[1]][[1,"Pr(>F)"]]
+    ares <- rbind(ares, c(i,p.val))
+  }
+  Model <- gsub('.csv', '', names(ktea.list))
+  ares2 <- data.frame(cbind(Model, ares[,2]))
+  colnames(ares2)[2] <- "P-Val"
+  ares2$`P-Val`<- as.numeric(as.character(ares2$`P-Val`))
+  ares2$Sig[ares2$`P-Val` < .05] <- "*"
+  group.diffs.list[[j]] <- ares2
+}
+
+list2env(group.diffs.list,envir=.GlobalEnv)
+
+
+WJ3.list <- dfs <- list(`WJ3Int-20_70.csv`, `WJ3NoInt-20_70.csv`,`WJ3Int-15_70.csv`, `WJ3NoInt-15_70.csv`,
+            `WJ3Int-15_60.csv`, `WJ3NoInt-15_60.csv`,`WJ3Int-15_65.csv`, `WJ3NoInt-15_65.csv`)
+names(WJ3.list) <- c("WJ3Int-20_70.csv", "WJ3NoInt-20_70.csv","WJ3Int-15_70.csv", "WJ3NoInt-15_70.csv",
+            "WJ3Int-15_60.csv", "WJ3NoInt-15_60.csv","WJ3Int-15_65.csv", "WJ3NoInt-15_65.csv")
+
+group.diffs <- list("wj3.rcomp.t", "age.mri", "wasi.matr.t", "decoding.comp", "ppvt.t")
+
+group.diffs.list <- list()
+for (j in group.diffs) {
+  form <- substitute(j ~ CI_group, list(j = as.name(j)))
+  form <- as.formula(form)
+  ares <- data.frame()
+  for (i in 1:length(WJ3.list)){
+    a1 <- aov(form, data = WJ3.list[[i]])
+    p.val <- summary(a1)[[1]][[1,"Pr(>F)"]]
+    ares <- rbind(ares, c(i,p.val))
+  }
+  Model <- gsub('.csv', '', names(WJ3.list))
+  ares2 <- data.frame(cbind(Model, ares[,2]))
+  colnames(ares2)[2] <- "P-Val"
+  ares2$`P-Val`<- as.numeric(as.character(ares2$`P-Val`))
+  ares2$Sig[ares2$`P-Val` < .05] <- "*"
+  group.diffs.list[[j]] <- ares2
+}
+names(group.diffs.list) <- c("ReadingComp", "Age", "MR", "Decode", "PPVT")
+list2env(group.diffs.list,envir=.GlobalEnv)
+
+
+composite.list <- dfs <- list(`CompositeInt-20_70.csv`, `CompositeNoInt-20_70.csv`,`CompositeInt-15_70.csv`,
+                              `CompositeNoInt-15_70.csv`,`CompositeInt-15_60.csv`,
+                              `CompositeNoInt-15_60.csv`,`CompositeInt-15_65.csv`, `CompositeNoInt-15_65.csv`)
+names(composite.list) <- c("CompositeInt-20_70.csv", "CompositeNoInt-20_70.csv","CompositeInt-15_70.csv", "CompositeNoInt-15_70.csv",
+                           "CompositeInt-15_60.csv", "CompositeNoInt-15_60.csv","CompositeInt-15_65.csv", "CompositeNoInt-15_65.csv")
+
+group.diffs <- list("rc.comp", "age.mri", "wasi.matr.t", "decoding.comp", "ppvt.t")
+
+group.diffs.list <- list()
+for (j in group.diffs) {
+  form <- substitute(j ~ CI_group, list(j = as.name(j)))
+  form <- as.formula(form)
+  ares <- data.frame()
+  for (i in 1:length(composite.list)){
+    a1 <- aov(form, data = composite.list[[i]])
+    p.val <- summary(a1)[[1]][[1,"Pr(>F)"]]
+    ares <- rbind(ares, c(i,p.val))
+  }
+  Model <- gsub('.csv', '', names(composite.list))
+  ares2 <- data.frame(cbind(Model, ares[,2]))
+  colnames(ares2)[2] <- "P-Val"
+  ares2$`P-Val`<- as.numeric(as.character(ares2$`P-Val`))
+  ares2$Sig[ares2$`P-Val` < .05] <- "*"
+  group.diffs.list[[j]] <- ares2
+}
+
+names(group.diffs.list) <- c("rc.comp", "age.rc", "wasi.matr.rc", "decode.rc", "ppvt.rc")
+list2env(group.diffs.list,envir=.GlobalEnv)
+
+ReadingComp <- rbind(ktea2.t, ReadingComp, rc.comp)
+Age <- rbind(age.mri, Age, age.rc)
+Matrix.Reasoning <- rbind(wasi.matr.t, MR, wasi.matr.rc)
+Decoding <- rbind(decoding.comp, Decode, decode.rc)
+Vocab <- rbind(ppvt.t, PPVT, ppvt.rc)
+
+write.csv(ReadingComp, "ReadingCompImpute.csv")
+write.csv(Age, "AgeImpute.csv")
+write.csv(Matrix.Reasoning, "MatrixReasoningImpute.csv")
+write.csv(Decoding, "DecodingImpute.csv")
+write.csv(Vocab, "VocabImpute.csv")
+ 
+```
+
+```{r}
+WJ3Int15_70 <- `WJ3Int-15_70.csv`[,c(1,7,8,9)]
+WJ3Int15_70 <- WJ3Int15_70[complete.cases(WJ3Int15_70),]
+write.csv(WJ3Int15_70, "MRIGroups_WJ3Int15_70.csv")
+
+WJ3NoInt15_70 <- `WJ3NoInt-15_70.csv`[,c(1,7,8,9)]
+WJ3NoInt15_70 <- WJ3NoInt15_70[complete.cases(WJ3NoInt15_70),]
+write.csv(WJ3NoInt15_70, "MRIGroups_WJ3NoInt15_70.csv")
+
+
+WJ3Int15_65 <- `WJ3Int-15_65.csv`[,c(1,7,8,9)]
+WJ3Int15_65 <- WJ3Int15_65[complete.cases(WJ3Int15_65),]
+write.csv(WJ3Int15_65, "MRIGroups_WJ3Int15_65.csv")
+
+WJ3NoInt15_65 <- `WJ3NoInt-15_65.csv`[,c(1,7,8,9)]
+WJ3NoInt15_65 <- WJ3NoInt15_65[complete.cases(WJ3NoInt15_65),]
+write.csv(WJ3NoInt15_65, "MRIGroups_WJ3NoInt15_65.csv")
+
+```

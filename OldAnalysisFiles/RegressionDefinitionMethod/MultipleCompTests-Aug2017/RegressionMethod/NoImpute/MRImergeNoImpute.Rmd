@@ -1,0 +1,171 @@
+---
+title: "Merging with MRI data"
+author: "Kayleigh Ryherd"
+date: "9/14/2017"
+output: html_document
+---
+
+```{r, warning = FALSE, message = FALSE}
+library(data.table)
+library(xtable)
+setwd("~/Dropbox/Definition_of_PCs/RegressionDefinitionMethod/MultipleCompTests-Aug2017/RegressionMethod/NoImpute")
+MRI <- read.csv("FullData_FinalMay23_2017.csv")
+dfs <- list("WJInt-20_70NoImpute.csv", "WJNoInt-20_70NoImpute.csv", "KTEAInt-20_70NoImpute.csv", "KTEANoInt-20_70NoImpute.csv",
+            "WJInt-15_70NoImpute.csv", "WJNoInt-15_70NoImpute.csv", "KTEAInt-15_70NoImpute.csv", "KTEANoInt-15_70NoImpute.csv",
+            "WJInt-15_60NoImpute.csv", "WJNoInt-15_60NoImpute.csv", "KTEAInt-15_60NoImpute.csv", "KTEANoInt-15_60NoImpute.csv",
+            "WJInt-15_65NoImpute.csv", "WJNoInt-15_65NoImpute.csv", "KTEAInt-15_65NoImpute.csv", "KTEANoInt-15_65NoImpute.csv")
+data.groups <- lapply(dfs, read.csv)
+
+# remove EPCs
+newList <- list()
+for (i in 1:length(data.groups)) {
+  new <- subset(data.groups[[i]], CI_group != "EPC")
+  new$CI_group <- factor(new$CI_group)
+  newList[[i]] <- new
+}
+
+# merge MRI IDs
+mergeList <- list()
+for (i in 1:length(newList)) {
+merged <- merge(newList[[i]], MRI, by.x = "SubjectID", by.y = "SubjectID", all = TRUE)
+merged2 <- merged[,c(1, 4, 14, 16, 18, 19, 23, 26, 42)]
+merged3 <- merged2[complete.cases(merged2$StructuralMRI.ID),]
+mergeList[[i]] <- merged3
+}
+
+# create counts of subjects in each group that have MRI data
+tableList <- list()
+for (i in 1:length(mergeList)) {
+  table <- table(mergeList[[i]]$CI_group)
+  tableList[[i]] <- table
+}
+
+names(tableList) <- dfs
+
+results <- data.frame(do.call("rbind", tableList))
+Model <- rownames(results)
+Model <- gsub('NoImpute.csv', '', Model)
+results <- cbind(Model, results)
+
+write.csv(results, "MRIMergeAllModels.csv")
+
+names(mergeList) <- dfs
+list2env(mergeList,envir=.GlobalEnv)
+
+WJNoInt15_65 <- `WJNoInt-15_65NoImpute.csv`[complete.cases(`WJNoInt-15_65NoImpute.csv`[,c(1,4,7,9)]),c(1,4,7,9)]
+KTEANoInt15_65 <- `KTEANoInt-15_65NoImpute.csv`[complete.cases(`KTEANoInt-15_65NoImpute.csv`[,c(1,4,7,9)]),c(1,4,7,9)]
+KTEANoInt15_60 <- `KTEANoInt-15_60NoImpute.csv`[complete.cases(`KTEANoInt-15_60NoImpute.csv`[,c(1,4,7,9)]),c(1,4,7,9)]
+
+```
+
+```{r, results = "asis"}
+
+rs <- xtable(results)
+print(rs, type ="html", include.rownames = FALSE)
+```
+
+
+```{r}
+
+ktea.list <- dfs <- list("KTEAInt-20_70NoImpute.csv", "KTEANoInt-20_70NoImpute.csv","KTEAInt-15_70NoImpute.csv", "KTEANoInt-15_70NoImpute.csv","KTEAInt-15_60NoImpute.csv","KTEANoInt-15_60NoImpute.csv","KTEAInt-15_65NoImpute.csv", "KTEANoInt-15_65NoImpute.csv")
+ktea.data.groups <- lapply(ktea.list, read.csv)
+names(ktea.data.groups) <- ktea.list
+
+# remove EPCs
+kteaList <- list()
+for (i in 1:length(ktea.data.groups)) {
+  new <- subset(ktea.data.groups[[i]], CI_group != "EPC")
+  new$CI_group <- factor(new$CI_group)
+  kteaList[[i]] <- new
+}
+
+group.diffs <- list("ktea2.t", "age.tested.c", "wasi.matr.t", "decode", "ppvt.t")
+
+group.diffs.list <- list()
+for (j in group.diffs) {
+  form <- substitute(j ~ CI_group, list(j = as.name(j)))
+  form <- as.formula(form)
+  ares <- data.frame()
+  for (i in 1:length(kteaList)){
+    a1 <- aov(form, data = kteaList[[i]])
+    p.val <- summary(a1)[[1]][[1,"Pr(>F)"]]
+    ares <- rbind(ares, c(i,p.val))
+  }
+  Model <- gsub('NoImpute.csv', '', ktea.list)
+  ares2 <- data.frame(cbind(Model, ares[,2]))
+  colnames(ares2)[2] <- "P-Val"
+  ares2$`P-Val`<- as.numeric(as.character(ares2$`P-Val`))
+  ares2$Sig[ares2$`P-Val` < .05] <- "*"
+  group.diffs.list[[j]] <- ares2
+}
+
+list2env(group.diffs.list,envir=.GlobalEnv)
+
+
+wj3.list <- dfs <- list("WJInt-20_70NoImpute.csv", "WJNoInt-20_70NoImpute.csv","WJInt-15_70NoImpute.csv", "WJNoInt-15_70NoImpute.csv","WJInt-15_60NoImpute.csv", "WJNoInt-15_60NoImpute.csv","WJInt-15_65NoImpute.csv", "WJNoInt-15_65NoImpute.csv")
+wj3.data.groups <- lapply(wj3.list, read.csv)
+names(wj3.data.groups) <- wj3.list
+
+# remove EPCs
+wj3List <- list()
+for (i in 1:length(wj3.data.groups)) {
+  new <- subset(wj3.data.groups[[i]], CI_group != "EPC")
+  new$CI_group <- factor(new$CI_group)
+  wj3List[[i]] <- new
+}
+
+group.diffs <- list("wj3.rcomp.t", "age.tested.c", "wasi.matr.t", "decode", "ppvt.t")
+
+group.diffs.list <- list()
+for (j in group.diffs) {
+  form <- substitute(j ~ CI_group, list(j = as.name(j)))
+  form <- as.formula(form)
+  ares <- data.frame()
+  for (i in 1:length(wj3List)){
+    a1 <- aov(form, data = wj3List[[i]])
+    p.val <- summary(a1)[[1]][[1,"Pr(>F)"]]
+    ares <- rbind(ares, c(i,p.val))
+  }
+  Model <- gsub('NoImpute.csv', '', wj3.list)
+  ares2 <- data.frame(cbind(Model, ares[,2]))
+  colnames(ares2)[2] <- "P-Val"
+  ares2$`P-Val`<- as.numeric(as.character(ares2$`P-Val`))
+  ares2$Sig[ares2$`P-Val` < .05] <- "*"
+  group.diffs.list[[j]] <- ares2
+}
+names(group.diffs.list) <- c("ReadingComp", "Age", "MR", "Decode", "PPVT")
+list2env(group.diffs.list,envir=.GlobalEnv)
+
+ReadingComp <- rbind(ktea2.t, ReadingComp)
+Age <- rbind(age.tested.c, Age)
+Matrix.Reasoning <- rbind(wasi.matr.t, MR)
+Decoding <- rbind(decode, Decode)
+Vocab <- rbind(ppvt.t, PPVT)
+
+write.csv(ReadingComp, "ReadingComp.csv")
+write.csv(Age, "Age.csv")
+write.csv(Matrix.Reasoning, "MatrixReasoning.csv")
+write.csv(Decoding, "Decoding.csv")
+write.csv(Vocab, "Vocab.csv")
+```
+
+```{r}
+ageList <- list(WJNoInt15_65, KTEANoInt15_60, KTEANoInt15_65)
+
+full.data <- read.csv("FullData_FinalMay23_2017.csv")
+age.data <- full.data[,c(1,2)]
+# merge MRI IDs
+
+mergeList <- list()
+for (i in 1:length(ageList)) {
+merged <- merge(ageList[[i]], age.data, by.x = "SubjectID", by.y = "SubjectID")
+mergeList[[i]] <- merged
+}
+names(mergeList) <- c("WJNoInt15_60-notimputed", "KTEANoInt15_60-notimputed", "KTEANoInt15_65-notimputed")
+list2env(mergeList,envir=.GlobalEnv)
+
+write.csv(`WJNoInt15_60-notimputed`, "WJNoInt15_60-notimputed.csv")
+write.csv(`KTEANoInt15_60-notimputed`, "KTEANoInt15_60-notimputed.csv")
+write.csv(`KTEANoInt15_65-notimputed`, "KTEANoInt15_65-notimputed.csv")
+```
+

@@ -1,0 +1,596 @@
+---
+title: "UPC Analysis - KTEA & GM, imputed data"
+author: "Kayleigh Ryherd"
+date: "9/13/2017"
+output: html_document
+---
+
+# 15/70 Confidence Intervals 
+
+## Table of Contents
+
+1. [KTEA](#ktea)
+2. [WJ](#wj)
+3. [Group Sizes](#group-sizes)
+
+Read in packages & data.
+```{r, warning = FALSE, message = FALSE}
+library(fBasics)
+library(caret)
+library(MASS)
+library(ggplot2)
+library(plyr)
+library(reshape2)
+library(xtable)
+setwd("~/Dropbox/Definition_of_PCs/RegressionDefinitionMethod/MultipleCompTests-Aug2017/RegressionMethod")
+data <- read.csv("classification.csv")
+rc.comp <- read.csv("comprehension_composite.csv")
+rc.composite <- rc.comp[,-1]
+data2 <- merge(data, rc.composite, by = "SubjectID")
+WJ3 <- data2
+KTEA <- data2
+```
+
+Define some functions.
+
+```{r}
+# for plotting
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length=n+1)
+  hcl(h=hues, l=65, c=100)[1:n]
+}
+
+# CIs to z-scores
+ci2z <- function(ci)
+{
+  qnorm(ci + (1 - ci)/2)
+}
+```
+
+```{r}
+ci.to.use <- c(.15, .70)
+ci.title <- "CIs: 15%, 70%"
+ci.doc <- "15_70"
+```
+
+## KTEA
+
+# No interaction
+
+Run model, get groups.
+```{r}
+
+m1 <- lm(ktea2.t ~ age.tested.c + decode + wasi.matr.t + ppvt.t, data = KTEA)
+
+#standardize predicted values
+KTEA$Pred <- predict(m1)
+KTEA$stdPred <- scale(KTEA$Pred)
+
+#obtained residuals
+KTEA$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+KTEA$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+KTEA$CI_group[KTEA$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(ktea2.t ~ stdPred, data=KTEA)
+
+p1 <- ggplot(KTEA, aes(x=stdPred, y=ktea2.t)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("Gates Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences KTEA
+
+```{r}
+# take away NSC group
+KTEA2 <- subset(KTEA, CI_group != "NSC")
+KTEA2$CI_group <- as.factor(KTEA2$CI_group)
+write.csv(KTEA2, paste("KTEANoInt-",ci.doc,".csv", sep=""))
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(ktea2.t ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$ktea2.t, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$ktea2.t, list(KTEA2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.tested.c ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$age.tested.c, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$age.tested.c, list(KTEA2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.t ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$wasi.matr.t, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$wasi.matr.t, list(KTEA2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(decode~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$decode, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$decode, list(KTEA2$CI_group), mean)
+```
+
+### PPVT 
+```{r}
+a1 <- aov(ppvt.t ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$ppvt.t, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$ppvt.t, list(KTEA2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+KTEA.res <- data.frame(table(KTEA$CI_group))
+names(KTEA.res) <- c("Group","KTEA")
+```
+
+# Interaction
+
+Run model, get groups.
+```{r}
+
+m1 <- lm(ktea2.t ~ age.tested.c * decode * wasi.matr.t * ppvt.t, data = KTEA)
+
+KTEAi <- KTEA
+
+#standardize predicted values
+KTEAi$Pred <- predict(m1)
+KTEAi$stdPred <- scale(KTEAi$Pred)
+
+#obtained residuals
+KTEAi$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+KTEAi$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+KTEAi$CI_group[KTEAi$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(ktea2.t ~ stdPred, data=KTEAi)
+
+p1 <- ggplot(KTEAi, aes(x=stdPred, y=ktea2.t)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("Gates Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences KTEA
+
+```{r}
+# take away NSC group
+KTEA2 <- subset(KTEAi, CI_group != "NSC")
+KTEA2$CI_group <- as.factor(KTEA2$CI_group)
+write.csv(KTEA2, paste("KTEAInt-",ci.doc,".csv", sep=""))
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(ktea2.t ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$ktea2.t, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$ktea2.t, list(KTEA2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.tested.c ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$age.tested.c, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$age.tested.c, list(KTEA2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.t ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$wasi.matr.t, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$wasi.matr.t, list(KTEA2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(decode~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$decode, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$decode, list(KTEA2$CI_group), mean)
+```
+
+### PPVT 
+```{r}
+a1 <- aov(ppvt.t ~ CI_group, data = KTEA2)
+summary(a1)
+pairwise.t.test(KTEA2$ppvt.t, KTEA2$CI_group, p.adjust.method = "bonferroni")
+aggregate(KTEA2$ppvt.t, list(KTEA2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+KTEA.resi <- data.frame(table(KTEA$CI_group))
+names(KTEA.resi) <- c("Group","KTEA")
+```
+
+## WJ
+
+# No interaction
+
+Run model, get groups.
+```{r}
+
+m1 <- lm(wj3.rcomp.t ~ age.tested.c + decode + wasi.matr.t + ppvt.t, data = WJ3)
+
+#standardize predicted values
+WJ3$Pred <- predict(m1)
+WJ3$stdPred <- scale(WJ3$Pred)
+
+#obtained residuals
+WJ3$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+WJ3$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+WJ3$CI_group[WJ3$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(wj3.rcomp.t ~ stdPred, data=WJ3)
+
+p1 <- ggplot(WJ3, aes(x=stdPred, y=wj3.rcomp.t)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("Gates Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences WJ
+
+```{r}
+# take away NSC group
+WJ3_2 <- subset(WJ3, CI_group != "NSC")
+WJ3_2$CI_group <- as.factor(WJ3_2$CI_group)
+write.csv(WJ3_2, paste("WJNoInt-",ci.doc,".csv", sep=""))
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(wj3.rcomp.t ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$wj3.rcomp.t, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$wj3.rcomp.t, list(WJ3_2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.tested.c ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$age.tested.c, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$age.tested.c, list(WJ3_2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.t ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$wasi.matr.t, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$wasi.matr.t, list(WJ3_2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(decode~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$decode, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$decode, list(WJ3_2$CI_group), mean)
+```
+
+### PPVT 
+```{r}
+a1 <- aov(ppvt.t ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$ppvt.t, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$ppvt.t, list(WJ3_2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+WJ3.res <- data.frame(table(WJ3$CI_group))
+names(WJ3.res) <- c("Group","WJ")
+```
+
+# Interaction
+Run model, get groups.
+```{r}
+
+m1 <- lm(wj3.rcomp.t ~ age.tested.c * decode * wasi.matr.t * ppvt.t, data = WJ3)
+
+WJ3i <- WJ3
+
+#standardize predicted values
+WJ3i$Pred <- predict(m1)
+WJ3i$stdPred <- scale(WJ3i$Pred)
+
+#obtained residuals
+WJ3i$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+WJ3i$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+WJ3i$CI_group[WJ3i$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(wj3.rcomp.t ~ stdPred, data=WJ3i)
+
+p1 <- ggplot(WJ3i, aes(x=stdPred, y=wj3.rcomp.t)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("Gates Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+## Group Differences WJ
+
+```{r}
+# take away NSC group
+WJ3_2 <- subset(WJ3i, CI_group != "NSC")
+WJ3_2$CI_group <- as.factor(WJ3_2$CI_group)
+write.csv(WJ3_2, paste("WJInt-",ci.doc,".csv", sep=""))
+```
+
+### Reading Comprehension
+```{r}
+a1 <- aov(wj3.rcomp.t ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$wj3.rcomp.t, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$wj3.rcomp.t, list(WJ3_2$CI_group), mean)
+```
+
+### Age
+```{r}
+a1 <- aov(age.tested.c ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$age.tested.c, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$age.tested.c, list(WJ3_2$CI_group), mean)
+```
+
+### Matrix Reasoning
+```{r}
+a1 <- aov(wasi.matr.t ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$wasi.matr.t, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$wasi.matr.t, list(WJ3_2$CI_group), mean)
+```
+
+### Decoding
+```{r}
+a1 <- aov(decode~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$decode, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$decode, list(WJ3_2$CI_group), mean)
+```
+
+### PPVT 
+```{r}
+a1 <- aov(ppvt.t ~ CI_group, data = WJ3_2)
+summary(a1)
+pairwise.t.test(WJ3_2$ppvt.t, WJ3_2$CI_group, p.adjust.method = "bonferroni")
+aggregate(WJ3_2$ppvt.t, list(WJ3_2$CI_group), mean)
+```
+
+Show group sizes, plot.
+```{r}
+print(p1)
+WJ3.resi <- data.frame(table(WJ3$CI_group))
+names(WJ3.resi) <- c("Group","WJ")
+```
+
+## RC Composite
+
+```{r}
+
+m1 <- lm(rc.comp ~ age.tested.c + decode + wasi.matr.t + ppvt.t, data = data2)
+
+#standardize predicted values
+data2$Pred <- predict(m1)
+data2$stdPred <- scale(data2$Pred)
+
+#obtained residuals
+data2$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+data2$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+data2$CI_group[data2$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(ktea2.t ~ stdPred, data=data2)
+
+p1 <- ggplot(data2, aes(x=stdPred, y=rc.comp)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("Gates Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+```{r}
+# take away NSC group
+data3 <- subset(data2, CI_group != "NSC")
+data3$CI_group <- as.factor(data3$CI_group)
+write.csv(data3, paste("CompositeNoInt-",ci.doc,".csv", sep=""))
+```
+
+```{r}
+data2i <- data2
+
+m1 <- lm(rc.comp ~ age.tested.c * decode * wasi.matr.t * ppvt.t, data = data2i)
+
+#standardize predicted values
+data2i$Pred <- predict(m1)
+data2i$stdPred <- scale(data2i$Pred)
+
+#obtained residuals
+data2i$resid <- resid <- residuals(m1)
+qqnorm(scale(resid)); qqline(scale(resid))
+
+#create the range of SD (z value) bins 
+my.bin <- c(range(scale(resid))+.1, ci2z(ci.to.use), -ci2z(ci.to.use))
+#we could also manually specify in terms of SDs
+# my.bin <- c(-3, -1, -.25, .25, 1, 3)
+my.bin <- sort(my.bin)
+# names for each bin specified above
+grouping <- c("UPC", "NSC", "EAC", "NSC", "UGC")
+
+data2i$CI_group <- grouping[findInterval(scale(resid), vec=my.bin, all.inside=T)]
+#those with Standardized Predicted Value below -1 should be "EPC"
+data2i$CI_group[data2i$stdPred < -1] <- "EPC"
+
+### there are five groups c("EAC", "NSC", "UGC", "UPC", "EPC")
+### so the argument n = 5
+my.col <- gg_color_hue(n=5)
+
+## unscale the z value for each CI, so I can add that value to intercept
+unscale.ci <- my.bin[-c(1,length(my.bin))]*sd(resid)+mean(resid)
+
+## create plot
+m2 <- lm(ktea2.t ~ stdPred, data=data2i)
+
+p1 <- ggplot(data2i, aes(x=stdPred, y=rc.comp)) + geom_point(aes(color=CI_group)) + 
+  geom_abline(intercept = coef(m2)[1], slope = coef(m2)[2]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[2], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[3], slope = coef(m2)[2], color=my.col[1]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[1], slope = coef(m2)[2], color=my.col[4]) +
+  geom_abline(intercept = coef(m2)[1] + unscale.ci[4], slope = coef(m2)[2], color=my.col[3]) +
+  geom_vline(xintercept = -1, lty="dotted") + 
+  xlab("Standardized Predicted Value")+ylab("Gates Reading Comprehension") +
+  ggtitle(ci.title)
+```
+
+```{r}
+# take away NSC group
+data3i <- subset(data2i, CI_group != "NSC")
+data3i$CI_group <- as.factor(data3i$CI_group)
+write.csv(data3i, paste("CompositeInt-",ci.doc,".csv", sep=""))
+```
+
+
+## Group Sizes
+ Across reading comprehension tests
+ 
+```{r, results = "asis"}
+group.sizes <- cbind(KTEA.res, KTEA.resi[,2], WJ3.res[,2], WJ3.resi[,2])
+names(group.sizes) <- c("group", "KTEA No Interaction", "KTEA Interaction", "WJ No Interaction", "WJ Interaction")
+gs <- xtable(group.sizes)
+print(gs, type ="html", include.rownames = FALSE)
+```
+

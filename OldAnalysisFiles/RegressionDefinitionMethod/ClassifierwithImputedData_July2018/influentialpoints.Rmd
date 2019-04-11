@@ -1,0 +1,65 @@
+---
+title: "Checking for Influential Points"
+author: "Kayleigh Ryherd"
+date: "11/17/2017"
+output: html_document
+---
+
+
+Read in packages & data.
+```{r, warning = FALSE, message = FALSE}
+library(fBasics)
+library(caret)
+library(MASS)
+library(ggplot2)
+library(plyr)
+library(reshape2)
+library(xtable)
+setwd("~/Dropbox/Definition_of_PCs/RegressionDefinitionMethod/MultipleCompTests-Aug2017/RegressionMethod/influentialpoints")
+data <- read.csv("classification.csv")
+KTEA <- data
+```
+
+```{r}
+
+m1 <- lm(ktea2.t ~ age.tested.c + decode + wasi.matr.t + ppvt.t, data = KTEA)
+cooksd <- cooks.distance(m1)
+
+plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")  # add labels
+
+influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])  # influential row numbers
+inf.p <- KTEA[influential, ]
+inf.p <- inf.p[,c(1,3,13,15,17,21)]
+head(inf.p)
+```
+44 total influential subjects.
+
+Checking to see how may of the 44 subjects were used in the MRI analysis.
+
+```{r}
+data2 <- read.csv("KTEANoInt15_65-imputed.csv")
+merge <- merge(data2, inf.p, by = "SubjectID")
+print(merge, digits = 2)
+```
+
+19 of the influential subjects were used in the MRI analysis.
+
+Most of the subjects are only influential due to age (their other scores have a z-score between -2 and 2).
+
+Here are the remaining subjects (there are only 4):
+
+```{r}
+rel <- c(1204,1000,62,220)
+inf.p2 <- inf.p[is.element(inf.p$SubjectID, rel), ]
+inf.p2
+```
+
+Here are the ones used for the MRI analysis:
+ 
+62 (UPC)  
+1000 (UPC)
+
+
+
